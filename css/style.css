@@ -1,0 +1,1131 @@
+@charset "UTF-8";
+
+/* 共通部分↓ */
+
+:root {
+    --gyoza-black: #131A12;
+    --gyoza-white: #FFF7F7;
+    --gyoza-beige: #FFFBEF;
+    --gyoza-red: #E22A00;
+    --gyoza-yellow: #FFE100;
+}
+
+body {
+    background-color: var(--gyoza-beige);
+    font-size: 16px;
+    font-family: "Zen Maru Gothic", sans-serif;
+    line-height: 1.45;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    width: 100%;
+}
+
+.l-wrapper {
+    width: min(960px, 89.3%);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 80pxから160pxまで可変 */
+    gap: clamp(5rem, 2.799rem + 9.39vw, 11.25rem);
+}
+
+/* ヘッダーの下の隙間 90pxから180pxに可変で設定 */
+.l-header-margin+* {
+    margin-top: clamp(5.625rem, 3.644rem + 8.45vw, 11.25rem);
+}
+
+/* hover設定 */
+
+.c-btn--yellow:hover {
+    transition-duration: .4s;
+    transform: scale(1.1);
+}
+
+
+.c-btn__top:hover {
+    filter: invert(100%);
+}
+
+
+.c-logo:hover,
+.c-nav li:hover,
+.l-footer a:hover,
+.c-news-detail :hover,
+.c-topnews-link :hover,
+.c-map-card:hover,
+.c-news__detail dd :hover,
+.c-news-return__link :hover,
+.l-faq-section--venue-map:hover,
+.l-faq-section__answer--under:hover,
+.c-info__map-link:hover,
+.c-logo:hover,
+.c-nav li:hover,
+.c-contact__text a:hover {
+    filter: brightness(1.15);
+    opacity: 0.4;
+}
+
+
+/* btn */
+.c-btn--yellow {
+    background-color: var(--gyoza-yellow);
+    border-radius: 40px;
+    text-align: center;
+    display: block;
+}
+
+
+
+.c-btn__top {
+    position: fixed;
+    right: clamp(1.25rem, -0.511rem + 7.512vw, 6.25rem);
+    bottom: 50px;
+    border:
+        4px solid var(--gyoza-beige);
+    border-radius: 50%;
+}
+
+.c-btn__top img {
+    width: clamp(3.75rem, 2.276rem + 6.291vw, 7.938rem);
+}
+
+.c-btn--black>p {
+    text-transform: uppercase;
+}
+
+
+
+/* 赤文字タイトル共通設定 */
+
+.c-title__main,
+.c-sec-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--gyoza-red);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.c-title__main::after {
+    content: attr(data-sub-title);
+    font-size: 16px;
+    color: var(--gyoza-black);
+    font-weight: normal;
+}
+
+
+
+/* ヘッダー↓ */
+.l-header-inner {
+    height: 100%;
+    width: min(960px, 89.3%);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.l-header {
+    background-color: var(--gyoza-black);
+    color: var(--gyoza-white);
+    height: clamp(3.125rem, 1.871rem + 5.352vw, 6.688rem);
+}
+
+.c-logo {
+    width: 96px;
+}
+
+.c-nav li {
+    font-family: "Josefin Sans", serif;
+    font-size: clamp(1.25rem, 0.986rem + 1.127vw, 2rem);
+    font-weight: bold;
+}
+
+
+/*ハンバーガ―メニュー*/
+/* ここから ↓-------------------------------------- */
+.c-menu-wrapper {
+    position: relative;
+}
+
+.c-menu__icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -45px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 3;
+    display: inline-block;
+}
+
+.c-menu__icon span {
+    display: block;
+    height: 2px;
+    margin: 6px 0;
+    background: #ffffff;
+    border-radius: 1px;
+    transition: 0.4s;
+}
+
+/* ハンバーガーがXに変形 */
+#menu-toggle:checked+.c-menu__icon span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+#menu-toggle:checked+.c-menu__icon span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle:checked+.c-menu__icon span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* オーバーレイ背景 */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+    z-index: 1;
+}
+
+#menu-toggle:checked~.overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* メニュー本体（左から出す） */
+.c-menu-hamburger {
+    position: fixed;
+    top: 0;
+    left: -375px;
+    /* ← 初期位置を左へ */
+    width: 375px;
+    height: 100%;
+    background: var(--gyoza-black);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    transition: left 0.4s ease;
+    z-index: 2;
+}
+
+#menu-toggle:checked~.c-menu-hamburger {
+    left: 0;
+    /* ← 開いたときは左0へ */
+}
+
+.c-menu-hamburger-text {
+    list-style: none;
+    padding: 60px 20px;
+}
+
+.c-menu-hamburger-text-list {
+    margin: 15px 0;
+}
+
+.c-menu-hamburger-text-list a {
+    text-decoration: none;
+    color: var(--gyoza-white);
+    transition: color 0.3s;
+}
+
+.c-menu-hamburger-text-list__main {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.c-menu-hamburger-text-list__sub {
+    font-size: 10px;
+    line-height: 2;
+}
+
+.c-menu-hamburger-text-list a:hover {
+    color: var(--gyoza-red);
+}
+
+/* ハンバーガー ここまで ↑------------------ */
+
+
+
+@media screen and (max-width: 768px) {
+    .c-nav {
+        visibility: hidden;
+    }
+}
+
+/* 768px以上の大きさの場合 */
+@media screen and (min-width:768px) {
+
+    /* ハンバガーメニュー を消す */
+    .c-menu-wrapper {
+        display: none;
+    }
+
+}
+
+
+
+
+/* フッター↓ */
+.l-footer {
+    background-color: var(--gyoza-black);
+    color: var(--gyoza-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding-block: 35px;
+    margin-top: clamp(5.625rem, 3.644rem + 8.451vw, 11.25rem);
+}
+
+.l-fotter__contact {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.c-btn--black {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border: 1px solid var(--gyoza-white);
+    border-radius: 50px;
+    width: clamp(9.531rem, 8.046rem + 6.338vw, 13.75rem);
+    padding-block: 5px;
+    height: 40px;
+}
+
+.c-btn--black img {
+    width: 30px;
+}
+
+
+/* fotter SNS */
+.l-footer__sns {
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+}
+
+.c-sns__link img {
+    width: 55px;
+}
+
+/* footer text */
+.l-footer__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.l-footer__text small {
+    font-size: 12px;
+}
+
+.c-footer__company {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* トップページ↓ */
+.l-hero {
+    background: url(../img/pc_hero.png) center center/cover;
+    height: 571px;
+    display: flex;
+    align-items: end;
+}
+
+@media screen and (max-width:768px) {
+    .l-hero {
+        background: url(../img/sp_hero.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 375px;
+    }
+
+}
+
+.c-gray-area {
+    background-color: rgba(19, 26, 18, 0.6);
+    color: var(--gyoza-white);
+    width: 100%;
+    padding-block: clamp(0.625rem, 0.185rem + 1.878vw, 1.875rem);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    font-family: "Noto Sans JP", serif;
+    line-height: normal;
+}
+
+.c-gray-area__top {
+    /* font-size: clamp(32px, 15.099px + 4.507vw, 80px); */
+    font-size: clamp(2rem, 0.944rem + 4.507vw, 5rem);
+    font-weight: bold;
+    text-shadow: 1px 1px 0 var(--gyoza-black), -1px 1px 0 var(--gyoza-black), 1px -1px 0 var(--gyoza-black), -1px -1px 0 var(--gyoza-black);
+
+}
+
+.c-gray-area_top_sun {
+    font-size: clamp(1rem, 0.648rem + 1.502vw, 2rem);
+
+}
+
+.c-gray-area__bottom {
+    font-size: clamp(0.625rem, 0.317rem + 1.315vw, 1.5rem);
+    display: flex;
+    gap: clamp(0.625rem, -0.255rem + 3.756vw, 3.125rem);
+    justify-content: center;
+}
+
+.c-gray-area__item {
+    display: flex;
+    gap: clamp(0.313rem, 0.092rem + 0.939vw, 0.938rem);
+    align-items: center;
+    font-weight: bold;
+}
+
+
+.c-gray-area__item dd {
+    text-shadow: 1px 1px 0 var(--gyoza-black), -1px 1px 0 var(--gyoza-black), 1px -1px 0 var(--gyoza-black), -1px -1px 0 var(--gyoza-black);
+}
+
+.c-gray-area__item p {
+    text-shadow: 1px 1px 0 var(--gyoza-black), -1px 1px 0 var(--gyoza-black), 1px -1px 0 var(--gyoza-black), -1px -1px 0 var(--gyoza-black);
+}
+
+/* アイコンと文字を真ん中揃えにするため記述 */
+.c-gray-area__location {
+    display: flex;
+    align-items: center;
+}
+
+/* ここまで */
+
+
+/* 黄色いアイコン↓ */
+
+.c-gray-area__item img {
+    width: clamp(1.875rem, 1.435rem + 1.878vw, 3.125rem);
+}
+
+.c-gray-area__bottom dt {
+    background-color: var(--gyoza-yellow);
+    font-size: 8px;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ↑ここまで */
+
+.c-gray-area--black {
+    color: var(--gyoza-black);
+}
+
+.c-gray-area--blue {
+    color: #6155F5;
+}
+
+.c-gray-area--red {
+    color: var(--gyoza-red);
+}
+
+/* catchcopy */
+
+.l-container {
+    width: min(960px, 89.3%);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(5.625rem, 3.644rem + 8.451vw, 11.25rem);
+}
+
+.l-top-box {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 1.620rem + 3.756vw, 5rem);
+    width: 100%;
+}
+
+.l-catchcopy {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 1.180rem + 5.634vw, 6.25rem);
+    ;
+}
+
+.c-catchcopy-title {
+    font-size: clamp(1rem, 0.428rem + 2.441vw, 2.625rem);
+    font-weight: bold;
+    color: var(--gyoza-red);
+    text-align: center;
+
+}
+
+.l-catchcopy img {
+    width: clamp(335px, 149.437px + 49.484vw, 862px);
+    margin-top: 20px;
+}
+
+.l-catchcopy-text {
+    text-align: center;
+    font-size: clamp(1rem, 0.824rem + 0.751vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.c-catchcopy-text--big {
+    font-size: clamp(1.5rem, 1.324rem + 0.751vw, 2rem);
+}
+
+.c-catchcopy-text--bold {
+    font-weight: bold;
+    font-size: clamp(1.5rem, 1.324rem + 0.751vw, 2rem);
+}
+
+.c-catchcopy-text--red {
+    color: var(--gyoza-red);
+}
+
+/* TOP PAGE-News */
+
+
+.l-topnews-inner {
+    background-color: var(--gyoza-white);
+    border: 1px solid var(--gyoza-black);
+    border-radius: 30px;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+}
+
+.c-news-date {
+    font-weight: normal;
+}
+
+.c-news-detail {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: underline solid var(--gyoza-black) 1px;
+}
+
+.c-topnews_dl-link {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.c-topnews-link {
+    text-align: right;
+    text-decoration: underline;
+    text-decoration-thickness: 1px
+}
+
+/* toppage-news pc用 */
+
+@media screen and (min-width:768px) {
+    .c-topnews-list {
+        display: flex;
+        gap: 50px;
+    }
+}
+
+/* インフォメーション */
+.c-info {
+    font-size: clamp(24px, 21.183px + 0.751vw, 32px);
+}
+
+.c-info-detail {
+    margin-bottom: 23px;
+}
+
+.c-info-title {
+    font-weight: normal;
+}
+
+.c-info-title::before {
+    content: "●";
+}
+
+.c-info--bold {
+    font-weight: bold;
+}
+
+.c-info--small {
+    font-size: clamp(16px, 13.183px + 0.751vw, 24px);
+}
+
+.c-info__map-link {
+    text-decoration: underline solid var(--gyoza-black) 1px;
+    font-weight: normal;
+}
+
+.c__br--sponly {
+    display: block;
+}
+
+@media screen and (min-width:768px) {
+    .c-info-inner {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .c-info-title {
+        list-style: disc;
+        width: 40%;
+    }
+
+    .c-info-detail {
+        width: 60%;
+    }
+
+    .c__br--sponly {
+        display: none;
+    }
+
+}
+
+
+
+/* TOP-Menu */
+
+.l-topmenu {
+    align-items: center;
+}
+
+.c-topmenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    column-gap: 80px;
+    row-gap: 50px;
+}
+
+.c-topmenu__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.c-topmenu__name-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.c-topmenu img {
+    width: 179px;
+    height: 179px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+}
+
+.c-topmenu__name {
+    font-weight: bold;
+}
+
+.c-topmenu__price {
+    font-size: 12px;
+}
+
+/* TOPMENUのbtn */
+.l-topmenu>.c-btn--yellow {
+    width: 280px;
+    font-weight: bold;
+    padding: 20px 28px;
+}
+
+@media screen and (max-width:1070px) {
+    .c-topmenu {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media screen and (max-width:378px) {
+    .c-topmenu {
+        justify-content: center;
+    }
+}
+
+/* TOP-ACCESS */
+.c-map {
+    width: 100%;
+    height: clamp(12.563rem, 4.266rem + 35.399vw, 36.125rem);
+}
+
+.c-access-text {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 128px clamp(207px, 85.521px + 32.394vw, 552px);
+    row-gap: 30px;
+    padding-inline: clamp(0rem, -3.081rem + 13.146vw, 8.75rem);
+    justify-content: space-between;
+}
+
+
+/* TOP-FAQ */
+.c-btn__faq {
+    width: 280px;
+    padding: 10px 30px;
+}
+
+.c-btn__faq--bold {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.c-btn__faq--small {
+    font-size: 12px;
+}
+
+/* メニュー↓ */
+
+
+/* レイアウト*/
+
+/* 会場MAPのブース番号と品名リストを中央よせ */
+.l-map-list-wrapper {
+    margin-inline: auto;
+}
+
+
+/* MENUのsectionを全体を縦並びにしてgapをつける */
+.l-menu-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: clamp(80px, 51.83px + 7.51vw, 160px);
+}
+
+
+/* 会場MAPの品名リストを縦並びにして、fit-content;でボックスをテキスト幅に合わせ　gap */
+.l-map-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    gap: 20px;
+}
+
+/* 会場MAPセクションのGAP(16px-24px)をclampで可変 */
+.l-map {
+    display: flex;
+    flex-direction: column;
+    row-gap: clamp(40px, 25.82px + 3.76vw, 80px);
+}
+
+/* ------------------------------------------- */
+/* MENU　コンポーネント */
+
+/* タイトルの間隔調整 */
+.c-menu-title {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* メニューの次の要素とのgap調整 */
+.c-menu-title--menuGap+* {
+    margin-block-start: clamp(80px, 51.83px + 7.51vw, 160px);
+}
+
+/* 商品名のグループと写真の間にgapを入れる */
+.c-menu-card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+/* ブース番号と　商品名・値段グループを　縦並びしてGAPをつける */
+.c-menu-card-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+/* 商品名・値段グループを　縦並びしてGAPをつける */
+.c-menu-card-top-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+/* ブース番号の背景を黄色に */
+.c-menu-card-top__number {
+    background-color: var(--gyoza-yellow);
+}
+
+/* ブース番号(16px-24px)をclampで可変　背景のパディングもclampで可変 */
+.c-menu-card-top__number--padding {
+    font-size: clamp(1rem, 0.6795rem + 1.3675vw, 1.5rem);
+    padding: clamp(0.188rem, 0.067rem + 0.51vw, 0.375rem) clamp(0.5rem, 0.42rem + 0.34vw, 0.625rem);
+}
+
+/* 商品名(24px-32px)をclampで可変とフォント調整 */
+.c-menu-card-top-text__item {
+    font-size: clamp(1.5rem, 1.1795rem + 1.3675vw, 2rem);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 値段(16px-24px)をclampで可変　フォント調整 */
+.c-menu-card-top-text__price {
+    font-size: clamp(1rem, 0.6795rem + 1.3675vw, 1.5rem);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 写真と商品紹介文と店舗紹介グループを縦並びして、写真とテキストの間にgap */
+.c-menu-card-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+}
+
+/* 写真の大きさを確定 */
+.c-menu-card-bottom-container {
+    width: 100%;
+    aspect-ratio: 335 / 250;
+    overflow: hidden;
+}
+
+/* 写真自体の調整 */
+.c-menu-card-bottom-container__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 商品紹介文と店舗紹介グループを縦並びしてgap */
+.c-menu-card-bottom-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+/* 店舗名のフォント調整 */
+.c-menu-card-bottom-text__shopName {
+    font-weight: bold;
+}
+
+
+/* 会場MAP　コンポーネント */
+/* 番号とメニューのテキスト(16px-32px)をclampで可変 */
+.c-map-card-list__number,
+.c-map-card-list__item {
+    font-size: clamp(1rem, 0.359rem + 2.735vw, 2rem);
+}
+
+/* 品名のリンクが分かるようにテキストにアンダーライン */
+.c-map-card-list__item {
+    text-decoration: underline;
+    text-decoration-color: var(--gyoza-black);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-style: dotted;
+}
+
+/* ブース番号と商品名を横並びして間にgap 10pxから78pxに可変 */
+.c-map-card-list {
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.625rem, -0.871rem + 6.38vw, 4.875rem);
+}
+
+/* ブース番号の背景色をつけパディングで大きく */
+.c-map-card-list__number--padding {
+    background-color: var(--gyoza-yellow);
+    padding: 3px 5px;
+}
+
+
+
+
+/* ---------------------------------- */
+/* PC用 */
+@media screen and (min-width:768px) {
+
+    /* ブース番号と品名・価格グループを横並びにしてgap */
+    .c-menu-card-top {
+        flex-direction: row;
+        justify-content: center;
+        align-items: start;
+        gap: 20px;
+    }
+
+    /* 写真と店舗テキストを横並びにしてgapを入れ、店舗テキストを上付きに */
+    .c-menu-card-bottom {
+        flex-direction: row;
+        gap: 50px;
+        align-items: start;
+    }
+
+    /* 偶数番目の写真とテキストをModifierで入替 */
+    .c-menu-card-bottom--reverse {
+        flex-direction: row-reverse;
+    }
+
+    /* 写真のアスペクト比変更　.c-menu-card-bottom内の写真の比率を43に */
+    .c-menu-card-bottom-container {
+        aspect-ratio: 430 / 286;
+        flex: 43;
+    }
+
+    /* .c-menu-card-bottom内のテキストの比率を48に*/
+    .c-menu-card-bottom-text {
+        flex: 48;
+    }
+
+
+}
+
+
+
+
+/* ニュース↓ */
+.l-news__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.c-news__detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.c-news__detail dd {
+    width: max(416px);
+    text-decoration: underline solid var(--gyoza-black) 1px;
+}
+
+@media screen and (max-width:768px) {
+    .l-news__list {
+        gap: 20px;
+        width: 100%;
+    }
+}
+
+/* ニュース詳細 */
+
+.l-article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 65px;
+}
+
+.c-article__title-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.c-article__title-area h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.c-news-return__link {
+    text-align: center;
+    text-decoration: underline solid var(--gyoza-black) 1px;
+}
+
+
+
+/* FAQ↓ */
+
+
+/* セクション内の隙間 */
+.l-faq-section {
+    display: grid;
+    row-gap: 30px;
+
+}
+
+/* 中央寄せ */
+.l-wrapper-child {
+    display: grid;
+    justify-content: center;
+}
+
+/* 各セクション 赤字Qの後の隙間 */
+.l-faq-section__question+* {
+    margin-top: 10px;
+}
+
+/* テキストの行間 */
+.l-faq {
+    line-height: 1.5;
+}
+
+/* テキスト設定 全体設定に移行したら削除 */
+.l-faq-section__title {
+    font-size: 24px;
+    text-align: center;
+}
+
+/* テキスト設定 全体設定に移行したら削除 */
+.l-faq-section__question {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--gyoza-red);
+}
+
+/* 解答テキストの段落ずらし */
+.l-faq-section__answer {
+    padding-left: 1em;
+}
+
+/* 強調文字の設定 */
+.l-faq-section__answer--bold {
+    font-weight: bold;
+}
+
+/* 会場マップへのリンクの装飾 */
+.l-faq-section--venue-map {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-align: center;
+}
+
+/* contactテキスト装飾 */
+.l-faq-section__answer--under {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+
+
+/* コンタクト↓ */
+
+.l-contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.25rem, 1.282rem + 4.131vw, 5rem);
+}
+
+.l-form__item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 4px;
+}
+
+.l-form__item p {
+    display: block;
+    width: min(180px);
+}
+
+.l-form__item span {
+    font-size: 12px;
+}
+
+.c-form__box {
+    background-color: var(--gyoza-white);
+    border: 1px solid var(--gyoza-black);
+    width: clamp(20.938rem, 11.144rem + 41.784vw, 48.75rem);
+    height: 55px;
+    padding-inline: 20px;
+}
+
+.l-form__item textarea {
+    height: 186px;
+    padding-block: 20px;
+}
+
+.c-contact__text {
+    text-align: center;
+}
+
+/* 送信ボタン */
+
+.l-contact__form>.c-btn--yellow {
+    width: 114px;
+    padding: 16px 41px;
+    margin: 0 auto;
+}
+
+.c-contact__text>a {
+    text-decoration: underline solid var(--gyoza-black) 1px;
+}
+
+@media screen and (max-width:768px) {
+
+    .c-form__box {
+        width: 100%;
+    }
+
+}
+
+
+/* プライバシーポリシー↓ */
+
+/*  文章を１文字下げる*/
+.l-privacy-article__text {
+    padding-left: 1em;
+}
+
+/* 番号付き文章を２文字下げる */
+.l-privacy-article-order {
+    padding-left: 2em;
+}
+
+/* 番号付き文章が改行したときに１文字分あける */
+.l-privacy-article-order__text {
+    padding-left: 1em;
+    text-indent: -2em;
+}
+
+/* 段落間のマージン付け */
+.l-privacy {
+    display: grid;
+    row-gap: 55px;
+    line-height: 1.5;
+}
+
+.l-privacy-article {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.l-privacy-article__text {
+    font-size: 16px;
+}
