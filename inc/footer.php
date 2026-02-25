@@ -1,7 +1,3 @@
-<?php
-$url = 'file:///C:/xampp/htdocs/gyouza_fes__Team-Giga/index.html';
-$html = file_get_contents($url);
-?>
 
 <footer class="l-footer">
     <div class="l-fotter__contact">
