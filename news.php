@@ -19,69 +19,8 @@
 <body id="top">
 
     <header class="l-header l-header-margin">
-        <div class="l-header-inner">
-            <p class="c-logo">
-                <a href="index.html"><img src="./img/logo-icon.png" alt="ふくおか餃子フェス"></a>
-            </p>
-            <nav class="c-nav">
-                <ul>
-                    <li><a href="index.html#information">INFO</a></li>
-                    <li><a href="index.html#access">ACCESS</a></li>
-                    <li><a href="news.html">NEWS</a></li>
-                    <li><a href="menu.html">MENU</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </nav>
-        </div>
+        <?php include('inc/header.php');  ?>
 
-        <!-- ハンバーガーメニュー ここから ↓ -->
-        <div class="c-menu-wrapper">
-            <input type="checkbox" id="menu-toggle" hidden>
-
-            <label class="c-menu__icon" for="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-
-            <div class="overlay"></div>
-
-            <nav class="c-menu-hamburger">
-                <ul class="c-menu-hamburger-text">
-                    <li class="c-menu-hamburger-text-list">
-                        <a href="news.html">
-                            <p class="c-menu-hamburger-text-list__main">NEWS</p>
-                            <p class="c-menu-hamburger-text-list__sub">お知らせ</p>
-                        </a>
-                    </li>
-                    <li class="c-menu-hamburger-text-list">
-                        <a href="index.html#information">
-                            <p class="c-menu-hamburger-text-list__main">INFO</p>
-                            <p class="c-menu-hamburger-text-list__sub">開催概要</p>
-                        </a>
-                    </li>
-                    <li class="c-menu-hamburger-text-list">
-                        <a href="menu.html">
-                            <p class="c-menu-hamburger-text-list__main">MENU</p>
-                            <p class="c-menu-hamburger-text-list__sub">メニュー</p>
-                        </a>
-                    </li>
-                    <li class="c-menu-hamburger-text-list">
-                        <a href="index.html#access">
-                            <p class="c-menu-hamburger-text-list__main">ACCESS</p>
-                            <p class="c-menu-hamburger-text-list__sub">アクセス</p>
-                        </a>
-                    </li>
-                    <li class="c-menu-hamburger-text-list">
-                        <a href="faq.html">
-                            <p class="c-menu-hamburger-text-list__main">FAQ</p>
-                            <p class="c-menu-hamburger-text-list__sub">よくある質問</p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <!-- ハンバーガーメニュー ここまで ↑ -->
 
     </header>
     <main>
@@ -104,28 +43,7 @@
         </section>
     </main>
     <footer class="l-footer">
-        <div class="l-fotter__contact">
-            <a href="contact.html" class="c-btn--black"><img src="img/icon-mail.png" alt="">
-                <p>Contact</p>
-            </a>
-            <a href="tel:XXX-XXX-XXX" class="c-btn--black"><img src="img/icon-tel.png" alt="">
-                <p>XXX-XXX-XXX</p>
-            </a>
-        </div>
-        <ul class="l-footer__sns">
-            <li class="c-sns__link"><a href="#"><img src="img/sns-x.png" alt=""></a></li>
-            <li class="c-sns__link"><a href="#"><img src="img/sns-insta.png" alt=""></a></li>
-            <li class="c-sns__link"><a href="#"><img src="img/sns-facebook.png" alt=""></a></li>
-        </ul>
-        <div class="l-footer__text">
-            <div class="c-footer__company">
-                <p>主催：ふくおか餃子FES実行委員会</p>
-                <p>製作協力：創造社リカレントスクール福岡校</p>
-                <p>協賛：九州餃子部</p>
-            </div>
-            <a href="privacy.html">個人情報保護方針</a>
-            <small>&copy;2030 福岡餃子FES実行委員会</small>
-        </div>
+        <?php include('inc/footer.php');  ?>
     </footer>
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 </body>
