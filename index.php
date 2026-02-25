@@ -12,7 +12,7 @@ try {
   $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   $sql_2 = 'SELECT id,product,pieces,price,image,alt FROM menus ORDER BY id DESC ';
-  $stmt_2 = $db->prepare($sql);
+  $stmt_2 = $db->prepare($sql_2);
   $stmt_2->execute();
   $menu = $stmt_2->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -43,12 +43,10 @@ try {
 </head>
 
 <body id="top">
-  <header class="l-header">
 
-    <?php include('inc/header.php');  ?>
+  <!--  ヘッダー -->
+  <?php include('inc/header.php');  ?>
 
-
-  </header>
 
   <main>
     <section class="l-hero l-header-margin">
@@ -96,25 +94,25 @@ try {
       <section class="c-topnews l-top-box">
         <h2 class="c-sec-title">News</h2>
         <div class="c-topnews_dl-link">
-          <?php if (count($result) > 0): ?>
+          <?php if (count($news) > 0): ?>
             <dl class="l-topnews-inner">
 
-              <?php for ($i = 0; $i < 3; $i++): ?>
+              <?php foreach ($news as $article): ?>
 
                 <div class="c-topnews-list">
                   <dt class="c-news-date">
-                    <time datetime="<?php echo $news['date']; ?>">
-                      <?php echo $news['date']; ?>（月）
+                    <time datetime="<?php echo $article['date']; ?>">
+                      <?php echo $article['date']; ?>（月）
                     </time>
                   </dt>
                   <dd class="c-news-detail">
-                    <a href="news/20300225.html">
-                      <?php echo $news['subject']; ?>
+                    <a href="news_detail.php?id=<?php echo $article['id'] ?>">
+                      <?php echo $article['subject']; ?>
                     </a>
                   </dd>
                 </div>
 
-              <?php endfor; ?>
+              <?php endforeach; ?>
 
             </dl>
             <p class="c-topnews-link"><a href="news.php">過去のお知らせ一覧はこちら</a></p>
@@ -171,13 +169,13 @@ try {
       <section class="l-topmenu l-top-box">
         <h2 class="c-sec-title">Menu</h2>
 
-        <?php if (count($result) > 0): ?>
+        <?php if (count($menu) > 0): ?>
 
           <ul class="c-topmenu">
 
             <?php foreach ($menu as $menuIcon): ?>
               <li class="c-topmenu__card">
-                <img src="<?php echo $menuIcon['image']; ?>" alt="<?php echo $menuIcon['alt']; ?>">
+                <img src="./img/<?php echo $menuIcon['image']; ?>" alt="<?php echo $menuIcon['alt']; ?>">
                 <div class="c-topmenu__name-price">
                   <p class="c-topmenu__name"><?php echo $menuIcon['product']; ?></p>
                   <p class="c-topmenu__price">
@@ -218,9 +216,9 @@ try {
     </div>
   </main>
 
-  <footer class="l-footer">
-    <?php include('inc/footer.php');  ?>
-  </footer>
+
+  <?php include('inc/footer.php');  ?>
+
   <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 </body>
 
