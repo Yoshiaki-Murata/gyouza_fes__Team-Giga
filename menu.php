@@ -89,8 +89,8 @@
         </div>
 
         <script>
-            $(function () {
-                $('.c-menu-hamburger-text-list a').on('click', function (event) {
+            $(function() {
+                $('.c-menu-hamburger-text-list a').on('click', function(event) {
                     $('#menu-toggle').prop('checked', false);
                 });
             });
@@ -104,6 +104,7 @@
             <div class="c-menu-title c-menu-title--menuGap">
                 <h1 class="c-title__main" data-sub-title="メニュー">Menu</h1>
             </div>
+
             <ul class="l-menu-list ">
                 <li id="b-01" class="c-menu-card">
                     <div class="c-menu-card-top">
@@ -345,6 +346,17 @@
                 </li>
             </ol>
         </section>
+
+        <?php
+        try {
+
+            $sql = 'SELECT id FROM info ORDER BY date DESC';
+            $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = $db->prepare($sql);
+        } catch (PDOException $e) {
+            exit('エラー:' . $e->getMessage());
+        }
+        ?>
     </main>
 
     <footer class="l-footer">
