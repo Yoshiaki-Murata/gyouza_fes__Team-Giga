@@ -19,7 +19,10 @@
 <body id="top">
 
     <header class="l-header l-header-margin">
-        <div class="l-header-inner">
+
+        <?php include('inc/header.php');  ?>
+
+        <!--  <div class="l-header-inner">
             <p class="c-logo">
                 <a href="index.html"><img src="./img/logo-icon.png" alt="ふくおか餃子フェス"></a>
             </p>
@@ -32,10 +35,10 @@
                     <li><a href="faq.html">FAQ</a></li>
                 </ul>
             </nav>
-        </div>
+        </div> -->
 
         <!-- ハンバーガーメニュー ここから ↓ -->
-        <div class="c-menu-wrapper">
+        <!-- <div class="c-menu-wrapper">
             <input type="checkbox" id="menu-toggle" hidden>
 
             <label class="c-menu__icon" for="menu-toggle">
@@ -80,7 +83,7 @@
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div> -->
         <!-- ハンバーガーメニュー ここまで ↑ -->
 
     </header>
