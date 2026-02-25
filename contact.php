@@ -53,7 +53,7 @@
                     <textarea name="text" required id="text" class="c-form__box"></textarea>
                 </div>
                 <p class="c-contact__text"><a href="privacy.html">「個人情報保護方針」</a>をご確認・ご同意の上、「入力内容を確認」ボタンを押してください。</p>
-                <p class="c-btn--yellow"><input type="submit" value="確認"></p>
+                <p class="c-btn--yellow"><input type="submit" value="入力内容を確認"></p>
             </form>
         </section>
     </main>
