@@ -5,11 +5,11 @@
          </p>
          <nav class="c-nav">
              <ul>
-                 <li><a href="index.html#information">INFO</a></li>
-                 <li><a href="index.html#access">ACCESS</a></li>
-                 <li><a href="news.html">NEWS</a></li>
-                 <li><a href="menu.html">MENU</a></li>
-                 <li><a href="faq.html">FAQ</a></li>
+                 <li><a href="index.php#information">INFO</a></li>
+                 <li><a href="index.php#access">ACCESS</a></li>
+                 <li><a href="news.php">NEWS</a></li>
+                 <li><a href="menu.php">MENU</a></li>
+                 <li><a href="faq.php">FAQ</a></li>
              </ul>
          </nav>
      </div>

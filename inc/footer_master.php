@@ -1,16 +1,16 @@
 <footer class="l-footer">
     <div class="l-fotter__contact">
-        <a href="contact.html" class="c-btn--black"><img src="img/icon-mail.png" alt="">
+        <a href="contact.html" class="c-btn--black"><img src="../img/icon-mail.png" alt="">
             <p class="">Contact</p>
         </a>
-        <a href="tel:XXX-XXX-XXX" class="c-btn--black"><img src="img/icon-tel.png" alt="">
+        <a href="tel:XXX-XXX-XXX" class="c-btn--black"><img src="../img/icon-tel.png" alt="">
             <p>XXX-XXX-XXX</p>
         </a>
     </div>
     <ul class="l-footer__sns">
-        <li class="c-sns__link"><a href="#"><img src="img/sns-x.png" alt=""></a></li>
-        <li class="c-sns__link"><a href="#"><img src="img/sns-insta.png" alt=""></a></li>
-        <li class="c-sns__link"><a href="#"><img src="img/sns-facebook.png" alt=""></a></li>
+        <li class="c-sns__link"><a href="#"><img src="../img/sns-x.png" alt=""></a></li>
+        <li class="c-sns__link"><a href="#"><img src="../img/sns-insta.png" alt=""></a></li>
+        <li class="c-sns__link"><a href="#"><img src="../img/sns-facebook.png" alt=""></a></li>
     </ul>
     <div class="l-footer__text">
         <div class="c-footer__company">
@@ -22,4 +22,4 @@
         <small>&copy;2030 福岡餃子FES実行委員会</small>
     </div>
 </footer>
-<a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
+<a href="#top" class="c-btn__top"><img src="../img/back-top.png" alt="topへ戻る"></a>
