@@ -8,7 +8,7 @@
         </a>
     </div>
     <ul class="l-footer__sns">
-        <li class="c-sns__link"><a href="#"><img src="img/sns-x.png" alt=""></a></li>
+        <li class="c-sns__link"><a href="#"><img src="img/sns-insta.png" alt=""></a></li>
         <li class="c-sns__link"><a href="#"><img src="img/sns-insta.png" alt=""></a></li>
         <li class="c-sns__link"><a href="#"><img src="img/sns-facebook.png" alt=""></a></li>
     </ul>
@@ -23,4 +23,4 @@
     </div>
 
 </footer>
-<a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
+<a href="#top" class="c-btn__top"><img src="img/back-top.png" alt="topへ戻る"></a>

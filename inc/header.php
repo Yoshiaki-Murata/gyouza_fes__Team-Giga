@@ -1,7 +1,7 @@
  <header class="l-header">
      <div class="l-header-inner">
          <p class="c-logo">
-             <a href="index.html"><img src="./img/logo-icon.png" alt="ふくおか餃子フェス"></a>
+             <a href="index.php"><img src="./img/logo-icon.png" alt="ふくおか餃子フェス"></a>
          </p>
          <nav class="c-nav">
              <ul>
