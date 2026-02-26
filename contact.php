@@ -54,14 +54,13 @@
                     </label>
                 </p>
                 <p class="c-btn--yellow">
-                    <input type="submit" value="入力内容を確認" id="submitBtn" disabled>
+                    <input type="submit" value="入力内容を確認" id="submitBtn">
                 </p>
             </form>
         </section>
     </main>
     <?php include('inc/footer.php');  ?>
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
-
 
 </body>
 
