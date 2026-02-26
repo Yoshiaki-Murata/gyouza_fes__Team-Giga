@@ -27,7 +27,7 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ内容確認">Confirm</h1>
             <p class="c-contact__text">入力内容をご確認ください。<br>
-                修正する場合は「戻る」ボタン、この内容で送信する場合は「送信」ボタンを押してください。</p>
+                修正する場合は「修正する」ボタン、<br>この内容で送信する場合は「送信する」ボタンを押してください。</p>
 
             <form method="post" action="./thanks.php" class="l-contact__form">
 
@@ -47,7 +47,7 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
                 </div>
 
                 <div class="l-form__item">
-                    <label>お問い合わせ内容</label>
+                    <label>お問い合わせ内容&nbsp;</label>
                     <textarea name="message" readonly class="c-form__box is-readonly" style="height: 150px;"><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></textarea>
                 </div>
 
