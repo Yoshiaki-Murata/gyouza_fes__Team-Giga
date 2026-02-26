@@ -49,7 +49,7 @@ try {
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お知らせ一覧">News</h1>
 
-            <?php if (count($result) > 0): ?>
+            <?php if (count($news) > 0): ?>
 
                 <dl class="l-news__list">
                     <?php foreach ($news as $article): ?>

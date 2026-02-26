@@ -1,4 +1,3 @@
-
 <footer class="l-footer">
     <div class="l-fotter__contact">
         <a href="contact.html" class="c-btn--black"><img src="img/icon-mail.png" alt="">
@@ -22,6 +21,6 @@
         <a href="privacy.html">個人情報保護方針</a>
         <small>&copy;2030 福岡餃子FES実行委員会</small>
     </div>
+
 </footer>
 <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
-</body>

@@ -1,4 +1,3 @@
-
 <footer class="l-footer">
     <div class="l-fotter__contact">
         <a href="contact.html" class="c-btn--black"><img src="img/icon-mail.png" alt="">
@@ -24,4 +23,3 @@
     </div>
 </footer>
 <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
-</body>
