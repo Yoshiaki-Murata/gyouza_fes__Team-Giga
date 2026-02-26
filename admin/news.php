@@ -45,10 +45,10 @@ try {
     <?php include('../inc/header_master.php');  ?>
 
     <main class="l-header-margin">
-        <section class="l-wrapper">
+        <section class="l-wrapper-second">
             <h1 class="c-title__main" data-sub-title="お知らせ一覧">News</h1>
 
-            <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="d-grid mx-auto">
                 <button class="btn btn-primary" type="button">新規お知らせ投稿</button>
             </div>
 

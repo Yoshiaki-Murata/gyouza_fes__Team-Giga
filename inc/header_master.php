@@ -1,4 +1,4 @@
- <header class="l-header l-header-margin">
+ <header class="l-header ">
      <div class="l-header-inner">
          <p class="c-logo">
              管理者ページ
