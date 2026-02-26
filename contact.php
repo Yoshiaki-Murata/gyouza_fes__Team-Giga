@@ -13,17 +13,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body id="top">
-    <header class="l-header l-header-margin">
+    <?php include('inc/header.php');  ?>
 
-        <?php include('inc/header.php');  ?>
-
-
-
-    </header>
     <main>
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ">Contact</h1>
@@ -57,9 +52,7 @@
             </form>
         </section>
     </main>
-    <footer class="l-footer">
-        <?php include('inc/footer.php');  ?>
-    </footer>
+    <?php include('inc/footer.php');  ?>
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 
 

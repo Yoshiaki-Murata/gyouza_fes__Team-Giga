@@ -1,4 +1,3 @@
-<?php include('inc/header.php'); ?>
 <?php
 
 $user_name   = isset($_POST['name']) ? $_POST['name'] : '';
@@ -23,10 +22,7 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
 </head>
 
 <body id="top">
-    <header class="l-header l-header-margin">
-        <?php include('inc/header.php'); ?>
-    </header>
-
+    <?php include('inc/header.php'); ?>
     <main>
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ内容確認">Confirm</h1>
@@ -67,10 +63,7 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
             </form>
         </section>
     </main>
-
-    <footer class="l-footer">
-        <?php include('inc/footer.php'); ?>
-    </footer>
+    <?php include('inc/footer.php'); ?>
 </body>
 
 </html>
