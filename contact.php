@@ -47,8 +47,15 @@
                     </label>
                     <textarea name="text" required id="text" class="c-form__box"></textarea>
                 </div>
-                <p class="c-contact__text"><a href="privacy.html">「個人情報保護方針」</a>をご確認・ご同意の上、「入力内容を確認」ボタンを押してください。</p>
-                <p class="c-btn--yellow"><input type="submit" value="入力内容を確認"></p>
+                <p class="c-contact__text">
+                    <label for="agree">
+                        <input type="checkbox" id="agree" name="agree" value="1">
+                        <a href="privacy.html" target="_blank">「個人情報保護方針」</a>をご確認・ご同意の上、内容確認ボタンを押してください。
+                    </label>
+                </p>
+                <p class="c-btn--yellow">
+                    <input type="submit" value="入力内容を確認" id="submitBtn" disabled>
+                </p>
             </form>
         </section>
     </main>
