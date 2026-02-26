@@ -1,9 +1,9 @@
 <?php
 
-$user_name   = isset($_POST['name']) ? $_POST['name'] : '';
+$name = isset($_POST['name']) ? $_POST['name'] : '';
 $mailaddress = isset($_POST['mailaddress']) ? $_POST['mailaddress'] : '';
-$user_tel    = isset($_POST['phonenumber']) ? $_POST['phonenumber'] : '';
-$message     = isset($_POST['text']) ? $_POST['text'] : '';
+$phonenumber = isset($_POST['phonenumber']) ? $_POST['phonenumber'] : '';
+$text = isset($_POST['text']) ? $_POST['text'] : '';
 ?>
 
 <!DOCTYPE html>
