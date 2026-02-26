@@ -1078,16 +1078,53 @@ img {
     text-align: center;
 }
 
-/* 送信ボタン */
+#agree {
+    appearance: auto;
+}
 
+/* 送信ボタン */
 .l-contact__form>.c-btn--yellow {
-    width: 114px;
-    padding: 16px 41px;
+    width: 200px;
+    padding: 16px 0;
     margin: 0 auto;
 }
 
-.c-contact__text>a {
+.c-contact__text a {
     text-decoration: underline solid var(--gyoza-black) 1px;
+}
+
+.c-contact__btn-group {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.c-contact__btn-group .c-btn--yellow,
+.c-contact__btn-group .c-btn--gray {
+    width: 120px;
+    margin: 0;
+}
+
+.c-contact__btn-group .c-btn--yellow input,
+.c-contact__btn-group .c-btn--gray input {
+    padding: 5px 0px;
+    width: 100%;
+    /* text-align: center; */
+}
+
+.c-btn--gray input {
+    background-color: #C0C0C0;
+    border-radius: 40px;
+    text-align: center;
+    display: block;
+}
+
+.c-btn--gray:hover {
+    transition-duration: .4s;
+    transform: scale(1.1);
 }
 
 @media screen and (max-width:768px) {

@@ -13,14 +13,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body id="top">
-    <!-- header -->
     <?php include('inc/header.php');  ?>
 
-    <main class="l-header-margin">
+    <main>
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ">Contact</h1>
             <p class="c-contact__text">ふくおか餃子FESへは下記フォームから問い合わせ可能です。<br>
@@ -48,17 +47,20 @@
                     </label>
                     <textarea name="text" required id="text" class="c-form__box"></textarea>
                 </div>
-                <p class="c-contact__text"><a href="privacy.html">「個人情報保護方針」</a>をご確認・ご同意の上、「入力内容を確認」ボタンを押してください。</p>
-                <p class="c-btn--yellow"><input type="submit" value="入力内容を確認"></p>
+                <p class="c-contact__text">
+                    <label for="agree">
+                        <input type="checkbox" id="agree" name="agree" value="1">
+                        <a href="privacy.html" target="_blank">「個人情報保護方針」</a>をご確認・ご同意の上、内容確認ボタンを押してください。
+                    </label>
+                </p>
+                <p class="c-btn--yellow">
+                    <input type="submit" value="入力内容を確認" id="submitBtn">
+                </p>
             </form>
         </section>
     </main>
-
-    <!-- footer -->
     <?php include('inc/footer.php');  ?>
-
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
-
 
 </body>
 

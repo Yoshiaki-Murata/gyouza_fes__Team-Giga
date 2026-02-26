@@ -1,10 +1,9 @@
-<?php include('inc/header.php'); ?>
 <?php
 
-$user_name   = isset($_POST['name']) ? $_POST['name'] : '';
+$name = isset($_POST['name']) ? $_POST['name'] : '';
 $mailaddress = isset($_POST['mailaddress']) ? $_POST['mailaddress'] : '';
-$user_tel    = isset($_POST['phonenumber']) ? $_POST['phonenumber'] : '';
-$message     = isset($_POST['text']) ? $_POST['text'] : '';
+$phonenumber = isset($_POST['phonenumber']) ? $_POST['phonenumber'] : '';
+$text = isset($_POST['text']) ? $_POST['text'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -23,15 +22,12 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
 </head>
 
 <body id="top">
-    <!-- header -->
     <?php include('inc/header.php'); ?>
-
-
-    <main class="l-header-margin">
+    <main>
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ内容確認">Confirm</h1>
             <p class="c-contact__text">入力内容をご確認ください。<br>
-                修正する場合は「戻る」ボタン、この内容で送信する場合は「送信」ボタンを押してください。</p>
+                修正する場合は「修正する」ボタン、<br>この内容で送信する場合は「送信する」ボタンを押してください。</p>
 
             <form method="post" action="./thanks.php" class="l-contact__form">
 
@@ -51,26 +47,24 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
                 </div>
 
                 <div class="l-form__item">
-                    <label>お問い合わせ内容</label>
+                    <label>お問い合わせ内容&nbsp;</label>
                     <textarea name="message" readonly class="c-form__box is-readonly" style="height: 150px;"><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></textarea>
                 </div>
 
-                <div class="c-btn-group" style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
-                    <p class="c-btn--gray" style="background: #ccc; padding: 10px 40px; border-radius: 50px;">
-                        <input type="button" value="戻る" onclick="history.back()">
+                <div class="c-contact__btn-group">
+                    <p class="c-btn--gray">
+                        <input type="button" value="修正する" onclick="history.back()">
                     </p>
                     <p class="c-btn--yellow">
-                        <input type="submit" value="送信">
+                        <input type="submit" value="送信する">
                     </p>
+                </div>
                 </div>
 
             </form>
         </section>
     </main>
-
-    <!-- footer -->
     <?php include('inc/footer.php'); ?>
-
 </body>
 
 </html>
