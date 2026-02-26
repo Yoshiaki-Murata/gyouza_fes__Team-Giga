@@ -23,9 +23,9 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
 </head>
 
 <body id="top">
-    <header class="l-header l-header-margin">
-        <?php include('inc/header.php'); ?>
-    </header>
+    <!-- header -->
+    <?php include('inc/header.php'); ?>
+
 
     <main>
         <section class="l-wrapper">
@@ -68,9 +68,9 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
         </section>
     </main>
 
-    <footer class="l-footer">
-        <?php include('inc/footer.php'); ?>
-    </footer>
+    <!-- footer -->
+    <?php include('inc/footer.php'); ?>
+
 </body>
 
 </html>

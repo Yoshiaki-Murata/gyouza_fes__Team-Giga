@@ -24,11 +24,9 @@
 
 <body id="top">
 
-    <header class="l-header l-header-margin">
+    <!-- header -->
+    <?php include('inc/header.php');  ?>
 
-        <?php include('inc/header.php');  ?>
-
-    </header>
     <main class="l-menu-main l-wrapper">
         <section class="l-menu l-menu-wrapper">
             <div class="c-menu-title c-menu-title--menuGap">
@@ -277,10 +275,10 @@
         </section>
     </main>
 
-    <footer class="l-footer">
-        <?php include('inc/footer.php');  ?>
+    <!-- footer -->
+    <?php include('inc/footer.php');  ?>
 
-    </footer>
+
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 
 </body>

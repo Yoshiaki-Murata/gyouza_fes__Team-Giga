@@ -18,13 +18,9 @@
 
 <body id="top">
 
-    <header class="l-header l-header-margin">
+    <!-- header -->
+    <?php include('inc/header.php');  ?>
 
-        <?php include('inc/header.php');  ?>
-
-
-
-    </header>
     <main class="l-faq l-faq-wrapper l-wrapper">
 
         <div class="l-wrapper-child">
@@ -119,9 +115,9 @@
 
     </main>
 
-    <footer class="l-footer">
-        <?php include('inc/footer.php');  ?>
-    </footer>
+    <!-- footer -->
+    <?php include('inc/footer.php');  ?>
+
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 </body>
 

@@ -39,12 +39,9 @@ try {
 </head>
 
 <body id="top">
+    <!-- header -->
+    <?php include('inc/header.php');  ?>
 
-    <header class="l-header l-header-margin">
-        <?php include('inc/header.php');  ?>
-
-
-    </header>
     <main>
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お知らせ一覧">News</h1>
@@ -75,9 +72,9 @@ try {
             <?php endif; ?>
         </section>
     </main>
-    <footer class="l-footer">
-        <?php include('inc/footer.php');  ?>
-    </footer>
+    <!-- footer -->
+    <?php include('inc/footer.php');  ?>
+
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 </body>
 
