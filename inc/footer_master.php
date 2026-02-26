@@ -21,6 +21,5 @@
         <a href="privacy.html">個人情報保護方針</a>
         <small>&copy;2030 福岡餃子FES実行委員会</small>
     </div>
-
 </footer>
 <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
