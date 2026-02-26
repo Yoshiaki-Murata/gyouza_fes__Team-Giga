@@ -1091,6 +1091,40 @@ img {
     text-decoration: underline solid var(--gyoza-black) 1px;
 }
 
+.c-contact__btn-group {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.c-contact__btn-group .c-btn--yellow,
+.c-contact__btn-group .c-btn--gray {
+    width: 120px;
+    margin: 0;
+}
+
+.c-contact__btn-group .c-btn--yellow input,
+.c-contact__btn-group .c-btn--gray input {
+    padding: 5px 0px;
+    width: 100%;
+    /* text-align: center; */
+}
+
+.c-btn--gray input {
+    background-color: #C0C0C0;
+    border-radius: 40px;
+    text-align: center;
+    display: block;
+}
+
+.c-btn--gray:hover {
+    transition-duration: .4s;
+    transform: scale(1.1);
+}
+
 @media screen and (max-width:768px) {
 
     .c-form__box {

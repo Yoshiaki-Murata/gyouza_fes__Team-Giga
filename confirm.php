@@ -51,13 +51,14 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
                     <textarea name="message" readonly class="c-form__box is-readonly" style="height: 150px;"><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></textarea>
                 </div>
 
-                <div class="c-btn-group" style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
-                    <p class="c-btn--gray" style="background: #ccc; padding: 10px 40px; border-radius: 50px;">
-                        <input type="button" value="戻る" onclick="history.back()">
+                <div class="c-contact__btn-group">
+                    <p class="c-btn--gray">
+                        <input type="button" value="修正する" onclick="history.back()">
                     </p>
                     <p class="c-btn--yellow">
-                        <input type="submit" value="送信">
+                        <input type="submit" value="送信する">
                     </p>
+                </div>
                 </div>
 
             </form>
