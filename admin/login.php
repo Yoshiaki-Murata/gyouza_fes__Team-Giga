@@ -1,5 +1,12 @@
 <?php
+session_start();
 require_once '../inc/function.php';
+
+if(isset($_SESSION["id"])){
+    header("location:index.php");
+    exit();
+}
+
 ?>
 
 
