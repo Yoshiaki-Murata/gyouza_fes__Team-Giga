@@ -189,7 +189,7 @@ try {
           <p>メニュー情報はありません</p>
 
         <?php endif; ?>
-        <a href="menu.html" class="c-btn--yellow">メニュー・店舗の詳細はこちら</a>
+        <a href="menu.php" class="c-btn--yellow">メニュー・店舗の詳細はこちら</a>
       </section>
       <section class="c-access l-top-box" id="access">
         <h2 class="c-sec-title">Access</h2>
@@ -207,7 +207,7 @@ try {
         </dl>
       </section>
       <div class="c-btn--yellow c-btn__faq">
-        <a href="faq.html">
+        <a href="faq.php">
           <p class="c-btn__faq--bold">FAQ</p>
           <p class="c-btn__faq--small">よくある質問はこちら</p>
         </a>

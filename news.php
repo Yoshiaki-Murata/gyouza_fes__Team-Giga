@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/inc/function.php';
 
+
 try {
     // PDO インスタンスの作成
     $db = db_connect();

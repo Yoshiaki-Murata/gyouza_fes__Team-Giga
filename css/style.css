@@ -41,7 +41,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* 80pxから160pxまで可変 */
+    gap: 60px;
 
 }
 
@@ -978,6 +978,7 @@ img {
 .c-news-return__link {
     text-align: center;
     text-decoration: underline solid var(--gyoza-black) 1px;
+    margin-top: clamp(30px, 19.437px + 2.817vw, 60px);
 }
 
 

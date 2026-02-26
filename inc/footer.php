@@ -1,6 +1,6 @@
 <footer class="l-footer">
     <div class="l-fotter__contact">
-        <a href="contact.html" class="c-btn--black"><img src="img/icon-mail.png" alt="">
+        <a href="contact.php" class="c-btn--black"><img src="img/icon-mail.png" alt="">
             <p class="">Contact</p>
         </a>
         <a href="tel:XXX-XXX-XXX" class="c-btn--black"><img src="img/icon-tel.png" alt="">
@@ -18,7 +18,7 @@
             <p>製作協力：創造社リカレントスクール福岡校</p>
             <p>協賛：九州餃子部</p>
         </div>
-        <a href="privacy.html">個人情報保護方針</a>
+        <a href="privacy.php">個人情報保護方針</a>
         <small>&copy;2030 福岡餃子FES実行委員会</small>
     </div>
 

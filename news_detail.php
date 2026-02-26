@@ -28,7 +28,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="ふくおか餃子フェスに関するお知らせの一覧を掲載">
-    <title><?php echo $target['title']; ?>｜ふくおか餃子FES</title>
+    <title><?php echo $target['titletag']; ?>｜ふくおか餃子FES</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
