@@ -1077,10 +1077,9 @@ img {
 }
 
 /* 送信ボタン */
-
 .l-contact__form>.c-btn--yellow {
-    width: 114px;
-    padding: 16px 41px;
+    width: 200px;
+    padding: 16px 0;
     margin: 0 auto;
 }
 
