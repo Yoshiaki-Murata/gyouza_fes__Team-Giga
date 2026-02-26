@@ -29,31 +29,31 @@
             <h1 class="c-title__main" data-sub-title="お問い合わせ">Contact</h1>
             <p class="c-contact__text">ふくおか餃子FESへは下記フォームから問い合わせ可能です。<br>
                 お問い合わせ内容によっては、回答にお時間をいただく場合や、回答できかねる場合がございますので、ご了承ください。 </p>
-            <form action="#" class="l-contact__form">
+            <form method="post" action="./confirm.php" class="l-contact__form">
                 <div class="l-form__item">
-                    <label for="user_name">
+                    <label for="name">
                         お名前<span>（必須）</span>
                     </label>
-                    <input type="text" name="user_name" id="user_name" required class="c-form__box">
+                    <input type="text" name="name" id="name" required class="c-form__box">
                 </div>
                 <div class="l-form__item">
-                    <label for="user_mail">
+                    <label for="mailaddress">
                         メールアドレス<span>（必須）</span>
                     </label>
-                    <input type="email" name="user_mail" id="user_mail" required class="c-form__box">
+                    <input type="email" name="mailaddress" id="mailaddress" required class="c-form__box">
                 </div>
                 <div class="l-form__item">
-                    <label for="user_tel">お電話番号</label>
-                    <input type="tel" name="user_tel" id="user_tel" class="c-form__box">
+                    <label for="phonenumber">お電話番号</label>
+                    <input type="tel" name="phonenumber" id="phonenumber" class="c-form__box">
                 </div>
                 <div class="l-form__item">
-                    <label for="message">
+                    <label for="text">
                         お問い合わせ内容<span>（必須）</span>
                     </label>
-                    <textarea name="message" required id="message" class="c-form__box"></textarea>
+                    <textarea name="text" required id="text" class="c-form__box"></textarea>
                 </div>
-                <p class="c-contact__text"><a href="privacy.html">「個人情報保護方針」</a>をご確認・ご同意の上、「送信」ボタンを押してください。</p>
-                <p class="c-btn--yellow"><input type="submit" value="送信"></p>
+                <p class="c-contact__text"><a href="privacy.html">「個人情報保護方針」</a>をご確認・ご同意の上、「入力内容を確認」ボタンを押してください。</p>
+                <p class="c-btn--yellow"><input type="submit" value="入力内容を確認"></p>
             </form>
         </section>
     </main>

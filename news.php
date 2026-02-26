@@ -1,3 +1,25 @@
+<?php
+
+require_once __DIR__ . '/inc/function.php';
+
+try {
+    // PDO インスタンスの作成
+    $db = db_connect();
+
+    // プリペアードステートメントの作成
+    $sql = 'SELECT id,subject,date FROM news ORDER BY date DESC ';
+    $stmt = $db->prepare($sql);
+
+    // SQLの実行
+    $stmt->execute();
+
+    // 取得したレコードを連想配列で1レコードずつ受け取る
+    $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    exit("Error:" . $e->getMessage());
+}
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -26,20 +48,31 @@
     <main>
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お知らせ一覧">News</h1>
-            <dl class="l-news__list">
-                <div class="c-news__detail">
-                    <dt><time datetime="2030-02-25">2030.2.25（月）</time></dt>
-                    <dd><a href="news/20300225.html">出店者インタビュー　博多区で人気の「博多ぎょうざ堂」</a></dd>
-                </div>
-                <div class="c-news__detail">
-                    <dt><time datetime="2030-02-23">2030.2.23（土）</time></dt>
-                    <dd><a href="news/20300223.html">出店企業様大募集！</a></dd>
-                </div>
-                <div class="c-news__detail">
-                    <dt><time datetime="2030-02-16">2030.2.16（土）</time></dt>
-                    <dd><a href="news/20300216.html">ふくおか餃子FES開催決定！</a></dd>
-                </div>
-            </dl>
+
+            <?php if (count($result) > 0): ?>
+
+                <dl class="l-news__list">
+                    <?php foreach ($news as $article): ?>
+                        <div class="c-news__detail">
+                            <dt>
+                                <time datetime="<?php echo $article['date']; ?>">
+                                    <?php echo $article['date']; ?>(曜日)
+                                </time>
+                            </dt>
+                            <dd>
+                                <a href="news_detail.php?id=<?php echo $article['id'] ?>">
+                                    <?php echo $article['subject']; ?>
+                                </a>
+                            </dd>
+                        </div>
+                    <?php endforeach; ?>
+
+                </dl>
+
+            <?php else: ?>
+                <p>お知らせはありません</p>
+
+            <?php endif; ?>
         </section>
     </main>
     <footer class="l-footer">
