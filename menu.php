@@ -27,7 +27,7 @@
     <!-- header -->
     <?php include('inc/header.php');  ?>
 
-    <main class="l-menu-main l-wrapper">
+    <main class="l-menu-main l-wrapper l-header-margin">
         <section class="l-menu l-menu-wrapper">
             <div class="c-menu-title c-menu-title--menuGap">
                 <h1 class="c-title__main" data-sub-title="メニュー">Menu</h1>

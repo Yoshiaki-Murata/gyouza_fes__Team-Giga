@@ -27,7 +27,7 @@ $message     = isset($_POST['text']) ? $_POST['text'] : '';
     <?php include('inc/header.php'); ?>
 
 
-    <main>
+    <main class="l-header-margin">
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ内容確認">Confirm</h1>
             <p class="c-contact__text">入力内容をご確認ください。<br>

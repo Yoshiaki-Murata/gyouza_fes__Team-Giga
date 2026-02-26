@@ -42,7 +42,7 @@ try {
     <!-- header -->
     <?php include('inc/header.php');  ?>
 
-    <main class="l-wrapper">
+    <main class="l-wrapper l-header-margin">
         <p class="c-title__main" data-sub-title="お知らせ">News</p>
         <section>
             <article class="l-article">

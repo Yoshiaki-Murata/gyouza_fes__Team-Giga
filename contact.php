@@ -20,7 +20,7 @@
     <!-- header -->
     <?php include('inc/header.php');  ?>
 
-    <main>
+    <main class="l-header-margin">
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ">Contact</h1>
             <p class="c-contact__text">ふくおか餃子FESへは下記フォームから問い合わせ可能です。<br>

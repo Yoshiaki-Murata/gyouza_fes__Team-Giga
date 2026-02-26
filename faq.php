@@ -21,7 +21,7 @@
     <!-- header -->
     <?php include('inc/header.php');  ?>
 
-    <main class="l-faq l-faq-wrapper l-wrapper">
+    <main class="l-faq l-faq-wrapper l-wrapper l-header-margin">
 
         <div class="l-wrapper-child">
             <h1 class="c-title__main" data-sub-title="よくある質問">FAQ</h1>

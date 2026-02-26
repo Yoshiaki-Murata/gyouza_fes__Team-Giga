@@ -36,9 +36,11 @@ img {
 }
 
 /* ヘッダーの下の隙間 90pxから180pxに可変で設定 */
-.l-header-margin+* {
+.l-header-margin {
     margin-top: clamp(5.625rem, 3.644rem + 8.45vw, 11.25rem);
 }
+
+
 
 /* hover設定 */
 

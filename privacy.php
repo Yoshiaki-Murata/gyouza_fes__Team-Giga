@@ -24,7 +24,7 @@
     <!-- header -->
     <?php include('inc/header.php');  ?>
 
-    <main class="l-privacy-wrapper">
+    <main class="l-privacy-wrapper l-header-margin">
 
         <section class="l-wrapper">
             <div class="l-privacy-parent">
