@@ -92,7 +92,8 @@ img {
 }
 
 .c-btn__top img {
-    width: clamp(3.75rem, 2.276rem + 6.291vw, 7.938rem);
+    width: 60px;
+    /* width: clamp(3.75rem, 2.276rem + 6.291vw, 7.938rem); */
 }
 
 .c-btn--black>p {
