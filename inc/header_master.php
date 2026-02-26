@@ -1,15 +1,17 @@
  <header class="l-header l-header-margin">
      <div class="l-header-inner">
          <p class="c-logo">
-             <a href="index.html"><img src="../img/logo-icon.png" alt="ふくおか餃子フェス"></a>
+             管理者ページ
          </p>
          <nav class="c-nav">
              <ul>
-                 <li><a href="index.html#information">INFO</a></li>
-                 <li><a href="index.html#access">ACCESS</a></li>
-                 <li><a href="news.html">NEWS</a></li>
-                 <li><a href="menu.html">MENU</a></li>
-                 <li><a href="faq.html">FAQ</a></li>
+                 <li><a href="">TOP</a></li>
+                 <li><a href="">お知らせ</a></li>
+                 <li><a href="">FAQ</a></li>
+                 <li><a href="">お問い合わせ</a></li>
+                 <li><a href="">メニュー</a></li>
+                 <li><a href="">店舗</a></li>
+                 <li><a href="">ログアウト</a></li>
              </ul>
          </nav>
      </div>

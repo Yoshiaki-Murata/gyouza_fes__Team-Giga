@@ -12,3 +12,11 @@ function db_connect()
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     return $db;
 }
+
+
+// var_dump関数
+function check_array($array){
+    echo "<pre>";
+    echo var_dump($array);
+    echo "</pre>";
+}
