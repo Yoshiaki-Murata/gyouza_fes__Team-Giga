@@ -1076,6 +1076,10 @@ img {
     text-align: center;
 }
 
+#agree {
+    appearance: auto;
+}
+
 /* 送信ボタン */
 .l-contact__form>.c-btn--yellow {
     width: 200px;
@@ -1083,7 +1087,7 @@ img {
     margin: 0 auto;
 }
 
-.c-contact__text>a {
+.c-contact__text a {
     text-decoration: underline solid var(--gyoza-black) 1px;
 }
 
