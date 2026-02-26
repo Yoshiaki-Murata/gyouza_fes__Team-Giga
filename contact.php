@@ -17,14 +17,10 @@
 </head>
 
 <body id="top">
-    <header class="l-header l-header-margin">
+    <!-- header -->
+    <?php include('inc/header.php');  ?>
 
-        <?php include('inc/header.php');  ?>
-
-
-
-    </header>
-    <main>
+    <main class="l-header-margin">
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ">Contact</h1>
             <p class="c-contact__text">ふくおか餃子FESへは下記フォームから問い合わせ可能です。<br>
@@ -57,9 +53,10 @@
             </form>
         </section>
     </main>
-    <footer class="l-footer">
-        <?php include('inc/footer.php');  ?>
-    </footer>
+
+    <!-- footer -->
+    <?php include('inc/footer.php');  ?>
+
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 
 

@@ -21,12 +21,10 @@
 
 <body id="top">
 
-    <header class="l-header l-header-margin">
+    <!-- header -->
+    <?php include('inc/header.php');  ?>
 
-        <?php include('inc/header.php');  ?>
-
-    </header>
-    <main class="l-privacy-wrapper">
+    <main class="l-privacy-wrapper l-header-margin">
 
         <section class="l-wrapper">
             <div class="l-privacy-parent">
@@ -123,10 +121,11 @@
 
 
     </main>
-    <footer class="l-footer">
-        <?php include('inc/footer.php');  ?>
 
-    </footer>
+    <!-- footer -->
+    <?php include('inc/footer.php');  ?>
+
+
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 </body>
 

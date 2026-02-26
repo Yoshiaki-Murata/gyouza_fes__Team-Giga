@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/inc/function.php';
+require_once __DIR__ . '/../inc/function.php';
 
 try {
     // PDO インスタンスの作成
@@ -40,7 +40,7 @@ try {
 
 <body id="top">
     <!-- header -->
-    <?php include('inc/header.php');  ?>
+    <?php include('../inc/header_master.php');  ?>
 
     <main class="l-header-margin">
         <section class="l-wrapper">
@@ -73,7 +73,7 @@ try {
         </section>
     </main>
     <!-- footer -->
-    <?php include('inc/footer.php');  ?>
+    <?php include('../inc/footer.php');  ?>
 
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 </body>

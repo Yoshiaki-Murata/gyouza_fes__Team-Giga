@@ -165,7 +165,6 @@ try {
 
       </section>
 
-      <!-- ↑松永 ↓大古場 -->
       <section class="l-topmenu l-top-box">
         <h2 class="c-sec-title">Menu</h2>
 
@@ -216,7 +215,7 @@ try {
     </div>
   </main>
 
-
+  <!-- footer -->
   <?php include('inc/footer.php');  ?>
 
   <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
