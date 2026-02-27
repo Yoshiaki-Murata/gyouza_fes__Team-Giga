@@ -8,9 +8,9 @@
         </a>
     </div>
     <ul class="l-footer__sns">
-        <li class="c-sns__link"><a href="#"><img src="img/sns-insta.png" alt=""></a></li>
-        <li class="c-sns__link"><a href="#"><img src="img/sns-insta.png" alt=""></a></li>
-        <li class="c-sns__link"><a href="#"><img src="img/sns-facebook.png" alt=""></a></li>
+        <li class="c-sns__link"><a href="#" class="align-baseline"><img src="img/sns-insta.png" alt=""></a></li>
+        <li class="c-sns__link"><a href="#" class="align-baseline"><img src="img/sns-insta.png" alt=""></a></li>
+        <li class="c-sns__link"><a href="#" class="align-baseline"><img src="img/sns-facebook.png" alt=""></a></li>
     </ul>
     <div class="l-footer__text">
         <div class="c-footer__company">

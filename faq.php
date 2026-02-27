@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -30,7 +34,7 @@
         <div class="l-container l-wrapper-child">
             <section class="l-faq-section">
                 <h2 class="l-faq-section__title">イベントに関して</h2>
-                <div class="l-faq-section-parent">
+                <!-- <div class="l-faq-section-parent">
                     <h3 class="l-faq-section__question">Q.入場料はかかりますか？</h3>
                     <p class="l-faq-section__answer">入場は<span
                             class="l-faq-section__answer--bold">無料</span>です。どなたでもご自由にお楽しみいただけます。<br>飲食の購入は各店舗でお支払いください。
@@ -51,11 +55,11 @@
                     <h3 class="l-faq-section__question">Q.支払い方法を教えてください。</h3>
                     <p class="l-faq-section__answer"><span class="l-faq-section__answer--bold">現金</span>のほか、主要な<span
                             class="l-faq-section__answe--bold">電子マネー・QRコード決済</span>がご利用いただけます。</p>
-                </div>
+                </div> -->
             </section>
             <section class="l-faq-section">
                 <h2 class="l-faq-section__title">会場に関して</h2>
-                <div class="l-faq-section-parent">
+                <!-- <div class="l-faq-section-parent">
                     <h3 class="l-faq-section__question">Q.喫煙所はありますか？</h3>
                     <p class="l-faq-section__answer">会場内は全面禁煙ですが、敷地外に指定の喫煙エリアを設けています。<br>スタッフの案内に従ってご利用ください。</p>
                 </div>
@@ -80,11 +84,11 @@
                     <p class="l-faq-section__answer">会場内に<span
                             class="l-faq-section__answer--bold">分別ゴミ箱を設置</span>しています。リサイクルにご協力をお願いします。</p>
                 </div>
-                <a class="l-faq-section--venue-map" href="./menu.php#venue-map">会場マップはこちら</a>
+                <a class="l-faq-section--venue-map" href="./menu.php#venue-map">会場マップはこちら</a> -->
             </section>
             <section class="l-faq-section">
                 <h2 class="l-faq-section__title">その他</h2>
-                <div class="l-faq-section-parent">
+                <!-- <div class="l-faq-section-parent">
                     <h3 class="l-faq-section__question">Q.忘れ物をした場合はどうすればよいですか？</h3>
                     <p class="l-faq-section__answer"><span
                             class="l-faq-section__answer--bold">会場本部</span>でお預かりしています。<br>※イベント終了後は実行委員会までお問い合わせください。
@@ -109,7 +113,7 @@
                     <h3 class="l-faq-section__question">Q.問い合わせ先を教えてください。</h3>
                     <p class="l-faq-section__answer"><a href="./contact.php"><span
                                 class="l-faq-section__answer--under">CONTACT</span>ページ</a>のフォーム、または事務局メール宛にご連絡ください。</p>
-                </div>
+                </div> -->
             </section>
         </div>
 

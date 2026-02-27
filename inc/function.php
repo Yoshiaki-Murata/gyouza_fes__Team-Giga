@@ -27,3 +27,12 @@ function h($str)
 {
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
+
+// 日付曜日処理
+function format_jp_date($datetime)
+{
+    $date = new DateTime($datetime);
+    $week = ['日', '月', '火', '水', '木', '金', '土'];
+    $weekday = $week[$date->format('w')];
+    return $date->format('n月j日') . "($weekday)";
+}

@@ -54,7 +54,7 @@ try {
                         <div class="c-news__detail">
                             <dt>
                                 <time datetime="<?php echo $article['date']; ?>">
-                                    <?php echo $article['date']; ?>(曜日)
+                                    <?php echo format_jp_date($article['date']); ?>
                                 </time>
                             </dt>
                             <dd>
