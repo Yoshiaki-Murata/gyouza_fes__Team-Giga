@@ -1,15 +1,14 @@
 <?php
 require_once './inc/function.php';
 
-try{
-    $db=db_connect();
-    $sql="SELECT * FROM menus";
-    $stmt=$db->prepare($sql);
+try {
+    $db = db_connect();
+    $sql = "SELECT menus.id AS menu_id, menus.product, menus.pieces, menus.price, menus.product_detail, menus.image, menus.alt, menus.shop_id,shops.shop,shops.shop_detail,shops.boos_number FROM menus INNER JOIN shops ON menus.shop_id=shops.id;";
+    $stmt = $db->prepare($sql);
     $stmt->execute();
-    $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
-
-}catch(PDOException $e){
-    exit("エラー".$e->getMessage());
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    exit("エラー" . $e->getMessage());
 }
 ?>
 
@@ -43,24 +42,38 @@ try{
     <!-- header -->
     <?php include('inc/header.php');  ?>
 
+    <!-- <?php  check_array($result); ?> -->
+
     <main class="l-menu-main l-wrapper l-header-margin">
         <section class="l-menu l-menu-wrapper">
             <div class="c-menu-title c-menu-title--menuGap">
                 <h1 class="c-title__main" data-sub-title="メニュー">Menu</h1>
             </div>
-
-            <ul>
-                <?php foreach ($result as $menu): ?>
-                    <li>
-                        <?= htmlspecialchars($menu['product']) ?>
-                        <?= htmlspecialchars($menu['pieces']) ?>個入り
-                        <?= htmlspecialchars($menu['price']) ?>円（税込）
-                        <img src="img/<?= htmlspecialchars($menu['image'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($menu['alt'], ENT_QUOTES, 'UTF-8') ?>">
-                        <?= htmlspecialchars($menu['product_detail']) ?>
-                        B-<?= htmlspecialchars($menu['shop_id'], ENT_QUOTES, 'UTF-8') ?>
-
-
-                    </li>
+            <ul class="l-menu-list ">
+                <?php foreach($result as $row): ?>
+                <li id="b-01" class="c-menu-card">
+                    <div class="c-menu-card-top">
+                        <p class="c-menu-card-top__number c-menu-card-top__number--padding"><?php echo $row["boos_number"] ?></p>
+                        <div class="c-menu-card-top-text">
+                            <h2 class="c-menu-card-top-text__item"><?php echo $row["product"] ?></h2>
+                            <p class="c-menu-card-top-text__price"><?php echo $row["pieces"] ?>個入り <?php echo $row["price"] ?>円（税込）</p>
+                        </div>
+                    </div>
+                    <div class="c-menu-card-bottom <?php echo $row["menu_id"]%2===0?"c-menu-card-bottom--reverse":""; ?>">
+                        <div class="c-menu-card-bottom-container">
+                            <img class="c-menu-card-bottom-container__img" src="./img/<?php echo $row["image"] ?>" alt="<?php echo $row["alt"] ?>">
+                        </div>
+                        <div class="c-menu-card-bottom-text">
+                            <p class="c-menu-card-bottom-text__itemDesc"><?php echo $row["product_detail"] ?></p>
+                            <div class="c-menu-card-bottom-text-shop">
+                                <p class="c-menu-card-bottom-text__shopName"><?php echo $row["shop"] ?></p>
+                                <p class="c-menu-card-bottom-text__shopDesc">
+                                    <?php echo $row["shop_detail"] ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 <?php endforeach; ?>
             </ul>
 
