@@ -35,6 +35,9 @@ try {
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -43,10 +46,15 @@ try {
     <?php include('../inc/header_master.php');  ?>
 
     <main class="l-wrapper l-header-margin">
+
         <p class="c-title__main" data-sub-title="お知らせ">News</p>
         <section>
             <article class="l-article">
                 <div class="c-article__title-area">
+                    <div class="d-grid gap-2 d-md-block mr-2">
+                        <a href="./news_edit.php?id=<?php echo $target['id']; ?>" class="btn btn-primary btn-sm">修正</a>
+                        <a href="./news_del.php" class="btn btn-danger btn-sm">削除</a>
+                    </div>
                     <h1><?php echo $target['subject']; ?></h1>
                     <p><time datetime="<?php echo $target['date']; ?>">
                             <?php echo $target['date']; ?>（土）
