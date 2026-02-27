@@ -4,7 +4,7 @@ require_once '../inc/function.php';
 
 try{
     $db=db_connect();
-    $sql="SELECT users.id AS user_id,users.username,users.password,roles.role FROM users INNER JOIN roles ON users.role_id=roles.id;";
+    $sql="SELECT users.id AS user_id,users.username,users.password,users.role_id,roles.role FROM users INNER JOIN roles ON users.role_id=roles.id;";
     $stmt=$db->prepare($sql);
     $stmt->execute();
     $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
