@@ -1,6 +1,13 @@
 <?php
-require_once __DIR__ . '/../inc/function.php';
+session_start();
+require_once '../inc/function.php';
 
+// 役割がマスター出ない人は削除できないように
+if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
+    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    header("location:user.php");
+    exit();
+}
 
 $id = (int)($_GET['id'] ?? 0);
 
