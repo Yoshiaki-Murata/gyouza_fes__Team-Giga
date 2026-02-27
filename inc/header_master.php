@@ -6,12 +6,12 @@
          <nav class="c-nav">
              <ul>
                  <li><a href="index.php" class="text-reset">TOP</a></li>
-                 <li><a href="index.php#information" class="text-reset">INFO</a></li>
-                 <li><a href="index.php#access" class="text-reset">ACCESS</a></li>
+                 <li><a href="./../admin/./user.php" class="text-reset">USER</a></li>
                  <li><a href="news.php" class="text-reset">NEWS</a></li>
                  <li><a href="menu.php" class="text-reset">MENU</a></li>
-                 <li><a href="menu.php" class="text-reset">SHOP</a></li>
-                 <li><a href="shop.php" class="text-reset">FAQ</a></li>
+                 <li><a href="../admin/./shop.php" class="text-reset">SHOP</a></li>
+                 <li><a href="./../admin/faq.php" class="text-reset">FAQ</a></li>
+                 <li><a href="./../admin/./logout.php" class="text-reset">LOGOUT</a></li>
              </ul>
          </nav>
      </div>
@@ -37,15 +37,15 @@
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="news.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">NEWS</p>
-                         <p class="c-menu-hamburger-text-list__sub">お知らせ</p>
+                     <a href="./../admin/user.php" class="text-reset">
+                         <p class="c-menu-hamburger-text-list__main">USER</p>
+                         <p class="c-menu-hamburger-text-list__sub">ユーザー情報</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="index.php#information" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">INFO</p>
-                         <p class="c-menu-hamburger-text-list__sub">開催概要</p>
+                     <a href="news.php" class="text-reset">
+                         <p class="c-menu-hamburger-text-list__main">NEWS</p>
+                         <p class="c-menu-hamburger-text-list__sub">お知らせ</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
@@ -55,21 +55,21 @@
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="shop.php" class="text-reset">
+                     <a href="./../admin/shop.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">SHOP</p>
                          <p class="c-menu-hamburger-text-list__sub">店舗一覧</p>
-                     </a>
-                 </li>
-                 <li class="c-menu-hamburger-text-list">
-                     <a href="index.php#access" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">ACCESS</p>
-                         <p class="c-menu-hamburger-text-list__sub">アクセス</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="faq.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">FAQ</p>
                          <p class="c-menu-hamburger-text-list__sub">よくある質問</p>
+                     </a>
+                 </li>
+                 <li class="c-menu-hamburger-text-list">
+                     <a href="./../admin/logout.php" class="text-reset">
+                         <p class="c-menu-hamburger-text-list__main">LOGOUT</p>
+                         <p class="c-menu-hamburger-text-list__sub">アクセス</p>
                      </a>
                  </li>
              </ul>
