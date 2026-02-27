@@ -19,7 +19,7 @@
 <body id="top">
     <?php include('inc/header.php');  ?>
 
-    <main>
+    <main class="l-header-margin">
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ">Contact</h1>
             <p class="c-contact__text">ふくおか餃子FESへは下記フォームから問い合わせ可能です。<br>
@@ -50,7 +50,7 @@
                 <p class="c-contact__text">
                     <label for="agree">
                         <input type="checkbox" id="agree" name="agree" value="1">
-                        <a href="privacy.html" target="_blank">「個人情報保護方針」</a>をご確認・ご同意の上、内容確認ボタンを押してください。
+                        <a href="privacy.php" target="_blank">「個人情報保護方針」</a>をご確認・ご同意の上、内容確認ボタンを押してください。
                     </label>
                 </p>
                 <p class="c-btn--yellow">

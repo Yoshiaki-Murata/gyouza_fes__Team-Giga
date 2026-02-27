@@ -80,7 +80,7 @@
                     <p class="l-faq-section__answer">会場内に<span
                             class="l-faq-section__answer--bold">分別ゴミ箱を設置</span>しています。リサイクルにご協力をお願いします。</p>
                 </div>
-                <a class="l-faq-section--venue-map" href="./menu.html#venue-map">会場マップはこちら</a>
+                <a class="l-faq-section--venue-map" href="./menu.php#venue-map">会場マップはこちら</a>
             </section>
             <section class="l-faq-section">
                 <h2 class="l-faq-section__title">その他</h2>
@@ -94,7 +94,7 @@
                     <h3 class="l-faq-section__question">トイレはどこにありますか？</h3>
                     <p class="l-faq-section__answer">会場内に複数の<span
                             class="l-faq-section__answer--bold">仮設トイレを設置</span>しています。<a class="l-faq-section--venue-map"
-                            href="./menu.html#venue-map">マップ</a>の「トイレ」アイコンをご確認ください。</p>
+                            href="./menu.php#venue-map">マップ</a>の「トイレ」アイコンをご確認ください。</p>
                 </div>
                 <div class="l-faq-section-parent">
                     <h3 class="l-faq-section__question">Q.SNSで写真を投稿しても良いですか？</h3>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="l-faq-section-parent">
                     <h3 class="l-faq-section__question">Q.問い合わせ先を教えてください。</h3>
-                    <p class="l-faq-section__answer"><a href="./contact.html"><span
+                    <p class="l-faq-section__answer"><a href="./contact.php"><span
                                 class="l-faq-section__answer--under">CONTACT</span>ページ</a>のフォーム、または事務局メール宛にご連絡ください。</p>
                 </div>
             </section>

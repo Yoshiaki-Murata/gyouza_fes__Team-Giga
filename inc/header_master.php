@@ -5,11 +5,11 @@
          </p>
          <nav class="c-nav">
              <ul>
-                 <li><a href="index.html#information" class="text-reset">INFO</a></li>
-                 <li><a href="index.html#access" class="text-reset">ACCESS</a></li>
-                 <li><a href="news.html" class="text-reset">NEWS</a></li>
-                 <li><a href="menu.html" class="text-reset">MENU</a></li>
-                 <li><a href="faq.html" class="text-reset">FAQ</a></li>
+                 <li><a href="index.php#information" class="text-reset">INFO</a></li>
+                 <li><a href="index.php#access" class="text-reset">ACCESS</a></li>
+                 <li><a href="news.php" class="text-reset">NEWS</a></li>
+                 <li><a href="menu.php" class="text-reset">MENU</a></li>
+                 <li><a href="faq.php" class="text-reset">FAQ</a></li>
              </ul>
          </nav>
      </div>
@@ -29,31 +29,31 @@
          <nav class="c-menu-hamburger">
              <ul class="c-menu-hamburger-text">
                  <li class="c-menu-hamburger-text-list">
-                     <a href="news.html" class="text-reset">
+                     <a href="news.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">NEWS</p>
                          <p class="c-menu-hamburger-text-list__sub">お知らせ</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="index.html#information" class="text-reset">
+                     <a href="index.php#information" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">INFO</p>
                          <p class="c-menu-hamburger-text-list__sub">開催概要</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="menu.html" class="text-reset">
+                     <a href="menu.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">MENU</p>
                          <p class="c-menu-hamburger-text-list__sub">メニュー</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="index.html#access" class="text-reset">
+                     <a href="index.php#access" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">ACCESS</p>
                          <p class="c-menu-hamburger-text-list__sub">アクセス</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="faq.html" class="text-reset">
+                     <a href="faq.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">FAQ</p>
                          <p class="c-menu-hamburger-text-list__sub">よくある質問</p>
                      </a>

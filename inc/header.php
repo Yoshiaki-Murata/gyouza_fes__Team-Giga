@@ -29,31 +29,31 @@
          <nav class="c-menu-hamburger">
              <ul class="c-menu-hamburger-text">
                  <li class="c-menu-hamburger-text-list">
-                     <a href="news.html">
+                     <a href="news.php">
                          <p class="c-menu-hamburger-text-list__main">NEWS</p>
                          <p class="c-menu-hamburger-text-list__sub">お知らせ</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="index.html#information">
+                     <a href="index.php#information">
                          <p class="c-menu-hamburger-text-list__main">INFO</p>
                          <p class="c-menu-hamburger-text-list__sub">開催概要</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="menu.html">
+                     <a href="menu.php">
                          <p class="c-menu-hamburger-text-list__main">MENU</p>
                          <p class="c-menu-hamburger-text-list__sub">メニュー</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="index.html#access">
+                     <a href="index.php#access">
                          <p class="c-menu-hamburger-text-list__main">ACCESS</p>
                          <p class="c-menu-hamburger-text-list__sub">アクセス</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="faq.html">
+                     <a href="faq.php">
                          <p class="c-menu-hamburger-text-list__main">FAQ</p>
                          <p class="c-menu-hamburger-text-list__sub">よくある質問</p>
                      </a>
