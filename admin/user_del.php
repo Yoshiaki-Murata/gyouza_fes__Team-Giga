@@ -2,11 +2,11 @@
 session_start();
 require_once '../inc/function.php';
 
-// if(isset($_SESSION["role_id"]){
-//     $_SESSION["del_err"]="削除権限がありません。役割がマスターの人に削除依頼をしてください";
-//     header("location:user.php");
-//     exit();
-// }
+if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
+    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    header("location:user.php");
+    exit();
+}
 
 if (!empty($_POST)) {
     if (!empty($_POST["id"])) {
@@ -19,6 +19,12 @@ if (!empty($_POST)) {
             $stmt->execute();
             $target = "";
             $target = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if(!$target){
+                $_SESSION["del_err"]="指定されたユーザーが見つかりません";
+                header("location:user.php");
+                exit();
+            }
         } catch (PDOException $e) {
             exit("エラー" . $e->getMessage());
         }
