@@ -1,13 +1,13 @@
 <?php
 
-require_once __DIR__ . '/inc/function.php';
+require_once __DIR__ . '/../inc/function.php';
 
 
 try {
   $db = db_connect();
 
   // questions
-  $sql = 'SELECT question,answer,category_id FROM questions';
+  $sql = 'SELECT * FROM questions';
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $question = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -37,34 +37,46 @@ try {
   <link
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body id="top">
 
   <!-- header -->
-  <?php include('inc/header.php');  ?>
+  <?php include('../inc/header_master.php');  ?>
 
-  <main class="l-faq l-faq-wrapper l-wrapper l-header-margin">
+  <main class="l-faq l-faq-wrapper l-wrapper-second l-header-margin">
 
     <div class="l-wrapper-child">
       <h1 class="c-title__main" data-sub-title="よくある質問">FAQ</h1>
     </div>
 
-    <div class="l-container l-wrapper-child">
+    <div class="l-container-second l-wrapper-child">
+
+      <div class="d-grid mx-auto">
+        <a href="./faq_add.php" class="btn btn-primary">新規FAQ投稿</a>
+      </div>
 
       <?php foreach ($category as $category_title): ?>
         <section class="l-faq-section">
-          <h2 class="l-faq-section__title"><?php echo $category_title['category']; ?></h2>
+          <h2 class="l-faq-section__title"><?php echo h($category_title['category']); ?></h2>
           <?php foreach ($question as $qa): ?>
-            <?php if ($category_title['id'] === $qa['category_id']): ?>
+            <?php if ((int)$category_title['id'] === (int)$qa['category_id']): ?>
               <div class="l-faq-section-parent">
                 <h3 class="l-faq-section__question">
-                  Q.<?php echo $qa['question']; ?>
+                  Q.<?php echo h($qa['question']); ?>
                 </h3>
                 <p class="l-faq-section__answer">
-                  <?php echo $qa['answer']; ?>
+                  <?php echo nl2br(h($qa['answer'])); ?>
                 </p>
+                <div class="mr-2">
+                  <a href="faq_edit.php?id=<?php echo (int)$qa['id']; ?>" class="btn btn-primary btn-sm">修正</a>
+                  <a href="faq_delete.php?id=<?php echo (int)$qa['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('削除しますか？');">削除</a>
+                </div>
+
               </div>
           <?php endif;
           endforeach;
@@ -74,14 +86,12 @@ try {
       <?php endforeach; ?>
 
 
-
-
   </main>
 
   <!-- footer -->
-  <?php include('inc/footer.php');  ?>
+  <?php include('../inc/footer_master.php');  ?>
 
-  <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
+  <a href="#top" class="c-btn__top"><img src="../img/back-top.png" alt="topへ戻る"></a>
 </body>
 
 </html>
