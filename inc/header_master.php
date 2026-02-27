@@ -5,6 +5,7 @@
          </p>
          <nav class="c-nav">
              <ul>
+                 <li><a href="index.php" class="text-reset">TOP</a></li>
                  <li><a href="index.php#information" class="text-reset">INFO</a></li>
                  <li><a href="index.php#access" class="text-reset">ACCESS</a></li>
                  <li><a href="news.php" class="text-reset">NEWS</a></li>
@@ -28,6 +29,12 @@
 
          <nav class="c-menu-hamburger">
              <ul class="c-menu-hamburger-text">
+                 <li class="c-menu-hamburger-text-list">
+                     <a href="index.php" class="text-reset">
+                         <p class="c-menu-hamburger-text-list__main">TOP</p>
+                         <p class="c-menu-hamburger-text-list__sub">トップ</p>
+                     </a>
+                 </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="news.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">NEWS</p>
