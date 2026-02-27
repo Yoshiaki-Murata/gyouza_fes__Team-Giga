@@ -15,8 +15,15 @@ function db_connect()
 
 
 // var_dump関数
-function check_array($array){
+function check_array($array)
+{
     echo "<pre>";
     echo var_dump($array);
     echo "</pre>";
+}
+
+// エスケープ処理
+function h($str)
+{
+    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }

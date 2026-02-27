@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お知らせ一覧｜ふくおか餃子FES</title>
+    <title>お知らせ新規投稿｜ふくおか餃子FES</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,6 +23,7 @@
 
             <h1 class="c-title__main">新規お知らせ投稿</h1>
             <form action="./news_add_do.php" method="post">
+
                 <div class="form-group">
                     <label>記事タイトル</label>
                     <input type="text" name="subject" class="form-control" placeholder="お知らせタイトル" required>
