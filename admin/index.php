@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/inc/function.php';
+require_once __DIR__ . '/../inc/function.php';
 
 try {
   // PDO インスタンスの作成
@@ -36,7 +36,7 @@ try {
   <link
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 
 
 
@@ -45,7 +45,7 @@ try {
 <body id="top">
 
   <!--  ヘッダー -->
-  <?php include('inc/header.php');  ?>
+  <?php include('../inc/header_master.php');  ?>
 
 
   <main>
@@ -57,7 +57,7 @@ try {
         </p>
         <div class="c-gray-area__bottom">
           <div class="c-gray-area__item">
-            <p class="c-gray-area__location"><img src="./img/place-logo.svg" alt="">長浜公園</p>
+            <p class="c-gray-area__location"><img src="../img/place-logo.svg" alt="">長浜公園</p>
           </div>
           <dl class="c-gray-area__item">
             <dt class="c-gray-area--black">平日</dt>
@@ -74,7 +74,7 @@ try {
     <div class="l-container l-header-margin">
       <section id="l-catchcopy" class="l-catchcopy">
         <h2 class="c-catchcopy-title">\ ひとくちごとに、新しい体験。/
-          <img src="./img/logo-text.png" alt="ふくおか餃子フェス">
+          <img src="../img/logo-text.png" alt="ふくおか餃子フェス">
         </h2>
         <div class="l-catchcopy-text">
           <p class="c-catchcopy-text--bold">福岡の餃子文化が一堂に集結！</p>
@@ -102,7 +102,7 @@ try {
                 <div class="c-topnews-list">
                   <dt class="c-news-date">
                     <time datetime="<?php echo $article['date']; ?>">
-                      <?php echo $article['date']; ?>（月）
+                      <?php echo $article['date']; ?>（曜日）
                     </time>
                   </dt>
                   <dd class="c-news-detail">
@@ -174,7 +174,7 @@ try {
 
             <?php foreach ($menu as $menuIcon): ?>
               <li class="c-topmenu__card">
-                <img src="./img/<?php echo $menuIcon['image']; ?>" alt="<?php echo $menuIcon['alt']; ?>">
+                <img src="../img/<?php echo $menuIcon['image']; ?>" alt="<?php echo $menuIcon['alt']; ?>">
                 <div class="c-topmenu__name-price">
                   <p class="c-topmenu__name"><?php echo $menuIcon['product']; ?></p>
                   <p class="c-topmenu__price">
@@ -216,9 +216,9 @@ try {
   </main>
 
   <!-- footer -->
-  <?php include('inc/footer.php');  ?>
+  <?php include('../inc/footer_master.php');  ?>
 
-  <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
+  <a href="#top" class="c-btn__top"><img src="../img/back-top.png" alt="topへ戻る"></a>
 </body>
 
 </html>

@@ -49,7 +49,8 @@ try {
             <h1 class="c-title__main" data-sub-title="お知らせ一覧">News</h1>
 
             <div class="d-grid mx-auto">
-                <button class="btn btn-primary" type="button">新規お知らせ投稿</button>
+                <!-- <button class="btn btn-primary" type="button">新規お知らせ投稿</button> -->
+                <a href="./news_add.php" class="btn btn-primary" type="button">新規お知らせ投稿</a>
             </div>
 
             <?php if (count($news) > 0): ?>
@@ -57,18 +58,18 @@ try {
                 <dl class="l-news__list">
                     <?php foreach ($news as $article): ?>
                         <div class="c-news__detail">
-                            <div class="d-grid gap-2 d-md-block mr-2">
-                                <button type="button" class="btn btn-primary btn-sm">修正</button>
-                                <button type="button" class="btn btn-danger btn-sm">削除</button>
+                            <div class="mr-2">
+                                <a href="./news_edit.php?id=<?php echo h($article['id']); ?>" class="btn btn-primary btn-sm">修正</a>
+                                <a href="./news_del.php?id=<?php echo h($article['id']); ?>" class="btn btn-danger btn-sm">削除</a>
                             </div>
                             <dt>
-                                <time datetime="<?php echo $article['date']; ?>">
-                                    <?php echo $article['date']; ?>(曜日)
+                                <time datetime="<?php echo h($article['date']); ?>">
+                                    <?php echo h($article['date']); ?>(曜日)
                                 </time>
                             </dt>
                             <dd>
-                                <a href="news_detail.php?id=<?php echo $article['id'] ?>" class="text-reset">
-                                    <?php echo $article['subject']; ?>
+                                <a href="./news_detail.php?id=<?php echo h($article['id']) ?>" class="text-reset">
+                                    <?php echo h($article['subject']); ?>
                                 </a>
                             </dd>
 

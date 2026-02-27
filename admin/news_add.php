@@ -1,22 +1,10 @@
-<?php
-function h($str)
-{
-    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
-}
-
-require_once __DIR__ . '/../inc/function.php';
-
-
-
-?>
-
 <!doctype html>
 <html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お知らせ一覧｜ふくおか餃子FES</title>
+    <title>お知らせ新規投稿｜ふくおか餃子FES</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -34,18 +22,19 @@ require_once __DIR__ . '/../inc/function.php';
             <!-- ここから「本文」-->
 
             <h1 class="c-title__main">新規お知らせ投稿</h1>
-            <form action="write.php" method="post">
+            <form action="./news_add_do.php" method="post">
+
                 <div class="form-group">
                     <label>記事タイトル</label>
-                    <input type="text" name="article_title" class="form-control" placeholder="お知らせタイトル" require>
+                    <input type="text" name="subject" class="form-control" placeholder="お知らせタイトル" required>
                 </div>
                 <div class="form-group">
                     <label>ページタイトル</label>
-                    <input type="text" name="page_title" class="form-control" placeholder="ページタイトル(ここのみ記入)｜ふくおか餃子FES" require>
+                    <input type="text" name="titletag" class="form-control" placeholder="ページタイトル(ここのみ記入)｜ふくおか餃子FES" required>
                 </div>
                 <div class="form-group">
                     <label>本文</label>
-                    <textarea name="body" class="form-control" rows="5" placeholder="お知らせ本文" require></textarea>
+                    <textarea name="text" class="form-control" rows="5" placeholder="お知らせ本文" required></textarea>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="投稿する">

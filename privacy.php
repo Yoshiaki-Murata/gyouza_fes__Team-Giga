@@ -24,9 +24,9 @@
     <!-- header -->
     <?php include('inc/header.php');  ?>
 
-    <main class="l-privacy-wrapper l-header-margin">
+    <main class="l-header-margin">
 
-        <section class="l-wrapper">
+        <section class="l-wrapper l-privacy-wrapper">
             <div class="l-privacy-parent">
                 <h1 class="c-title__main" data-sub-title="個人情報保護方針">PRIVACY POLICY</h1>
             </div>
