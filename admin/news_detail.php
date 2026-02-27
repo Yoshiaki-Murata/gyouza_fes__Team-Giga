@@ -57,7 +57,7 @@ try {
                     </div>
                     <h1><?php echo h($target['subject']); ?></h1>
                     <p><time datetime="<?php echo h($target['date']); ?>">
-                            <?php echo h($target['date']); ?>（土）
+                            <?php echo format_jp_date(h($target['date'])); ?>
                         </time>
                     </p>
                 </div>

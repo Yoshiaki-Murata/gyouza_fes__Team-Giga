@@ -49,7 +49,7 @@ try {
                 <div class="c-article__title-area">
                     <h1><?php echo $target['subject']; ?></h1>
                     <p><time datetime="<?php echo $target['date']; ?>">
-                            <?php echo $target['date']; ?>（土）
+                            <?php echo format_jp_date($target['date']); ?>
                         </time>
                     </p>
                 </div>
