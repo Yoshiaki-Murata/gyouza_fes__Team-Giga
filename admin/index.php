@@ -45,7 +45,7 @@ try {
 <body id="top">
 
   <!--  ヘッダー -->
-  <?php include('inc/header.php');  ?>
+  <?php include('../inc/header_master.php');  ?>
 
 
   <main>
@@ -216,7 +216,7 @@ try {
   </main>
 
   <!-- footer -->
-  <?php include('inc/footer.php');  ?>
+  <?php include('../inc/footer_master.php');  ?>
 
   <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 </body>
