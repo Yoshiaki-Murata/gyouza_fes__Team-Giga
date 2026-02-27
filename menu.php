@@ -24,15 +24,61 @@
 
 <body id="top">
 
+<<<<<<< HEAD
+    <header class="l-header l-header-margin">
+        <?php include('inc/header.php');  ?>
+
+    </header>
+
+    <main class="l-menu-main l-wrapper">
+=======
     <!-- header -->
     <?php include('inc/header.php');  ?>
 
     <main class="l-menu-main l-wrapper l-header-margin">
+>>>>>>> main
         <section class="l-menu l-menu-wrapper">
             <div class="c-menu-title c-menu-title--menuGap">
                 <h1 class="c-title__main" data-sub-title="メニュー">Menu</h1>
             </div>
-            <ul class="l-menu-list ">
+
+            <?php
+            function db_connect()
+            {
+                $dsn = 'mysql:dbname=gyouza_gigagiga;host=localhost;charset=utf8';
+                $user = 'root';
+                $password = '';
+                try {
+                    $db = new PDO($dsn, $user, $password);
+                    return $db;
+                } catch (PDOException $e) {
+                    exit('接続エラー:' . $e->getMessage());
+                }
+            };
+
+            $pdo = db_connect();
+            $sql = 'SELECT * FROM menus';
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $menus = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+
+            <ul>
+                <?php foreach ($menus as $menu): ?>
+                    <li>
+                        <?= htmlspecialchars($menu['product']) ?>
+                        <?= htmlspecialchars($menu['pieces']) ?>個入り
+                        <?= htmlspecialchars($menu['price']) ?>円（税込）
+                        <img src="img/<?= htmlspecialchars($menu['image'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($menu['alt'], ENT_QUOTES, 'UTF-8') ?>">
+                        <?= htmlspecialchars($menu['product_detail']) ?>
+                        <?= htmlspecialchars("B-" . $menu['shop_id']) ?>
+
+
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
+            <!-- <ul class="l-menu-list ">
                 <li id="b-01" class="c-menu-card">
                     <div class="c-menu-card-top">
                         <p class="c-menu-card-top__number c-menu-card-top__number--padding">B-01</p>
@@ -204,7 +250,7 @@
                         </div>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
         </section>
 
         <section class="l-map" id="venue-map">
@@ -273,6 +319,8 @@
                 </li>
             </ol>
         </section>
+
+
     </main>
 
     <!-- footer -->
