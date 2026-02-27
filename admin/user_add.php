@@ -4,7 +4,7 @@ require_once '../inc/function.php';
 
 try {
     $db = db_connect();
-    $sql = "SELECT users.id AS user_id,users.username,users.password,roles.role FROM users INNER JOIN roles ON users.role_id=roles.id;";
+    $sql = "SELECT * FROM roles";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -16,6 +16,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="ja">
+<?php check_array($result); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -33,17 +34,28 @@ try {
         <form action="./user_add_do.php" method="post">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
-                    <label for="username" class="form-label">ユーザー名</label>
+                    <label for="username" class="form-label">ユーザー名（半角英数８文字以上）</label>
                     <input type="text" name="username" id="username" class="form-control">
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
-                    <label for="password" class="form-label">パスワード</label>
+                    <label for="password" class="form-label">パスワード（半角英数８文字以上</label>
                     <input type="password" name="password" id="password" class="form-control">
                 </div>
             </div>
-
+            <div class="row justify-content-center">
+                <div class="mb-5 col-6">
+                    <label for="role_id" class="form-label">権限</label>
+                    <select name="role_id" id="role_id" class="form-select form-select-sm mb-5" aria-label="Small select example">
+                        <?php foreach ($result as  $row): ?>
+                            <option value="<?php echo $row["id"]; ?>">
+                                <?php echo $row["role"]; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
 
             <div class="mb-5 text-center">
                 <input type="submit" value="登録" class="btn btn-primary">
