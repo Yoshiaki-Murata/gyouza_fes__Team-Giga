@@ -10,7 +10,8 @@
                  <li><a href="index.php#access" class="text-reset">ACCESS</a></li>
                  <li><a href="news.php" class="text-reset">NEWS</a></li>
                  <li><a href="menu.php" class="text-reset">MENU</a></li>
-                 <li><a href="faq.php" class="text-reset">FAQ</a></li>
+                 <li><a href="menu.php" class="text-reset">SHOP</a></li>
+                 <li><a href="shop.php" class="text-reset">FAQ</a></li>
              </ul>
          </nav>
      </div>
@@ -51,6 +52,12 @@
                      <a href="menu.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">MENU</p>
                          <p class="c-menu-hamburger-text-list__sub">メニュー</p>
+                     </a>
+                 </li>
+                 <li class="c-menu-hamburger-text-list">
+                     <a href="shop.php" class="text-reset">
+                         <p class="c-menu-hamburger-text-list__main">SHOP</p>
+                         <p class="c-menu-hamburger-text-list__sub">店舗一覧</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
