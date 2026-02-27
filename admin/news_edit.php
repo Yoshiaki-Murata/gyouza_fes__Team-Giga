@@ -29,7 +29,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $news['titletag'] ?>修正｜ふくおか餃子FES</title>
+    <title><?php echo h($news['titletag']); ?>修正｜ふくおか餃子FES</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -48,18 +48,18 @@ try {
 
             <h1 class="c-title__main">お知らせ修正</h1>
             <form action="./news_edit_do.php" method="post">
-                <input type="hidden" name="id" value="<?php echo $news['id']; ?>">
+                <input type="hidden" name="id" value="<?php echo h($news['id']); ?>">
                 <div class="form-group">
                     <label>記事タイトル</label>
-                    <input type="text" name="subject" class="form-control" value="<?php echo $news['subject'] ?>" required>
+                    <input type="text" name="subject" class="form-control" value="<?php echo h($news['subject']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label>ページタイトル</label>
-                    <input type="text" name="titletag" class="form-control" value="<?php echo $news['titletag'] ?>" required>
+                    <input type="text" name="titletag" class="form-control" value="<?php echo h($news['titletag']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label>本文</label>
-                    <textarea name="text" class="form-control" rows="5" required><?php echo $news['text'] ?></textarea>
+                    <textarea name="text" class="form-control" rows="5" required><?php echo nl2br(h($news['text'])); ?></textarea>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="編集する">
