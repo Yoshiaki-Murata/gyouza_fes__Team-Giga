@@ -479,6 +479,15 @@ img {
     gap: clamp(5.625rem, 3.644rem + 8.451vw, 11.25rem);
 }
 
+.l-container-second {
+    width: min(960px, 89.3%);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
 .l-top-box {
     display: flex;
     flex-direction: column;

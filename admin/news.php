@@ -49,7 +49,6 @@ try {
             <h1 class="c-title__main" data-sub-title="お知らせ一覧">News</h1>
 
             <div class="d-grid mx-auto">
-                <!-- <button class="btn btn-primary" type="button">新規お知らせ投稿</button> -->
                 <a href="./news_add.php" class="btn btn-primary" type="button">新規お知らせ投稿</a>
             </div>
 

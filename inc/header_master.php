@@ -5,12 +5,12 @@
          </p>
          <nav class="c-nav">
              <ul>
-                 <li><a href="index.php" class="text-reset align-baseline">TOP</a></li>
-                 <li><a href="index.php#information" class="text-reset align-baseline">INFO</a></li>
-                 <li><a href="index.php#access" class="text-reset align-baseline">ACCESS</a></li>
-                 <li><a href="news.php" class="text-reset align-baseline">NEWS</a></li>
-                 <li><a href="menu.php" class="text-reset align-baseline">MENU</a></li>
-                 <li><a href="faq.php" class="text-reset align-baseline">FAQ</a></li>
+                 <li><a href="index.php" class="text-reset">TOP</a></li>
+                 <li><a href="index.php#information" class="text-reset">INFO</a></li>
+                 <li><a href="index.php#access" class="text-reset">ACCESS</a></li>
+                 <li><a href="news.php" class="text-reset">NEWS</a></li>
+                 <li><a href="menu.php" class="text-reset">MENU</a></li>
+                 <li><a href="faq.php" class="text-reset">FAQ</a></li>
              </ul>
          </nav>
      </div>
