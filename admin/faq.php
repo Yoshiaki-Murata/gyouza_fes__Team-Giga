@@ -73,8 +73,8 @@ try {
                   <?php echo nl2br(h($qa['answer'])); ?>
                 </p>
                 <div class="mr-2">
-                  <a href="faq_edit.php?id=<?php echo (int)$qa['id']; ?>" class="btn btn-primary btn-sm">修正</a>
-                  <a href="faq_delete.php?id=<?php echo (int)$qa['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('削除しますか？');">削除</a>
+                  <a href="faq_edit.php?id=<?php echo $qa['id']; ?>" class="btn btn-primary btn-sm">修正</a>
+                  <a href="faq_del.php?id=<?php echo $qa['id']; ?>.php" class="btn btn-danger btn-sm">削除</a>
                 </div>
 
               </div>
