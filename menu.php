@@ -1,3 +1,18 @@
+<?php
+require_once './inc/function.php';
+
+try{
+    $db=db_connect();
+    $sql="SELECT * FROM menus";
+    $stmt=$db->prepare($sql);
+    $stmt->execute();
+    $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+}catch(PDOException $e){
+    exit("エラー".$e->getMessage());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -20,6 +35,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="css/admin.css">
 </head>
 
 <body id="top">
@@ -33,36 +49,15 @@
                 <h1 class="c-title__main" data-sub-title="メニュー">Menu</h1>
             </div>
 
-            <?php
-            function db_connect()
-            {
-                $dsn = 'mysql:dbname=gyouza_gigagiga;host=localhost;charset=utf8';
-                $user = 'root';
-                $password = '';
-                try {
-                    $db = new PDO($dsn, $user, $password);
-                    return $db;
-                } catch (PDOException $e) {
-                    exit('接続エラー:' . $e->getMessage());
-                }
-            };
-
-            $pdo = db_connect();
-            $sql = 'SELECT * FROM menus';
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
-            $menus = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            ?>
-
             <ul>
-                <?php foreach ($menus as $menu): ?>
+                <?php foreach ($result as $menu): ?>
                     <li>
                         <?= htmlspecialchars($menu['product']) ?>
                         <?= htmlspecialchars($menu['pieces']) ?>個入り
                         <?= htmlspecialchars($menu['price']) ?>円（税込）
                         <img src="img/<?= htmlspecialchars($menu['image'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($menu['alt'], ENT_QUOTES, 'UTF-8') ?>">
                         <?= htmlspecialchars($menu['product_detail']) ?>
-                        <?= htmlspecialchars("B-" . $menu['shop_id']) ?>
+                        B-<?= htmlspecialchars($menu['shop_id'], ENT_QUOTES, 'UTF-8') ?>
 
 
                     </li>
