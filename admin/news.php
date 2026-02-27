@@ -1,7 +1,6 @@
 <?php
 
-require_once __DIR__ . '/inc/function.php';
-
+require_once __DIR__ . '/../inc/function.php';
 
 try {
     // PDO インスタンスの作成
@@ -36,32 +35,43 @@ try {
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body id="top">
     <!-- header -->
-    <?php include('inc/header.php');  ?>
+    <?php include('../inc/header_master.php');  ?>
 
     <main class="l-header-margin">
-        <section class="l-wrapper">
+        <section class="l-wrapper-second">
             <h1 class="c-title__main" data-sub-title="お知らせ一覧">News</h1>
+
+            <div class="d-grid mx-auto">
+                <button class="btn btn-primary" type="button">新規お知らせ投稿</button>
+            </div>
 
             <?php if (count($news) > 0): ?>
 
                 <dl class="l-news__list">
                     <?php foreach ($news as $article): ?>
                         <div class="c-news__detail">
+                            <div class="d-grid gap-2 d-md-block mr-2">
+                                <button type="button" class="btn btn-primary btn-sm">修正</button>
+                                <button type="button" class="btn btn-danger btn-sm">削除</button>
+                            </div>
                             <dt>
                                 <time datetime="<?php echo $article['date']; ?>">
                                     <?php echo $article['date']; ?>(曜日)
                                 </time>
                             </dt>
                             <dd>
-                                <a href="news_detail.php?id=<?php echo $article['id'] ?>">
+                                <a href="news_detail.php?id=<?php echo $article['id'] ?>" class="text-reset">
                                     <?php echo $article['subject']; ?>
                                 </a>
                             </dd>
+
                         </div>
                     <?php endforeach; ?>
 
@@ -74,9 +84,9 @@ try {
         </section>
     </main>
     <!-- footer -->
-    <?php include('inc/footer.php');  ?>
+    <?php include('../inc/footer_master.php');  ?>
 
-    <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
+    <a href="#top" class="c-btn__top text-reset"><img src="../img/back-top.png" alt="topへ戻る"></a>
 </body>
 
 </html>

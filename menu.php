@@ -24,12 +24,19 @@
 
 <body id="top">
 
+<<<<<<< HEAD
     <header class="l-header l-header-margin">
         <?php include('inc/header.php');  ?>
 
     </header>
 
     <main class="l-menu-main l-wrapper">
+=======
+    <!-- header -->
+    <?php include('inc/header.php');  ?>
+
+    <main class="l-menu-main l-wrapper l-header-margin">
+>>>>>>> main
         <section class="l-menu l-menu-wrapper">
             <div class="c-menu-title c-menu-title--menuGap">
                 <h1 class="c-title__main" data-sub-title="メニュー">Menu</h1>
@@ -316,10 +323,10 @@
 
     </main>
 
-    <footer class="l-footer">
-        <?php include('inc/footer.php');  ?>
+    <!-- footer -->
+    <?php include('inc/footer.php');  ?>
 
-    </footer>
+
     <a href="#top" class="c-btn__top"><img src="./img/back-top.png" alt="topへ戻る"></a>
 
 </body>
