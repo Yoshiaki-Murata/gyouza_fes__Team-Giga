@@ -28,7 +28,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="ふくおか餃子フェスに関するお知らせの一覧を掲載">
-    <title><?php echo $target['titletag']; ?>｜ふくおか餃子FES</title>
+    <title><?php echo h($target['titletag']); ?>｜ふくおか餃子FES</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,16 +52,16 @@ try {
             <article class="l-article">
                 <div class="c-article__title-area">
                     <div class="d-grid gap-2 d-md-block mr-2">
-                        <a href="./news_edit.php?id=<?php echo $target['id']; ?>" class="btn btn-primary btn-sm">修正</a>
-                        <a href="./news_del.php" class="btn btn-danger btn-sm">削除</a>
+                        <a href="./news_edit.php?id=<?php echo h($target['id']); ?>" class="btn btn-primary btn-sm">修正</a>
+                        <a href="./news_del.php?id=<?php echo h($target['id']); ?>" class="btn btn-danger btn-sm">削除</a>
                     </div>
-                    <h1><?php echo $target['subject']; ?></h1>
-                    <p><time datetime="<?php echo $target['date']; ?>">
-                            <?php echo $target['date']; ?>（土）
+                    <h1><?php echo h($target['subject']); ?></h1>
+                    <p><time datetime="<?php echo h($target['date']); ?>">
+                            <?php echo h($target['date']); ?>（土）
                         </time>
                     </p>
                 </div>
-                <p><?php echo $target['text']; ?></p>
+                <p><?php echo h(nl2br($target['text'])); ?></p>
             </article>
             <p class="c-news-return__link">
                 <a href="./news.php">お知らせ一覧へ戻る</a>
