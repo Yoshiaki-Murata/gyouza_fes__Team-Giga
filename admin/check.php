@@ -18,8 +18,6 @@ if (!empty($_POST)) { //ポスト送信ができたら
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            check_array($result);
-
             if (password_verify($password,$result["password"])) {
                 $_SESSION["id"] = session_id();
                 $_SESSION["username"] = $result["username"];
