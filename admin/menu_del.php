@@ -3,9 +3,10 @@ session_start();
 require_once '../inc/function.php';
 
 // マスター以外は削除出来ない仕様
+
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
     $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
-    // header("location:menu.php");
+    header("location:menu.php");
     exit();
 }
 
@@ -24,15 +25,11 @@ if (!empty($_POST)) {
 
             if (!$target) {
                 $_SESSION["del_err"] = "指定されたメニューが見つかりません";
-                // header("location:menu.php");
+                header("location:menu.php");
                 exit();
             }
         } catch (PDOException $e) {
             exit("エラー" . $e->getMessage());
-        }
-        function h($str)
-        {
-            return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
         }
     }
 }
@@ -57,7 +54,7 @@ if (!empty($_POST)) {
                 <tr>
                     <th>id</th>
                     <th>商品名</th>
-                    <th>内容量</th>
+                    <th>個数</th>
                     <th>価格</th>
                     <th>商品説明</th>
                     <th>店舗ID</th>
@@ -67,10 +64,10 @@ if (!empty($_POST)) {
                 <tr>
                     <td><?php echo $target["menu_id"]; ?></td>
                     <td><?php echo $target["product"]; ?></td>
-                    <td><?php echo $target["pieces"]; ?></td>
-                    <td><?php echo $target["price"]; ?></td>
+                    <td><?php echo $target["pieces"]; ?>個入り</td>
+                    <td><?php echo $target["price"]; ?>円</td>
                     <td><?php echo $target["product_detail"]; ?></td>
-                    <td><?php echo $target["shop_id"]; ?></td>
+                    <td>B-<?php echo $target["shop_id"]; ?></td>
                 </tr>
             </tbody>
         </table>
@@ -82,8 +79,9 @@ if (!empty($_POST)) {
             <div class="mb-5 text-center">
                 <input type="hidden" name="id" value="<?php echo $target["menu_id"]; ?>">
 
-                <a href="menu.php" class="btn btn-secondary me-3">戻る</a>
-                <input type="submit" value="削除" class="btn btn-danger">
+
+                <input type="submit" value="削除" class="btn btn-danger me-5">
+                <a href="menu.php" class="btn btn-secondary">戻る</a>
             </div>
         </form>
     </main>
