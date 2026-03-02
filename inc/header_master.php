@@ -11,6 +11,7 @@
                  <li><a href="menu.php" class="text-reset">MENU</a></li>
                  <li><a href="../admin/./shop.php" class="text-reset">SHOP</a></li>
                  <li><a href="./../admin/faq.php" class="text-reset">FAQ</a></li>
+                 <li><a href="./../admin/contact.php" class="text-reset">COMTACT</a></li>
                  <li><a href="./../admin/./logout.php" class="text-reset">LOGOUT</a></li>
              </ul>
          </nav>
