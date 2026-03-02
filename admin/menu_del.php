@@ -1,0 +1,92 @@
+<?php
+session_start();
+require_once '../inc/function.php';
+
+// マスター以外は削除出来ない仕様
+if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
+    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    // header("location:menu.php");
+    exit();
+}
+
+if (!empty($_POST)) {
+    if (!empty($_POST["id"])) {
+        $menuid = (int)$_POST["id"];
+
+        try {
+            $db = db_connect();
+            $sql = "SELECT menus.id AS menu_id,menus.product,menus.pieces,menus.price,menus.product_detail,menus.shop_id FROM menus WHERE menus.id = :menuid";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(":menuid", $menuid, PDO::PARAM_INT);
+            $stmt->execute();
+            $target = "";
+            $target = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$target) {
+                $_SESSION["del_err"] = "指定されたメニューが見つかりません";
+                // header("location:menu.php");
+                exit();
+            }
+        } catch (PDOException $e) {
+            exit("エラー" . $e->getMessage());
+        }
+        function h($str)
+        {
+            return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+        }
+    }
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>メニュー削除 ‐確認‐</title>
+</head>
+
+<body>
+    <main role="main" class="container" style="padding:60px 15px 0">
+        <h1 class="my-5 text-center">メニュー削除 -確認-</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>商品名</th>
+                    <th>内容量</th>
+                    <th>価格</th>
+                    <th>商品説明</th>
+                    <th>店舗ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><?php echo $target["menu_id"]; ?></td>
+                    <td><?php echo $target["product"]; ?></td>
+                    <td><?php echo $target["pieces"]; ?></td>
+                    <td><?php echo $target["price"]; ?></td>
+                    <td><?php echo $target["product_detail"]; ?></td>
+                    <td><?php echo $target["shop_id"]; ?></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mt-5 mb-5">
+            <p class="text-center">このメニューを削除しますか？</p>
+        </div>
+
+        <form action="./menu_del_do.php" method="post">
+            <div class="mb-5 text-center">
+                <input type="hidden" name="id" value="<?php echo $target["menu_id"]; ?>">
+
+                <a href="menu.php" class="btn btn-secondary me-3">戻る</a>
+                <input type="submit" value="削除" class="btn btn-danger">
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>
