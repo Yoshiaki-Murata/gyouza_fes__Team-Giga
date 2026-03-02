@@ -10,15 +10,26 @@ require_once '../inc/function.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
 
 <body>
+    <?php include('../inc/header_master.php');  ?>
+
     <main role="main" class="container" style="padding:60px 15px 0">
         <!-- <?php check_array($result); ?> -->
 
-        <h1 class="my-5 text-center">商品新規登録</h1>
+        <h1 class="my-5 c-title__main">商品詳細編集</h1>
         <form action="./menu_add_do.php" method="post" enctype="multipart/form-data">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">

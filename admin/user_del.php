@@ -21,8 +21,8 @@ if (!empty($_POST)) {
             $target = "";
             $target = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if(!$target){
-                $_SESSION["del_err"]="指定されたユーザーが見つかりません";
+            if (!$target) {
+                $_SESSION["del_err"] = "指定されたユーザーが見つかりません";
                 header("location:user.php");
                 exit();
             }
@@ -40,7 +40,17 @@ if (!empty($_POST)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+
     <title>ユーザー削除 ‐確認‐</title>
 </head>
 
