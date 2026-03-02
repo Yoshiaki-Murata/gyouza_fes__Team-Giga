@@ -37,6 +37,8 @@ try {
     <title>商品編集・登録</title>
 </head>
 <body>
+    <?php include('../inc/header_master.php');  ?>
+
     <main role="main" class="container" style="padding:60px 15px 0">
         <h1 class="my-5 text-center">商品登録・編集</h1>
         <form action="./menu_edit_do.php" method="post" enctype="multipart/form-data">

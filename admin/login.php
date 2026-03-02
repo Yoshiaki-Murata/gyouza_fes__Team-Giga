@@ -2,7 +2,7 @@
 session_start();
 require_once '../inc/function.php';
 
-if(isset($_SESSION["id"])){
+if (isset($_SESSION["id"])) {
     header("location:index.php");
     exit();
 }
@@ -16,16 +16,25 @@ if(isset($_SESSION["id"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
 
     <title>-管理者ログイン-福岡餃子FES</title>
 </head>
 
 <body>
+
     <main role="main" class="container" style="padding:60px 15px 0">
-        
-        <h1 class="my-5 text-center">ログイン</h1>
+
+        <h1 class="my-5 c-title__main">ログイン</h1>
         <form action="./check.php" method="post">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
