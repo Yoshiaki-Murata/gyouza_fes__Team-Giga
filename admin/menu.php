@@ -32,6 +32,15 @@ try {
         <h1 class="my-5 text-center">商品管理画面</h1>
         <h2>商品新規追加</h2>
         <a href="menu_add.php" class="mb-5">新規登録はこちらより</a>
+        <?php if (!empty($_SESSION["menu_edit_success"])): ?>
+            <div>
+                <p>
+                    <?php echo $_SESSION["menu_edit_success"];
+                            $_SESSION["menu_edit_success"]="";
+                    ?>
+                </p>
+            </div>
+        <?php endif; ?>
         <h2 class="mt-5">商品一覧</h2>
         <table class="table">
             <thead>
@@ -47,8 +56,8 @@ try {
                     <tr>
                         <td><?php echo $row["menu_id"]; ?></td>
                         <td><?php echo $row["product"]; ?></td>
-                        <td><?php echo $row["pieces"]."個"; ?></td>
-                        <td><?php echo $row["price"]."円（税込み）"; ?></td>
+                        <td><?php echo $row["pieces"] . "個"; ?></td>
+                        <td><?php echo $row["price"] . "円（税込み）"; ?></td>
                         <td><?php echo $row["shop"]; ?></td>
                         <td class="row">
                             <form action="menu_edit.php" method="post" class="col">
@@ -67,14 +76,14 @@ try {
 
         <?php if (!empty($_SESSION["del_err"])): ?>
             <p class="text-center bs-danger-text-emphasis"><?php echo htmlspecialchars($_SESSION["del_err"], ENT_QUOTES, "UTF-8");
-                unset($_SESSION["del_err"]);
-                ?>
+                                                            unset($_SESSION["del_err"]);
+                                                            ?>
             </p>
         <?php endif ?>
-         <?php if (!empty($_SESSION["del_msg"])): ?>
+        <?php if (!empty($_SESSION["del_msg"])): ?>
             <p class="text-center bs-primary-text-emphasis"><?php echo htmlspecialchars($_SESSION["del_msg"], ENT_QUOTES, "UTF-8");
-                unset($_SESSION["del_msg"]);
-                ?>
+                                                            unset($_SESSION["del_msg"]);
+                                                            ?>
             </p>
         <?php endif ?>
     </main>
