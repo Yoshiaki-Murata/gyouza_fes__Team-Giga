@@ -21,15 +21,25 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
     <title>商品管理画面</title>
 </head>
 
 <body>
+    <?php include('../inc/header_master.php');  ?>
+
     <main role="main" class="container" style="padding:60px 15px 0">
 
-        <h1 class="my-5 text-center">商品管理画面</h1>
+        <h1 class="my-5 c-title__main">商品管理画面</h1>
         <h2>商品新規追加</h2>
         <a href="menu_add.php" class="mb-5">新規登録はこちらより</a>
         <h2 class="mt-5">商品一覧</h2>
@@ -47,8 +57,8 @@ try {
                     <tr>
                         <td><?php echo $row["menu_id"]; ?></td>
                         <td><?php echo $row["product"]; ?></td>
-                        <td><?php echo $row["pieces"]."個"; ?></td>
-                        <td><?php echo $row["price"]."円（税込み）"; ?></td>
+                        <td><?php echo $row["pieces"] . "個"; ?></td>
+                        <td><?php echo $row["price"] . "円（税込み）"; ?></td>
                         <td><?php echo $row["shop"]; ?></td>
                         <td class="row">
                             <form action="menu_edit.php" method="post" class="col">
@@ -67,14 +77,14 @@ try {
 
         <?php if (!empty($_SESSION["del_err"])): ?>
             <p class="text-center bs-danger-text-emphasis"><?php echo htmlspecialchars($_SESSION["del_err"], ENT_QUOTES, "UTF-8");
-                unset($_SESSION["del_err"]);
-                ?>
+                                                            unset($_SESSION["del_err"]);
+                                                            ?>
             </p>
         <?php endif ?>
-         <?php if (!empty($_SESSION["del_msg"])): ?>
+        <?php if (!empty($_SESSION["del_msg"])): ?>
             <p class="text-center bs-primary-text-emphasis"><?php echo htmlspecialchars($_SESSION["del_msg"], ENT_QUOTES, "UTF-8");
-                unset($_SESSION["del_msg"]);
-                ?>
+                                                            unset($_SESSION["del_msg"]);
+                                                            ?>
             </p>
         <?php endif ?>
     </main>

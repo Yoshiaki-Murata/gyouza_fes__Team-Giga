@@ -88,9 +88,6 @@ try {
 
   </main>
 
-  <!-- footer -->
-  <?php include('../inc/footer_master.php');  ?>
-
   <a href="#top" class="c-btn__top"><img src="../img/back-top.png" alt="topへ戻る"></a>
 </body>
 
