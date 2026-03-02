@@ -42,6 +42,15 @@ try {
         <h1 class="my-5 c-title__main">商品管理画面</h1>
         <h2>商品新規追加</h2>
         <a href="menu_add.php" class="mb-5">新規登録はこちらより</a>
+        <?php if (!empty($_SESSION["menu_edit_success"])): ?>
+            <div>
+                <p>
+                    <?php echo $_SESSION["menu_edit_success"];
+                            $_SESSION["menu_edit_success"]="";
+                    ?>
+                </p>
+            </div>
+        <?php endif; ?>
         <h2 class="mt-5">商品一覧</h2>
         <table class="table">
             <thead>
