@@ -55,7 +55,7 @@ try {
             <!-- ここから「本文」-->
 
             <h1 class="c-title__main">店舗 - 削除確認</h1>
-            <form action="./shop_add_do.php" method="post">
+            <form action="./shop_del_do.php" method="post">
 
                 <div class="form-group">
                     <label>店舗名</label>
