@@ -6,12 +6,13 @@
          <nav class="c-nav">
              <ul>
                  <li><a href="index.php" class="text-reset">TOP</a></li>
-                 <li><a href="./../admin/./user.php" class="text-reset">USER</a></li>
+                 <li><a href="user.php" class="text-reset">USER</a></li>
                  <li><a href="news.php" class="text-reset">NEWS</a></li>
                  <li><a href="menu.php" class="text-reset">MENU</a></li>
-                 <li><a href="../admin/./shop.php" class="text-reset">SHOP</a></li>
-                 <li><a href="./../admin/faq.php" class="text-reset">FAQ</a></li>
-                 <li><a href="./../admin/./logout.php" class="text-reset">LOGOUT</a></li>
+                 <li><a href="shop.php" class="text-reset">SHOP</a></li>
+                 <li><a href="faq.php" class="text-reset">FAQ</a></li>
+                 <li><a href="contact.php" class="text-reset">CONTACT</a></li>
+                 <li><a href="logout.php" class="text-reset">LOGOUT</a></li>
              </ul>
          </nav>
      </div>

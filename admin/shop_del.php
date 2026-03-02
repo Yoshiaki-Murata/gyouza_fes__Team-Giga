@@ -63,11 +63,11 @@ try {
                 </div>
                 <div class="form-group">
                     <label>ブース番号</label>
-                    <input type="text" name="boos_number" class="form-control" value="<?php echo h($shop['boos_bumber']); ?>" required>
+                    <input type="text" name="boos_number" class="form-control" value="<?php echo h($shop['boos_number']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label>店舗詳細</label>
-                    <textarea name="shop_detail" class="form-control" rows="5" value="<?php echo h($shop['shop_detail']); ?>" required></textarea>
+                    <textarea name="shop_detail" class="form-control" rows="5" required><?php echo h($shop['shop_detail']); ?></textarea>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="削除する">
