@@ -67,6 +67,7 @@ img {
 
 .c-logo:hover,
 .c-nav li:hover,
+.c-nav-master li:hover,
 .l-footer a:hover,
 .c-news-detail :hover,
 .c-topnews-link :hover,
@@ -78,6 +79,7 @@ img {
 .c-info__map-link:hover,
 .c-logo:hover,
 .c-nav li:hover,
+.c-nav-master li:hover,
 .c-contact__text a:hover {
     filter: brightness(1.15);
     opacity: 0.4;
@@ -151,6 +153,12 @@ img {
     gap: 30px;
 }
 
+.c-nav-master ul {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
 .l-header {
     background-color: var(--gyoza-black);
     color: var(--gyoza-white);
@@ -164,6 +172,12 @@ img {
 .c-nav li {
     font-family: "Josefin Sans", serif;
     font-size: clamp(1.25rem, 0.986rem + 1.127vw, 2rem);
+    font-weight: bold;
+}
+
+.c-nav-master li {
+    font-family: "Josefin Sans", serif;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -276,7 +290,9 @@ img {
 
 
 @media screen and (max-width: 768px) {
-    .c-nav {
+
+    .c-nav,
+    .c-nav-master {
         visibility: hidden;
     }
 }
