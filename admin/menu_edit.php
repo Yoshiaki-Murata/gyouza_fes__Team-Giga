@@ -70,7 +70,7 @@ require_once '../inc/function.php';
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="shop_id" class="form-label">店舗名</label>
-                    <select name="shop_id" id="shop_id" class="form-select form-select-sm mb-5" aria-label="Small select example">
+                    <select name="shop_id" id="shop_id" class="form-control form-control-sm mb-5" aria-label="Small select example">
                         <?php foreach ($result as  $row): ?>
                             <option value="<?php echo $row["shop_id"]; ?>">
                                 <?php echo $row["shop"]; ?>

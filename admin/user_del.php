@@ -55,6 +55,8 @@ if (!empty($_POST)) {
 </head>
 
 <body>
+    <?php include('../inc/header_master.php');  ?>
+
     <main role="main" class="container" style="padding:60px 15px 0">
         <h1 class="my-5 text-center">ユーザー削除 -確認-</h1>
         <table class="table">

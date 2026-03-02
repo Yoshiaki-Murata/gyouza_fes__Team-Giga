@@ -50,8 +50,10 @@ if (!empty($_POST)) {
 </head>
 
 <body>
+    <?php include('../inc/header_master.php');  ?>
+
     <main role="main" class="container" style="padding:60px 15px 0">
-        <h1 class="my-5 text-center">ユーザー編集</h1>
+        <h1 class="my-5 c-title__main">ユーザー編集</h1>
         <form action="./user_edit_do.php" method="post">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
@@ -68,7 +70,7 @@ if (!empty($_POST)) {
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="role_id" class="form-label">権限</label>
-                    <select name="role_id" id="role_id" class="form-select form-select-sm mb-5" aria-label="Small select example">
+                    <select name="role_id" id="role_id" class="form-control form-control-sm mb-5" aria-label="Small select example">
                         <?php foreach ($result as  $row): ?>
                             <option value="<?php echo $row["id"]; ?>" <?php echo $row["id"] === $target["role_id"] ? "selected" : "" ?>>
                                 <?php echo $row["role"]; ?>
