@@ -56,8 +56,8 @@ if (!empty($_POST)) {
             $_SESSION["menu_add_success"] = "商品の新規追加が完了しました‼";
             // メニューにもどる
 
-
-
+            header('location:menu.php');
+            exit();
         } catch (PDOException $e) {
             exit("エラー" . $e->getMessage());
         }
