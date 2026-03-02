@@ -1,5 +1,23 @@
 <?php
 require_once __DIR__ . '/../inc/function.php';
+
+try {
+  // PDO インスタンスの作成
+  $db = db_connect();
+
+  // プリペアードステートメントの作成
+  $sql = 'SELECT * FROM shops ORDER BY boos_number asc ';
+  $stmt = $db->prepare($sql);
+
+
+  // SQLの実行
+  $stmt->execute();
+
+  // 取得したレコードを連想配列で1レコードずつ受け取る
+  $shops = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  exit("Error:" . $e->getMessage());
+}
 ?>
 
 
@@ -27,28 +45,50 @@ require_once __DIR__ . '/../inc/function.php';
 
   <?php include('../inc/header_master.php');  ?>
 
-  <main role="main" class="container" style="padding:60px 15px 0">
-    <h1 class="c-title__main" data-sub-title="店舗一覧">SHOPS</h1>
+  <main role="main" class="container l-header-margin">
+    <section class="l-wrapper-second">
+      <h1 class="c-title__main" data-sub-title="店舗一覧">SHOPS</h1>
 
+      <div class="d-grid mx-auto">
+        <a href="./shop_add.php" class="btn btn-primary" type="button">新規店舗追加</a>
+      </div>
+      <div class="l-wrapper-second">
+        <table class="table table-striped-columns">
+          <thead>
+            <tr class="row">
+              <th class="col">店舗名</th>
+              <th class="col">操作</th>
+              <th class="col">ブース番号</th>
+              <th class="col-6">店舗詳細</th>
+            </tr>
+          </thead>
+          <tbody>
 
-    <div class="l-wrapper-second">
-      <table class="table table-striped-columns">
-        <thead>
-          <tr class="row">
-            <th class="col">店舗名</th>
-            <th class="col">ブース番号</th>
-            <th class="col-6">店舗詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="row">
-            <th class="col">博多ぎょうざ堂</th>
-            <td class="col">B-01</td>
-            <td class="col-6">福岡を代表する老舗餃子専門店。国産豚とキャベツを使用し、ひとつひとつ手包みで仕上げています。外はカリッと、中は肉汁たっぷりの博多スタイルが人気。</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <?php foreach ($shops as $shop): ?>
+              <tr class="row">
+                <th class="col">
+                  <?php echo h($shop['shop']); ?>
+                </th>
+                <td class="col">
+                  <div class="mr-2">
+                    <a href="./shop_edit.php?id=<?php echo h($shop['id']); ?>" class="btn btn-primary btn-sm">修正</a>
+                    <a href="./shop_del.php?id=<?php echo h($shop['id']); ?>" class="btn btn-danger btn-sm">削除</a>
+                  </div>
+                </td>
+                <td class="col">
+                  <?php echo h($shop['boos_number']); ?>
+                </td>
+                <td class="col-6">
+                  <?php echo nl2br(h($shop['shop_detail'])); ?>
+                </td>
+
+              </tr>
+            <?php endforeach; ?>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
