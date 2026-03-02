@@ -4,7 +4,7 @@ require_once '../inc/function.php';
 
 try {
     $db = db_connect();
-    $sql = "SELECT menus.shop_id,shops.shop FROM menus INNER JOIN shops ON menus.shop_id = shops.id";
+    $sql = "SELECT * FROM shops";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -83,7 +83,7 @@ try {
                     <label for="shop_id" class="form-label">店舗名</label>
                     <select name="shop_id" id="shop_id" class="form-control form-control-sm mb-5" aria-label="Small select example">
                         <?php foreach ($result as  $row): ?>
-                            <option value="<?php echo $row["shop_id"]; ?>">
+                            <option value="<?php echo $row["id"]; ?>">
                                 <?php echo $row["shop"]; ?>
                             </option>
                         <?php endforeach; ?>
