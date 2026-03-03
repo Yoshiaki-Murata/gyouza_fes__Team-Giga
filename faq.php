@@ -7,18 +7,19 @@ try {
   $db = db_connect();
 
   // questions
-  $sql = 'SELECT question,answer,category_id FROM questions';
+  $sql = 'SELECT id, category_id, question, answer FROM questions ORDER BY category_id, id';
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $question = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   // categories
-  $sql_2 = 'SELECT * FROM categories';
+  $sql_2 = 'SELECT id, category FROM categories ORDER BY id';
   $stmt_2 = $db->prepare($sql_2);
   $stmt_2->execute();
   $category = $stmt_2->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-  exit("Error:" . $e->getMessage());
+  error_log($e->getMessage());
+  exit('システムエラーが発生しました');
 }
 ?>
 

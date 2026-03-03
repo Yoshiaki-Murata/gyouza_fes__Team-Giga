@@ -31,9 +31,14 @@ if (!empty($_POST)) {
 
         $stmt->execute();
 
+        if ($stmt->rowCount() === 0) {
+            exit('更新できませんでした');
+        }
+
         header('Location: faq.php');
         exit();
     } catch (PDOException $e) {
-        exit('Error:' . $e->getMessage());
+        error_log($e->getMessage());
+        exit('システムエラーが発生しました');
     }
 }

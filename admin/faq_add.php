@@ -5,7 +5,7 @@ $categories = array();
 
 try {
     $db = db_connect();
-    $sql = 'SELECT * FROM categories';
+    $sql = 'SELECT id, category FROM categories ORDER BY id';
     $stmt = $db->prepare($sql);
     $stmt->execute();
 
@@ -14,7 +14,8 @@ try {
         $categories[$category['id']] = $category['category'];
     }
 } catch (PDOException $e) {
-    exit("Error:" . $e->getMessage());
+    error_log($e->getMessage());
+    exit('システムエラーが発生しました');
 }
 
 ?>
@@ -50,12 +51,19 @@ try {
 
                 <div class="form-group">
                     <label>質問</label>
-                    <input type="text" name="question" class="form-control" placeholder="質問" required>
+                    <input type="text"
+                        name="question" class="form-control"
+                        placeholder="質問"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label>回答</label>
-                    <textarea name="answer" class="form-control" rows="5" placeholder="回答" required></textarea>
+                    <textarea name="answer"
+                        class="form-control"
+                        rows="5"
+                        placeholder="回答"
+                        required></textarea>
                 </div>
 
                 <div class="mb-3">
