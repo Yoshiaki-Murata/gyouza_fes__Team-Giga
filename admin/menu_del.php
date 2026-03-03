@@ -86,12 +86,13 @@ if (!empty($_POST)) {
             <p class="text-center">このメニューを削除しますか？</p>
         </div>
 
-        <form action="./menu_del_do.php" method="post" onsubmit="return confirm('後悔しませんね？');">
+        <form action="./menu_del_do.php" method="post">
             <div class="mb-5 text-center">
 
                 <input type="hidden" name="id" value="<?php echo $target["menu_id"]; ?>">
 
-                <input type="submit" value="削除" class="btn btn-danger me-5">
+                <input type="submit" value="削除する
+                " class="btn btn-danger me-5" onclick="return confirm('本当に削除しますか？');">
                 <a href="menu.php" class="btn btn-secondary">戻る</a>
             </div>
         </form>
