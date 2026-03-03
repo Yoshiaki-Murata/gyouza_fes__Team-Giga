@@ -3,7 +3,7 @@
          <p class="c-logo">
              管理者ページ
          </p>
-         <nav class="c-nav">
+         <nav class="c-nav-master">
              <ul>
                  <li><a href="index.php" class="text-reset">TOP</a></li>
                  <li><a href="user.php" class="text-reset">USER</a></li>
