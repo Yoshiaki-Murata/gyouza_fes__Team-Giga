@@ -1,11 +1,12 @@
 <?php
+session_start();
 require_once __DIR__ . '/../inc/function.php';
 
 if (!empty($_POST)) {
     if (!empty($_POST['question']) && !empty($_POST['answer'])) {
         // データのうけとり
-        $question = $_POST['question'];
-        $answer = $_POST['answer'];
+        $question = trim($_POST['question'] ?? '');
+        $question = trim($_POST['question'] ?? '');
         $category_id = (int)($_POST['category_id'] ?? 0);
 
         if ($category_id === 0) {
@@ -28,7 +29,8 @@ if (!empty($_POST)) {
             header('location:faq.php');
             exit();
         } catch (PDOException $e) {
-            exit("Error:" . $e->getMessage());
+            error_log($e->getMessage());
+            exit('システムエラーが発生しました');
         }
     }
 }

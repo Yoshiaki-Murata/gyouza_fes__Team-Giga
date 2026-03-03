@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+$errors = $_SESSION['errors'] ?? [];
+$old    = $_SESSION['old'] ?? [];
+
+// 一度表示したら消す
+unset($_SESSION['errors'], $_SESSION['old']);
+?>
+
 <!doctype html>
 <html lang="ja">
 
@@ -22,19 +32,27 @@
             <!-- ここから「本文」-->
 
             <h1 class="c-title__main">新規お知らせ投稿</h1>
+            <?php if (!empty($errors)): ?>
+                <div class="alert alert-danger">
+                    <?php foreach ($errors as $error): ?>
+                        <div><?= h($error) ?></div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
             <form action="./news_add_do.php" method="post">
 
                 <div class="form-group">
                     <label>記事タイトル</label>
-                    <input type="text" name="subject" class="form-control" placeholder="お知らせタイトル" required>
+                    <input type="text" name="subject" class="form-control <?= isset($errors['subject']) ? 'is-invalid' : '' ?>" value="<?= h($old['subject'] ?? '') ?>" maxlength="255" placeholder="お知らせタイトル" required>
                 </div>
                 <div class="form-group">
                     <label>ページタイトル</label>
-                    <input type="text" name="titletag" class="form-control" placeholder="ページタイトル(ここのみ記入)｜ふくおか餃子FES" required>
+                    <input type="text" name="titletag" class="form-control <?= isset($errors['subject']) ? 'is-invalid' : '' ?>" value="<?= h($old['titletag'] ?? '') ?>" maxlength="255" placeholder="ページタイトル(ここのみ記入)｜ふくおか餃子FES" required>
                 </div>
                 <div class="form-group">
                     <label>本文</label>
-                    <textarea name="text" class="form-control" rows="5" placeholder="お知らせ本文" required></textarea>
+                    <textarea name="text" class="form-control <?= isset($errors['subject']) ? 'is-invalid' : '' ?>" rows="5" placeholder="お知らせ本文" required><?= h($old['text'] ?? '') ?></textarea>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="投稿する">

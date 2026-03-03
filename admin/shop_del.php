@@ -11,22 +11,29 @@ if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
 
 $id = (int)($_GET['id'] ?? 0);
 
-if ($id === 0) {
+if ($id <= 0) {
     exit('IDが不正です');
 }
 
-// DB接続
 try {
     $db = db_connect();
-    $sql = 'SELECT * FROM shops WHERE id=:id';
+
+    $sql = 'SELECT id, shop, boos_number, shop_detail 
+            FROM shops 
+            WHERE id=:id';
+
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
-    // 結果セットを連想配列の形で取得
     $shop = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$shop) {
+        exit('データが存在しません');
+    }
 } catch (PDOException $e) {
-    exit('エラー: ' . $e->getMessage());
+    error_log($e->getMessage());
+    exit('システムエラーが発生しました');
 }
 
 ?>
@@ -37,7 +44,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo h($news['titletag']); ?>店舗削除｜ふくおか餃子FES</title>
+    <title><?= h($shop['shop']); ?>店舗削除｜ふくおか餃子FES</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -56,18 +63,24 @@ try {
 
             <h1 class="c-title__main">店舗 - 削除確認</h1>
             <form action="./shop_del_do.php" method="post">
-
+                <!-- <input type="hidden" name="id" value="<?= h($shop['id']); ?>"> -->
                 <div class="form-group">
                     <label>店舗名</label>
-                    <input type="text" name="shop" class="form-control" value="<?php echo h($shop['shop']); ?>" required>
+                    <div class="form-control-plaintext">
+                        <?php echo h($shop['shop']); ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>ブース番号</label>
-                    <input type="text" name="boos_number" class="form-control" value="<?php echo h($shop['boos_number']); ?>" required>
+                    <div class="form-control-plaintext">
+                        <?php echo h($shop['boos_number']); ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>店舗詳細</label>
-                    <textarea name="shop_detail" class="form-control" rows="5" required><?php echo h($shop['shop_detail']); ?></textarea>
+                    <div class="form-control-plaintext">
+                        <?php echo h($shop['shop_detail']); ?>
+                    </div>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="削除する">
