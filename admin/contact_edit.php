@@ -73,14 +73,21 @@ try {
 
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
-                    <label for="date" class="form-label">送信日時</label>
-                    <input type="time" name="date" id="date" class="form-control" value="<?php echo htmlspecialchars($target["date"] ?? ''); ?>"></input>
+                    <label for="text" class="form-label">お問い合わせ内容</label>
+                    <textarea name="text" id="text" class="form-control"><?php echo htmlspecialchars($target["text"] ?? ''); ?></textarea>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="mb-5 col-6">
+                    <label for="text" class="form-label">送信日時</label>
+                    <input type="time" name="date" id="date" class="form-control" value="<?php echo htmlspecialchars($target["date"] ?? ''); ?>" readonly tabindex="-1"></input>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
-                    <label for="shop_id" class="form-label">店舗名</label>
-                    <select name="shop_id" id="shop_id" class="form-select">
+                    <label for="shop_id" class="form-label">対応ステータス</label>
+                    <select name="status_id" id="status_id" class="form-select">
                         <?php foreach ($result as $row): ?>
                             <option value="<?php echo $row["id"]; ?>" <?php echo (isset($target["status"]) && $row["id"] == $target["status"]) ? "selected" : ""; ?>>
                                 <?php echo htmlspecialchars($row["status"]); ?>
