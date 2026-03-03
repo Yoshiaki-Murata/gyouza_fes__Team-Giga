@@ -33,7 +33,7 @@ $text = isset($_POST['text']) ? $_POST['text'] : '';
             <p class="c-contact__text">入力内容をご確認ください。<br>
                 修正する場合は「修正する」ボタン、<br>この内容で送信する場合は「送信する」ボタンを押してください。</p>
 
-            <form method="post" action="./sent-copy.php" class="l-contact__form">
+            <form method="post" action="./sent.php" class="l-contact__form">
 
                 <div class="l-form__item">
                     <label>お名前</label>
