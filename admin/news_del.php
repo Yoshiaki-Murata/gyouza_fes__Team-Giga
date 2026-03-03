@@ -83,9 +83,6 @@ try {
                 </div>
                 <input type="submit" class="btn btn-danger" value="削除する" onclick="return confirm('本当に削除しますか？');">
             </form>
-
-
-
             <!-- 本文ここまで -->
         </div>
     </main>
