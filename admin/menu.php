@@ -2,8 +2,6 @@
 session_start();
 require_once '../inc/function.php';
 
-// check_array($_SESSION);
-
 try {
     $db = db_connect();
     $sql = "SELECT menus.id AS menu_id, menus.product,menus.pieces,menus.price, shops.shop FROM menus INNER JOIN shops ON menus.shop_id = shops.id";
@@ -87,17 +85,15 @@ try {
         </table>
 
         <?php if (!empty($_SESSION["del_err"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["del_err"]);
-                unset($_SESSION["del_err"]);
-                ?>
+            <p class="text-center bs-danger-text-emphasis"><?php echo htmlspecialchars($_SESSION["menu_del_err"], ENT_QUOTES, "UTF-8");
+             unset($_SESSION["menu_del_err"]);
+                                                            ?>
             </p>
         <?php endif ?>
-        <?php if (!empty($_SESSION["del_msg"])): ?>
-            <p class="text-center bs-primary-text-emphasis">
-                <?php echo h($_SESSION["del_msg"]);
-                unset($_SESSION["del_msg"]);
-                ?>
+        <?php if (!empty($_SESSION["menu_del_msg"])): ?>
+            <p class="text-center bs-primary-text-emphasis"><?php echo htmlspecialchars($_SESSION["menu_del_msg"], ENT_QUOTES, "UTF-8");
+                                                            unset($_SESSION["menu_del_msg"]);
+                                                            ?>
             </p>
         <?php endif ?>
     </main>
