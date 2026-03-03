@@ -27,13 +27,13 @@ if (!empty($_FILES)) {
 
 
 if (!empty($_POST)) {
-    if (!empty($_POST["product"]) && !empty($_POST["pieces"]) && !empty($_POST["price"]) && !empty($_POST["product_details"]) && !empty($_POST["image"]) && !empty($_POST["alt"]) && !empty($_POST["shop_id"])) {
+    if (!empty($_POST["product"]) && !empty($_POST["pieces"]) && !empty($_POST["price"]) && !empty($_POST["product_details"]) && !empty($_POST["alt"]) && !empty($_POST["shop_id"])) {
         $product = $_POST["product"];
-        $pieces = $_POST["pieces"];
-        $price = $_POST["price"];
+        $pieces = (int)$_POST["pieces"];
+        $price = (int)$_POST["price"];
         $product_details = $_POST["product_details"];
         $alt = $_POST["alt"];
-        $shop_id = $_POST["shop_id"];
+        $shop_id = (int)$_POST["shop_id"];
         // DB登録用の画像ファイル名を受け取る
         $image = $image_for_db;
 
