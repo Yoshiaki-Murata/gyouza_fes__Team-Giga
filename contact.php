@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once './inc/function.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -13,6 +19,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
         rel="stylesheet">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -56,6 +64,14 @@
                 <p class="c-btn--yellow">
                     <input type="submit" value="入力内容を確認" id="submitBtn">
                 </p>
+                <?php if (!empty($_SESSION["contact_err"])): ?>
+                    <p class="bs-danger-text-emphasis">
+                        <?php
+                        echo  $_SESSION["contact_err"];
+                        unset($_SESSION["contact_err"]);
+                        ?>
+                    </p>
+                <?php endif; ?>
             </form>
         </section>
     </main>

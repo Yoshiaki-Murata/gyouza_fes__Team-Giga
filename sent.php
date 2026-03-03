@@ -1,45 +1,52 @@
 <?php
-// データの受け取り
-$name = $_POST['name'];
-$mailaddress = $_POST['mailaddress'];
-$phonenumber = $_POST['tel'];
-$text = $_POST['text'];
+session_start();
+require_once './inc/function.php';
 
+if (!empty($_POST)) {
+    if (!empty($_POST['name']) && !empty($_POST['mailaddress']) && !empty($_POST['text'])) {
+        $name = $_POST['name'];
+        $mailaddress = $_POST['mailaddress'];
+        $text = $_POST['text'];
 
-// 必須項目のチェック(名前・本文)
-if ($name === '' || $body === '' || $text === "") {
-    header('location: contact.php'); // 空だったら入力ページへ戻す
-    exit();
+        // 電話番号が入力されたときの処理
+        if (!empty($_POST["phonenumber"])) {
+            $phonenumber = $_POST['phonenumber'];
+            if (!preg_match("/^[0-9]{10,11}$/", $phonenumber)) {
+                header("location:confirm.php");
+                $_SESSION["contact_err"] = "電話番号が不正です。数字のみ入力可能です";
+                exit();
+            }
+        }
+
+        try {
+            $db = db_connect();
+            if (!empty($_POST["phonenumber"])) {
+                $sql = "INSERT INTO contact(name,mailaddress,phonenumber,text, date, status) VALUES (:name,:mailaddress,:phonenumber,:text,now(),1)";
+            } else {
+                $sql = "INSERT INTO contact(name,mailaddress,text, date, status) VALUES (:name,:mailaddress,:text,now(),1)";
+            }
+
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+            $stmt->bindParam(":mailaddress", $mailaddress, PDO::PARAM_STR);
+            if (!empty($_POST["phonenumber"])) {
+                $stmt->bindParam(":phonenumber", $phonenumber, PDO::PARAM_STR);
+            }
+            $stmt->bindParam(":text", $text, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = true;
+        } catch (PDOException $e) {
+            $result = false;
+            exit("エラー" . $e->getMessage());
+        }
+    } else {
+        header("location:confirm.php");
+        $_SESSION["contact_err"] = "必須項目が入力されていません。入力してください";
+        exit();
+    }
 }
 
-// 電話番号のチェック
-if (!preg_match('/^[0-9]{4}$/', $pass)) {
-    header('location: bbs.php'); // 書式が違うとき入力ページへ戻す
-    exit();
-}
 
-$dsn = 'mysql:host=localhost;dbname=YOUR_DB_NAME;charset=utf8';
-$user = 'YOUR_USER_NAME';
-$password = 'YOUR_PASSWORD';
-
-try {
-    $pdo = new PDO($dsn, $user, $password);
-    $sql = "INSERT INTO inquiries (user_name, mailaddress, user_tel, message) 
-            VALUES (:user_name, :mailaddress, :user_tel, :message)";
-    $stmt = $pdo->prepare($sql);
-
-    $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
-    $stmt->bindValue(':mailaddress', $mailaddress, PDO::PARAM_STR);
-    $stmt->bindValue(':user_tel', $user_tel, PDO::PARAM_STR);
-    $stmt->bindValue(':message', $message, PDO::PARAM_STR);
-
-    $stmt->execute();
-
-    $result = true;
-} catch (PDOException $e) {
-    $result = false;
-    echo 'Error: ' . $e->getMessage();
-}
 ?>
 
 <!DOCTYPE html>

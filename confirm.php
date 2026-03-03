@@ -1,4 +1,6 @@
 <?php
+session_start();
+require_once './inc/function.php';
 
 $name = isset($_POST['name']) ? $_POST['name'] : '';
 $mailaddress = isset($_POST['mailaddress']) ? $_POST['mailaddress'] : '';
@@ -18,6 +20,8 @@ $text = isset($_POST['text']) ? $_POST['text'] : '';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -29,26 +33,26 @@ $text = isset($_POST['text']) ? $_POST['text'] : '';
             <p class="c-contact__text">入力内容をご確認ください。<br>
                 修正する場合は「修正する」ボタン、<br>この内容で送信する場合は「送信する」ボタンを押してください。</p>
 
-            <form method="post" action="./thanks.php" class="l-contact__form">
+            <form method="post" action="./sent-copy.php" class="l-contact__form">
 
                 <div class="l-form__item">
                     <label>お名前</label>
-                    <input type="text" name="user_name" value="<?php echo htmlspecialchars($user_name, ENT_QUOTES, 'UTF-8'); ?>" readonly class="c-form__box is-readonly">
+                    <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>" readonly class="c-form__box is-readonly">
                 </div>
 
                 <div class="l-form__item">
                     <label>メールアドレス</label>
-                    <input type="email" name="mailaddress" value="<?php echo htmlspecialchars($mailaddress, ENT_QUOTES, 'UTF-8'); ?>" readonly class="c-form__box is-readonly">
+                    <input type="email" name="mailaddress" id="mailaddress" value="<?php echo htmlspecialchars($mailaddress, ENT_QUOTES, 'UTF-8'); ?>" readonly class="c-form__box is-readonly">
                 </div>
 
                 <div class="l-form__item">
                     <label>お電話番号</label>
-                    <input type="tel" name="user_tel" value="<?php echo htmlspecialchars($user_tel, ENT_QUOTES, 'UTF-8'); ?>" readonly class="c-form__box is-readonly">
+                    <input type="tel" name="phonenumber" id="phonenumber" value="<?php echo htmlspecialchars($phonenumber, ENT_QUOTES, 'UTF-8'); ?>" readonly class="c-form__box is-readonly">
                 </div>
 
                 <div class="l-form__item">
                     <label>お問い合わせ内容&nbsp;</label>
-                    <textarea name="message" readonly class="c-form__box is-readonly" style="height: 150px;"><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></textarea>
+                    <textarea name="text" id="text" readonly class="c-form__box is-readonly" style="height: 150px;"><?php echo htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></textarea>
                 </div>
 
                 <div class="c-contact__btn-group">
@@ -59,6 +63,14 @@ $text = isset($_POST['text']) ? $_POST['text'] : '';
                         <input type="submit" value="送信する">
                     </p>
                 </div>
+                 <?php if (!empty($_SESSION["contact_err"])): ?>
+                        <p class="bs-danger-text-emphasis">
+                            <?php
+                            echo  $_SESSION["contact_err"];
+                            unset($_SESSION["contact_err"]);
+                            ?>
+                        </p>
+                    <?php endif; ?>
                 </div>
 
             </form>
