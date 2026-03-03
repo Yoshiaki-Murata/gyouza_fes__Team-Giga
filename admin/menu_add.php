@@ -84,7 +84,7 @@ try {
                     <select name="shop_id" id="shop_id" class="form-control form-control-sm mb-5" aria-label="Small select example">
                         <?php foreach ($result as  $row): ?>
                             <option value="<?php echo $row["id"]; ?>">
-                                <?php echo $row["shop"]; ?>
+                                <?php echo h($row["shop"]); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

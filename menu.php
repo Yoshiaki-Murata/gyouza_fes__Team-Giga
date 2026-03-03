@@ -53,22 +53,22 @@ try {
         <?php foreach ($result as $row): ?>
           <li id="b-01" class="c-menu-card">
             <div class="c-menu-card-top">
-              <p class="c-menu-card-top__number c-menu-card-top__number--padding"><?php echo $row["boos_number"] ?></p>
+              <p class="c-menu-card-top__number c-menu-card-top__number--padding"><?php echo h($row["boos_number"]); ?></p>
               <div class="c-menu-card-top-text">
-                <h2 class="c-menu-card-top-text__item"><?php echo $row["product"] ?></h2>
-                <p class="c-menu-card-top-text__price"><?php echo $row["pieces"] ?>個入り <?php echo $row["price"] ?>円（税込）</p>
+                <h2 class="c-menu-card-top-text__item"><?php echo h($row["product"]); ?></h2>
+                <p class="c-menu-card-top-text__price"><?php echo h($row["pieces"]); ?>個入り <?php echo h($row["price"]); ?>円（税込）</p>
               </div>
             </div>
-            <div class="c-menu-card-bottom <?php echo $row["menu_id"] % 2 === 0 ? "c-menu-card-bottom--reverse" : ""; ?>">
+            <div class="c-menu-card-bottom <?php echo h($row["menu_id"]) % 2 === 0 ? "c-menu-card-bottom--reverse" : ""; ?>">
               <div class="c-menu-card-bottom-container">
-                <img class="c-menu-card-bottom-container__img" src="./img/<?php echo $row["image"] ?>" alt="<?php echo $row["alt"] ?>">
+                <img class="c-menu-card-bottom-container__img" src="./img/<?php echo h($row["image"]); ?>" alt="<?php echo h($row["alt"]); ?>">
               </div>
               <div class="c-menu-card-bottom-text">
-                <p class="c-menu-card-bottom-text__itemDesc"><?php echo $row["product_detail"] ?></p>
+                <p class="c-menu-card-bottom-text__itemDesc"><?php echo h($row["product_detail"]); ?></p>
                 <div class="c-menu-card-bottom-text-shop">
-                  <p class="c-menu-card-bottom-text__shopName"><?php echo $row["shop"] ?></p>
+                  <p class="c-menu-card-bottom-text__shopName"><?php echo h($row["shop"]); ?></p>
                   <p class="c-menu-card-bottom-text__shopDesc">
-                    <?php echo $row["shop_detail"] ?>
+                    <?php echo h($row["shop_detail"]); ?>
                   </p>
                 </div>
               </div>

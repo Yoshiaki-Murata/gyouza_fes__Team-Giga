@@ -19,7 +19,7 @@ require_once './inc/function.php';
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
         rel="stylesheet">
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -67,7 +67,7 @@ require_once './inc/function.php';
                 <?php if (!empty($_SESSION["contact_err"])): ?>
                     <p class="bs-danger-text-emphasis">
                         <?php
-                        echo  $_SESSION["contact_err"];
+                        echo h($_SESSION["contact_err"]);
                         unset($_SESSION["contact_err"]);
                         ?>
                     </p>

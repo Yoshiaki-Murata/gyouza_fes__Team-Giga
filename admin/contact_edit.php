@@ -8,7 +8,7 @@ $target = []; // 初期化
 if (!empty($_POST["id"])) {
     $id = (int)$_POST["id"];
     try {
-        $db = db_connect();    
+        $db = db_connect();
         $sql = "SELECT * FROM contact WHERE id=:id ";
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -54,35 +54,35 @@ try {
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
                     <label for="name" class="form-label">氏名</label>
-                    <input type="text" name="name" id="name" class="form-control" value="<?php echo htmlspecialchars($target["name"] ?? ''); ?>">
+                    <input type="text" name="name" id="name" class="form-control" value="<?php echo h($target["name"] ?? ''); ?>">
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="mailaddress" class="form-label">メールアドレス</label>
-                    <input type="email" name="mailaddress" id="mailaddress" class="form-control" value="<?php echo htmlspecialchars($target["mailaddress"] ?? ''); ?>">
+                    <input type="email" name="mailaddress" id="mailaddress" class="form-control" value="<?php echo h($target["mailaddress"] ?? ''); ?>">
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="phonenumber" class="form-label">電話番号</label>
-                    <input type="text" name="phonenumber" id="phonenumber" class="form-control" value="<?php echo htmlspecialchars($target["phonenumber"] ?? ''); ?>">
+                    <input type="text" name="phonenumber" id="phonenumber" class="form-control" value="<?php echo h($target["phonenumber"] ?? ''); ?>">
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="text" class="form-label">お問い合わせ内容</label>
-                    <textarea name="text" id="text" class="form-control"><?php echo htmlspecialchars($target["text"] ?? ''); ?></textarea>
+                    <textarea name="text" id="text" class="form-control"><?php echo h($target["text"] ?? ''); ?></textarea>
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="text" class="form-label">送信日時</label>
-                    <input type="time" name="date" id="date" class="form-control" value="<?php echo htmlspecialchars($target["date"] ?? ''); ?>" readonly tabindex="-1"></input>
+                    <input type="time" name="date" id="date" class="form-control" value="<?php echo h($target["date"] ?? ''); ?>" readonly tabindex="-1"></input>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -91,7 +91,7 @@ try {
                     <select name="status_id" id="status_id" class="form-select">
                         <?php foreach ($result as $row): ?>
                             <option value="<?php echo $row["id"]; ?>" <?php echo (isset($target["status"]) && $row["id"] == $target["status"]) ? "selected" : ""; ?>>
-                                <?php echo htmlspecialchars($row["status"]); ?>
+                                <?php echo h($row["status"]); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -99,12 +99,12 @@ try {
             </div>
 
             <div class="mb-5 text-center">
-                <input type="hidden" name="id" value="<?php echo htmlspecialchars($target["id"] ?? ''); ?>">
+                <input type="hidden" name="id" value="<?php echo h($target["id"] ?? ''); ?>">
                 <input type="submit" value="編集" class="btn btn-primary">
             </div>
         </form>
         <?php if (!empty($_SESSION["contact_edit_err"])): ?>
-            <p class="text-center bs-danger-text-emphasis"><?php echo htmlspecialchars($_SESSION["contact_edit_err"], ENT_QUOTES, "UTF-8");
+            <p class="text-center bs-danger-text-emphasis"><?php echo h($_SESSION["contact_edit_err"], ENT_QUOTES, "UTF-8");
                                                             unset($_SESSION["contact_edit_err"]);
                                                             ?>
             </p>

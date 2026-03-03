@@ -53,13 +53,13 @@ try {
                     <?php foreach ($news as $article): ?>
                         <div class="c-news__detail">
                             <dt>
-                                <time datetime="<?php echo $article['date']; ?>">
-                                    <?php echo format_jp_date($article['date']); ?>
+                                <time datetime="<?php echo h($article['date']); ?>">
+                                    <?php echo h(format_jp_date($article['date'])); ?>
                                 </time>
                             </dt>
                             <dd>
-                                <a href="news_detail.php?id=<?php echo $article['id'] ?>">
-                                    <?php echo $article['subject']; ?>
+                                <a href="news_detail.php?id=<?php echo h($article['id']); ?>">
+                                    <?php echo h($article['subject']); ?>
                                 </a>
                             </dd>
                         </div>

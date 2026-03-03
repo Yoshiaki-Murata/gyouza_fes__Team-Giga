@@ -4,7 +4,7 @@ require_once '../inc/function.php';
 
 try {
     $db = db_connect();
-    $sql = "SELECT menus.id AS menu_id, menus.product,menus.pieces,menus.price, shops.shop FROM menus INNER JOIN shops ON menus.shop_id = shops.id;";
+    $sql = "SELECT menus.id AS menu_id, menus.product,menus.pieces,menus.price, shops.shop FROM menus INNER JOIN shops ON menus.shop_id = shops.id";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -43,7 +43,7 @@ try {
         <?php if (!empty($_SESSION["menu_edit_success"])): ?>
             <div>
                 <p>
-                    <?php echo $_SESSION["menu_edit_success"];
+                    <?php echo h($_SESSION["menu_edit_success"]);
                     $_SESSION["menu_edit_success"] = "";
                     ?>
                 </p>
@@ -60,13 +60,15 @@ try {
                     <th>店舗名</th>
                     <th>操作</th>
                 </tr>
+            </thead>
+            <tbody>
                 <?php foreach ($result as $row): ?>
                     <tr>
-                        <td><?php echo $row["menu_id"]; ?></td>
-                        <td><?php echo $row["product"]; ?></td>
+                        <td><?php echo h($row["menu_id"]); ?></td>
+                        <td><?php echo h($row["product"]); ?></td>
                         <td><?php echo $row["pieces"] . "個"; ?></td>
                         <td><?php echo $row["price"] . "円（税込み）"; ?></td>
-                        <td><?php echo $row["shop"]; ?></td>
+                        <td><?php echo h($row["shop"]); ?></td>
                         <td class="row">
                             <form action="menu_edit.php" method="post" class="col">
                                 <input type="hidden" name="id" value="<?php echo $row["menu_id"] ?>">
@@ -79,7 +81,7 @@ try {
                         </td>
                     </tr>
                 <?php endforeach; ?>
-            </thead>
+            </tbody>
         </table>
 
         <?php if (!empty($_SESSION["del_err"])): ?>
