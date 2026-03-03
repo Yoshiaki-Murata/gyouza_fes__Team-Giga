@@ -80,8 +80,8 @@ if (!empty($_POST)) {
 
         <form action="./user_del_do.php" method="post">
             <div class="mb-5 text-center">
-                <input type="hidden" name="id" value="<?php echo h($target["user_id"]); ?>">
-                <input type="submit" value="削除" class="btn btn-danger">
+                <input type="hidden" name="id" value="<?php echo $target["user_id"]; ?>">
+                <input type="submit" value="削除" class="btn btn-danger" onclick="return confirm('本当に削除しますか？');">
             </div>
         </form>
     </main>

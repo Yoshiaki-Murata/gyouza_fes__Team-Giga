@@ -47,7 +47,7 @@ try {
 
     <main class="l-header-margin">
         <section class="l-wrapper-second">
-            <h1 class="c-title__main" data-sub-title="お知らせ一覧">News</h1>
+            <h1 class="c-title__main">News</h1>
 
             <div class="d-grid mx-auto">
                 <a href="./news_add.php" class="btn btn-primary" type="button">新規お知らせ投稿</a>
