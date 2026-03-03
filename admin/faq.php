@@ -52,7 +52,7 @@ try {
   <main class="l-faq l-faq-wrapper l-wrapper-second l-header-margin">
 
     <div class="l-wrapper-child">
-      <h1 class="c-title__main" data-sub-title="よくある質問">FAQ</h1>
+      <h1 class="c-title__main">FAQ</h1>
     </div>
 
     <div class="l-container-second l-wrapper-child">
