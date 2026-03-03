@@ -63,7 +63,7 @@ try {
 
             <h1 class="c-title__main">店舗 - 削除確認</h1>
             <form action="./shop_del_do.php" method="post">
-                <!-- <input type="hidden" name="id" value="<?= h($shop['id']); ?>"> -->
+                <input type="hidden" name="id" value="<?= h($shop['id']); ?>">
                 <div class="form-group">
                     <label>店舗名</label>
                     <div class="form-control-plaintext">
@@ -83,7 +83,7 @@ try {
                     </div>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="削除する">
+                <input type="submit" class="btn btn-danger" value="削除する">
             </form>
 
 

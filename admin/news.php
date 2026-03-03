@@ -64,7 +64,7 @@ try {
                             </div>
                             <dt>
                                 <time datetime="<?php echo h($article['date']); ?>">
-                                    <?php echo format_jp_date(h($article['date'])); ?>
+                                    <?php echo h(format_jp_date($article['date'])); ?>
                                 </time>
                             </dt>
                             <dd>

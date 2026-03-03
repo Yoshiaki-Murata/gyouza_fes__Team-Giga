@@ -22,7 +22,7 @@ if (!empty($_POST)) {
             $stmt = $db->prepare($sql);
             $stmt->bindParam(":userid", $userid, PDO::PARAM_INT);
             $stmt->execute();
-            $target = "";
+            // $target = "";
             $target = $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             exit("エラー" . $e->getMessage());
@@ -58,7 +58,7 @@ if (!empty($_POST)) {
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
                     <label for="username" class="form-label">ユーザー名（半角英数８文字以上）</label>
-                    <input type="text" name="username" id="username" class="form-control" value="<?php echo $target["username"]; ?>">
+                    <input type="text" name="username" id="username" class="form-control" value="<?php echo h($target["username"]); ?>">
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -72,8 +72,8 @@ if (!empty($_POST)) {
                     <label for="role_id" class="form-label">権限</label>
                     <select name="role_id" id="role_id" class="form-control form-control-sm mb-5" aria-label="Small select example">
                         <?php foreach ($result as  $row): ?>
-                            <option value="<?php echo $row["id"]; ?>" <?php echo $row["id"] === $target["role_id"] ? "selected" : "" ?>>
-                                <?php echo $row["role"]; ?>
+                            <option value="<?php echo h($row["id"]); ?>" <?php echo (int)$row["id"] === (int)$target["role_id"] ? "selected" : "" ?>>
+                                <?php echo h($row["role"]); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -81,7 +81,7 @@ if (!empty($_POST)) {
             </div>
 
             <div class="mb-5 text-center">
-                <input type="hidden" name="id" value="<?php echo $target["id"]; ?>">
+                <input type="hidden" name="id" value="<?php echo h($target["id"]); ?>">
                 <input type="submit" value="登録" class="btn btn-primary">
             </div>
         </form>

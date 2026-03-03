@@ -53,35 +53,35 @@ try {
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
                     <label for="product" class="form-label">商品名</label>
-                    <input type="text" name="product" id="product" class="form-control" value="<?php echo htmlspecialchars($target["product"] ?? ''); ?>">
+                    <input type="text" name="product" id="product" class="form-control" value="<?php echo h($target["product"] ?? ''); ?>">
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="pieces" class="form-label">個数</label>
-                    <input type="number" name="pieces" id="pieces" class="form-control" min="1" max="100" value="<?php echo htmlspecialchars($target["pieces"] ?? ''); ?>">
+                    <input type="number" name="pieces" id="pieces" class="form-control" min="1" max="100" value="<?php echo h($target["pieces"] ?? ''); ?>">
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="price" class="form-label">値段</label>
-                    <input type="number" name="price" id="price" class="form-control" value="<?php echo htmlspecialchars($target["price"] ?? ''); ?>">
+                    <input type="number" name="price" id="price" class="form-control" value="<?php echo h($target["price"] ?? ''); ?>">
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="product_details" class="form-label">商品詳細</label>
-                    <textarea name="product_detail" id="product_detail" class="form-control"><?php echo htmlspecialchars($target["product_detail"] ?? ''); ?></textarea>
+                    <textarea name="product_detail" id="product_detail" class="form-control"><?php echo h($target["product_detail"] ?? ''); ?></textarea>
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="alt" class="form-label">画像説明</label>
-                    <textarea name="alt" id="alt" class="form-control"><?php echo htmlspecialchars($target["alt"] ?? ''); ?></textarea>
+                    <textarea name="alt" id="alt" class="form-control"><?php echo h($target["alt"] ?? ''); ?></textarea>
                 </div>
             </div>
 
@@ -91,7 +91,7 @@ try {
                     <select name="shop_id" id="shop_id" class="form-select">
                         <?php foreach ($result as $row): ?>
                             <option value="<?php echo $row["id"]; ?>" <?php echo (isset($target["shop_id"]) && $row["id"] == $target["shop_id"]) ? "selected" : ""; ?>>
-                                <?php echo htmlspecialchars($row["shop"]); ?>
+                                <?php echo h($row["shop"]); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -99,7 +99,7 @@ try {
             </div>
 
             <div class="mb-5 text-center">
-                <input type="hidden" name="id" value="<?php echo htmlspecialchars($target["id"] ?? ''); ?>">
+                <input type="hidden" name="id" value="<?php echo h($target["id"] ?? ''); ?>">
                 <input type="submit" value="編集" class="btn btn-primary">
             </div>
         </form>

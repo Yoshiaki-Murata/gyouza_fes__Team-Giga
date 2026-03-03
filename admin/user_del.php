@@ -3,7 +3,7 @@ session_start();
 require_once '../inc/function.php';
 
 // 役割がマスター出ない人は削除できないように
-if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
+if (!isset($_SESSION["role_id"]) || (int)$_SESSION["role_id"] !== 1) {
     $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
     header("location:user.php");
     exit();
@@ -18,7 +18,6 @@ if (!empty($_POST)) {
             $stmt = $db->prepare($sql);
             $stmt->bindParam(":userid", $userid, PDO::PARAM_INT);
             $stmt->execute();
-            $target = "";
             $target = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$target) {
@@ -66,12 +65,14 @@ if (!empty($_POST)) {
                     <th>ユーザー名</th>
                     <th>役割</th>
                 </tr>
-                <tr>
-                    <td><?php echo $target["user_id"]; ?></td>
-                    <td><?php echo $target["username"]; ?></td>
-                    <td><?php echo $target["role"]; ?></td>
-                </tr>
             </thead>
+            <tbody>
+                <tr>
+                    <td><?php echo h($target["user_id"]); ?></td>
+                    <td><?php echo h($target["username"]); ?></td>
+                    <td><?php echo h($target["role"]); ?></td>
+                </tr>
+            </tbody>
         </table>
         <div class="mt-5 mb-5">
             <p class="text-center">こちらのユーザーをほんとに削除しますか？</p>
@@ -79,10 +80,11 @@ if (!empty($_POST)) {
 
         <form action="./user_del_do.php" method="post">
             <div class="mb-5 text-center">
-                <input type="hidden" name="id" value="<?php echo $target["user_id"]; ?>">
+                <input type="hidden" name="id" value="<?php echo h($target["user_id"]); ?>">
                 <input type="submit" value="削除" class="btn btn-danger">
             </div>
         </form>
+    </main>
 
 </body>
 
