@@ -51,7 +51,7 @@ try {
       <h1 class="c-title__main" data-sub-title="店舗一覧">SHOPS</h1>
 
       <div class="d-grid mx-auto">
-        <a href="./shop_add.php" class="btn btn-primary" type="button">新規店舗追加</a>
+        <a href="./shop_add.php" class="btn btn-primary">新規店舗追加</a>
       </div>
       <div class="l-wrapper-second">
         <table class="table table-striped-columns">

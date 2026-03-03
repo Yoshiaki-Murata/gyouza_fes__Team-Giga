@@ -31,8 +31,6 @@ try {
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="../css/style.css">
-
     <link rel="stylesheet" href="./css/style.css">
     <title>ユーザー新規登録</title>
 </head>
@@ -51,7 +49,7 @@ try {
             </div>
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
-                    <label for="password" class="form-label">パスワード（半角英数８文字以上</label>
+                    <label for="password" class="form-label">パスワード（半角英数８文字以上）</label>
                     <input type="password" name="password" id="password" class="form-control">
                 </div>
             </div>
@@ -60,8 +58,8 @@ try {
                     <label for="role_id" class="form-label">権限</label>
                     <select name="role_id" id="role_id" class="form-select form-select-sm mb-5" aria-label="Small select example">
                         <?php foreach ($result as  $row): ?>
-                            <option value="<?php echo $row["id"]; ?>">
-                                <?php echo $row["role"]; ?>
+                            <option value="<?php echo h($row["id"]); ?>">
+                                <?php echo h($row["role"]); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

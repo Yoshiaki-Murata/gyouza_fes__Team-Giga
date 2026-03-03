@@ -52,36 +52,40 @@ try {
                     <th>役割</th>
                     <th>操作</th>
                 </tr>
+            </thead>
+            <tbody>
                 <?php foreach ($result as $row): ?>
                     <tr>
-                        <td><?php echo $row["user_id"]; ?></td>
-                        <td><?php echo $row["username"]; ?></td>
-                        <td><?php echo $row["role"]; ?></td>
+                        <td><?php echo h($row["user_id"]); ?></td>
+                        <td><?php echo h($row["username"]); ?></td>
+                        <td><?php echo h($row["role"]); ?></td>
                         <td class="row">
                             <form action="user_edit.php" method="post" class="col">
-                                <input type="hidden" name="id" value="<?php echo $row["user_id"] ?>">
+                                <input type="hidden" name="id" value="<?php echo h($row["user_id"]); ?>">
                                 <input type="submit" value="編集" class="btn  btn-primary">
                             </form>
                             <form action="user_del.php" method="post" class="col">
-                                <input type="hidden" name="id" value="<?php echo $row["user_id"] ?>">
+                                <input type="hidden" name="id" value="<?php echo h($row["user_id"]); ?>">
                                 <input type="submit" value="削除" class="btn  btn-danger">
                             </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
-            </thead>
+            </tbody>
         </table>
 
         <?php if (!empty($_SESSION["del_err"])): ?>
-            <p class="text-center bs-danger-text-emphasis"><?php echo htmlspecialchars($_SESSION["del_err"], ENT_QUOTES, "UTF-8");
-                                                            unset($_SESSION["del_err"]);
-                                                            ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["del_err"]);
+                unset($_SESSION["del_err"]);
+                ?>
             </p>
         <?php endif ?>
         <?php if (!empty($_SESSION["del_msg"])): ?>
-            <p class="text-center bs-primary-text-emphasis"><?php echo htmlspecialchars($_SESSION["del_msg"], ENT_QUOTES, "UTF-8");
-                                                            unset($_SESSION["del_msg"]);
-                                                            ?>
+            <p class="text-center bs-primary-text-emphasis">
+                <?php echo h($_SESSION["del_msg"]);
+                unset($_SESSION["del_msg"]);
+                ?>
             </p>
         <?php endif ?>
     </main>

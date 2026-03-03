@@ -56,15 +56,15 @@ try {
 
       <?php foreach ($category as $category_title): ?>
         <section class="l-faq-section">
-          <h2 class="l-faq-section__title"><?php echo $category_title['category']; ?></h2>
+          <h2 class="l-faq-section__title"><?php echo h($category_title['category']); ?></h2>
           <?php foreach ($question as $qa): ?>
             <?php if ($category_title['id'] === $qa['category_id']): ?>
               <div class="l-faq-section-parent">
                 <h3 class="l-faq-section__question">
-                  Q.<?php echo $qa['question']; ?>
+                  Q.<?php echo h($qa['question']); ?>
                 </h3>
                 <p class="l-faq-section__answer">
-                  <?php echo $qa['answer']; ?>
+                  <?php echo h($qa['answer']); ?>
                 </p>
               </div>
           <?php endif;

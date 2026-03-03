@@ -28,7 +28,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="ふくおか餃子フェスに関するお知らせの一覧を掲載">
-    <title><?php echo $target['titletag']; ?>｜ふくおか餃子FES</title>
+    <title><?php echo h($target['titletag']); ?>｜ふくおか餃子FES</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,13 +47,13 @@ try {
         <section>
             <article class="l-article">
                 <div class="c-article__title-area">
-                    <h1><?php echo $target['subject']; ?></h1>
-                    <p><time datetime="<?php echo $target['date']; ?>">
-                            <?php echo format_jp_date($target['date']); ?>
+                    <h1><?php echo h($target['subject']); ?></h1>
+                    <p><time datetime="<?php echo h($target['date']); ?>">
+                            <?php echo h(format_jp_date($target['date'])); ?>
                         </time>
                     </p>
                 </div>
-                <p><?php echo $target['text']; ?></p>
+                <p><?php echo h($target['text']); ?></p>
             </article>
             <p class="c-news-return__link">
                 <a href="./news.php">お知らせ一覧へ戻る</a>

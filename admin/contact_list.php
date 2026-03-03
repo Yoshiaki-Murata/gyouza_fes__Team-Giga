@@ -68,17 +68,17 @@ try {
                     <tbody>
                         <?php foreach ($result as $row): ?>
                             <tr>
-                                <td class="text-nowrap"><?php echo htmlspecialchars($row['name']); ?></td>
-                                <td><?php echo htmlspecialchars($row['mailaddress']); ?></td>
-                                <td class="text-nowrap"><?php echo htmlspecialchars($row['phonenumber']); ?></td>
-                                <td class="small"><?php echo nl2br(htmlspecialchars($row['text'])); ?></td>
-                                <td class="text-nowrap small"><?php echo htmlspecialchars($row['date']); ?></td>
+                                <td class="text-nowrap"><?php echo h($row['name']); ?></td>
+                                <td><?php echo h($row['mailaddress']); ?></td>
+                                <td class="text-nowrap"><?php echo h($row['phonenumber']); ?></td>
+                                <td class="small"><?php echo nl2br(h($row['text'])); ?></td>
+                                <td class="text-nowrap small"><?php echo h($row['date']); ?></td>
                                 <td class="text-center">
                                     <?php
                                     $statusColor = ($row['status'] === '対応済み') ? 'text-bg-secondary' : 'text-bg-warning';
                                     ?>
-                                    <span class="badge rounded-pill <?php echo $statusColor; ?>">
-                                        <?php echo htmlspecialchars($row['status']); ?>
+                                    <span class="badge rounded-pill <?php echo h($statusColor); ?>">
+                                        <?php echo h($row['status']); ?>
                                     </span>
                                 </td>
                                 <td class="text-center">

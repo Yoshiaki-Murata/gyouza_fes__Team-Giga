@@ -27,7 +27,6 @@ if (!empty($_POST)) {
             $stmt = $db->prepare($sql);
             $stmt->bindParam(":menuid", $menuid, PDO::PARAM_INT);
             $stmt->execute();
-            $target = "";
             $target = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$target) {
@@ -74,11 +73,11 @@ if (!empty($_POST)) {
             </thead>
             <tbody>
                 <tr>
-                    <td><?php echo $target["product"]; ?></td>
-                    <td><?php echo $target["pieces"]; ?>個入り</td>
-                    <td><?php echo $target["price"]; ?>円</td>
-                    <td><?php echo $target["product_detail"]; ?></td>
-                    <td><?php echo $target["shop_id_str"]; ?></td>
+                    <td><?php echo h($target["product"]); ?></td>
+                    <td><?php echo h($target["pieces"]); ?>個入り</td>
+                    <td><?php echo h($target["price"]); ?>円</td>
+                    <td><?php echo h($target["product_detail"]); ?></td>
+                    <td><?php echo h($target["shop_id_str"]); ?></td>
                 </tr>
             </tbody>
         </table>
@@ -89,7 +88,7 @@ if (!empty($_POST)) {
         <form action="./menu_del_do.php" method="post">
             <div class="mb-5 text-center">
 
-                <input type="hidden" name="id" value="<?php echo $target["menu_id"]; ?>">
+                <input type="hidden" name="id" value="<?php echo h($target["menu_id"]); ?>">
 
                 <input type="submit" value="削除する
                 " class="btn btn-danger me-5" onclick="return confirm('本当に削除しますか？');">
