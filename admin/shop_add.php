@@ -1,11 +1,3 @@
-<?php
-require_once __DIR__ . '/../inc/function.php';
-
-$shop = $_POST['shop'] ?? '';
-$boos_number = $_POST['boos_number'] ?? '';
-$shop_detail = $_POST['shop_detail'] ?? '';
-?>
-
 <!doctype html>
 <html lang="ja">
 
@@ -35,19 +27,17 @@ $shop_detail = $_POST['shop_detail'] ?? '';
                 <div class="form-group">
                     <label>店舗名</label>
                     <input type="text" name="shop"
-                        value="<?php echo h($shop); ?>"
                         class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>ブース番号</label>
                     <input type="text" name="boos_number"
-                        value="<?php echo h($boos_number); ?>"
                         class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>店舗詳細</label>
                     <textarea name="shop_detail"
-                        class="form-control" rows="5" required><?php echo h($shop_detail); ?></textarea>
+                        class="form-control" rows="5" required></textarea>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="追加する">
