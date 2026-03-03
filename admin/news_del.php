@@ -25,8 +25,14 @@ try {
 
     // 結果セットを連想配列の形で取得
     $news = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // 存在しないIDをはじく
+    if (!$news) {
+        exit('データが存在しません');
+    }
 } catch (PDOException $e) {
-    exit('エラー: ' . $e->getMessage());
+    error_log($e->getMessage());
+    exit('システムエラーが発生しました');
 }
 
 ?>
@@ -57,20 +63,25 @@ try {
             <h1 class="c-title__main">お知らせ - 削除確認</h1>
             <form action="./news_del_do.php" method="post">
                 <input type="hidden" name="id" value="<?php echo h($news['id']); ?>">
-                <div class="form-group">
-                    <label>記事タイトル</label>
-                    <input type="text" name="subject" class="form-control" value="<?php echo h($news['subject']); ?>" required>
+                <div class="form-group mt-4">
+                    <label class="font-weight-bold">記事タイトル</label>
+                    <div class="form-control-plaintext">
+                        <?= h($news['subject']); ?>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label>ページタイトル</label>
-                    <input type="text" name="titletag" class="form-control" value="<?php echo h($news['titletag']); ?>" required>
+                    <label class="font-weight-bold">ページタイトル</label>
+                    <div class="form-control-plaintext">
+                        <?= h($news['titletag']); ?>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label>本文</label>
-                    <textarea name="text" class="form-control" rows="5" required><?php echo nl2br(h($news['text'])); ?></textarea>
+                    <label class="font-weight-bold">本文</label>
+                    <div class="form-control-plaintext">
+                        <?= nl2br(h($news['text'])); ?>
+                    </div>
                 </div>
-
-                <input type="submit" class="btn btn-danger" value="削除する">
+                <input type="submit" class="btn btn-danger" value="削除する" onclick="return confirm('本当に削除しますか？');">
             </form>
 
 

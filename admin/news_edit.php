@@ -18,8 +18,12 @@ try {
 
     // 結果セットを連想配列の形で取得
     $news = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$news) {
+        exit('データが存在しません');
+    }
 } catch (PDOException $e) {
-    exit('エラー: ' . $e->getMessage());
+    error_log($e->getMessage());
+    exit('システムエラーが発生しました');
 }
 ?>
 
@@ -59,7 +63,7 @@ try {
                 </div>
                 <div class="form-group">
                     <label>本文</label>
-                    <textarea name="text" class="form-control" rows="5" required><?php echo nl2br(h($news['text'])); ?></textarea>
+                    <textarea name="text" class="form-control" rows="5" required><?= h($news['text']); ?></textarea>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="編集する">

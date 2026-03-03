@@ -6,7 +6,7 @@ try {
   $db = db_connect();
 
   // プリペアードステートメントの作成
-  $sql = 'SELECT * FROM shops ORDER BY boos_number asc ';
+  $sql = 'SELECT id, shop, boos_number, shop_detail FROM shops ORDER BY boos_number ASC';
   $stmt = $db->prepare($sql);
 
 
@@ -16,7 +16,8 @@ try {
   // 取得したレコードを連想配列で1レコードずつ受け取る
   $shops = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-  exit("Error:" . $e->getMessage());
+  error_log($e->getMessage());
+  exit('システムエラーが発生しました');
 }
 ?>
 

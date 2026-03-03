@@ -10,7 +10,7 @@ if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
 }
 
 $id = (int)($_POST['id'] ?? 0);
-if ($id === 0) {
+if ($id <= 0) {
     exit('IDが不正です');
 }
 
@@ -18,12 +18,17 @@ try {
     $db = db_connect();
     $sql = 'DELETE FROM questions WHERE id=:id';
     $stmt = $db->prepare($sql);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
-    $_SESSION["del_msg"] = "削除完了しました";
+    if ($stmt->rowCount() === 0) {
+        $_SESSION["del_err"] = "削除対象が存在しませんでした";
+    } else {
+        $_SESSION["del_msg"] = "削除完了しました";
+    }
     header('Location: faq.php');
     exit();
 } catch (PDOException $e) {
-    exit('エラー: ' . $e->getMessage());
+    error_log($e->getMessage());
+    exit('削除処理でエラーが発生しました');
 }

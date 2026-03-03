@@ -16,7 +16,8 @@ try {
     // 取得したレコードを連想配列で1レコードずつ受け取る
     $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    exit("Error:" . $e->getMessage());
+    error_log($e->getMessage());
+    exit('システムエラーが発生しました');
 }
 
 ?>

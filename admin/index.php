@@ -1,26 +1,3 @@
-<?php
-require_once __DIR__ . '/../inc/function.php';
-
-try {
-  // PDO インスタンスの作成
-  $db = db_connect();
-
-  // プリペアードステートメントの作成
-  $sql = 'SELECT id,subject,date FROM news ORDER BY date DESC ';
-  $stmt = $db->prepare($sql);
-  $stmt->execute();
-  $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-  $sql_2 = 'SELECT id,product,pieces,price,image,alt FROM menus ORDER BY id DESC ';
-  $stmt_2 = $db->prepare($sql_2);
-  $stmt_2->execute();
-  $menu = $stmt_2->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  exit("Error:" . $e->getMessage());
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 

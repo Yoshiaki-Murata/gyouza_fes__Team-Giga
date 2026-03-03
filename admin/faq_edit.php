@@ -12,7 +12,7 @@ try {
     $db = db_connect();
 
     // 編集する質問を取得
-    $sql = 'SELECT * FROM questions WHERE id=:id';
+    $sql = 'SELECT id, question, answer, category_id FROM questions WHERE id=:id';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -33,7 +33,8 @@ try {
         $categories[$category['id']] = $category['category'];
     }
 } catch (PDOException $e) {
-    exit('Error:' . $e->getMessage());
+    error_log($e->getMessage());
+    exit('システムエラーが発生しました');
 }
 
 ?>
@@ -45,12 +46,15 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ修正｜ふくおか餃子FES</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
