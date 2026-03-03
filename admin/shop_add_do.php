@@ -1,29 +1,47 @@
 <?php
 require_once __DIR__ . '/../inc/function.php';
+session_start();
 
-if (!empty($_POST)) {
-    if (!empty($_POST['shop']) && !empty($_POST['shop_detail']) && !empty($_POST['boos_number'])) {
-        $shop = $_POST['shop'];
-        $boos_number = $_POST['boos_number'];
-        $shop_detail = $_POST['shop_detail'];
+$shop = trim($_POST['shop'] ?? '');
+$boos_number = trim($_POST['boos_number'] ?? '');
+$shop_detail = trim($_POST['shop_detail'] ?? '');
 
-        try {
-            $db = db_connect();
+$errors = [];
 
-            $sql = 'INSERT INTO shops(shop,boos_number,shop_detail) VALUES(:shop,:boos_number,:shop_detail)';
-            $stmt = $db->prepare($sql);
+if ($shop === '') {
+    $errors[] = '店舗名を入力してください';
+}
 
-            $stmt->bindParam(':shop', $shop, PDO::PARAM_STR);
-            $stmt->bindParam(':boos_number', $boos_number, PDO::PARAM_STR);
-            $stmt->bindParam(':shop_detail', $shop_detail, PDO::PARAM_STR);
+if ($boos_number === '' || !ctype_digit($boos_number)) {
+    $errors[] = 'ブース番号は数字で入力してください';
+}
 
-            $stmt->execute();
+if ($shop_detail === '') {
+    $errors[] = '店舗詳細を入力してください';
+}
 
+if (!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    $_SESSION['old'] = compact('shop', 'boos_number', 'shop_detail');
+    header('Location: shop_add.php');
+    exit;
+}
 
-            header('location:shop.php');
-            exit();
-        } catch (PDOException $e) {
-            exit("Error:" . $e->getMessage());
-        }
-    }
+try {
+    $db = db_connect();
+
+    $sql = 'INSERT INTO shops(shop, boos_number, shop_detail) 
+            VALUES(:shop, :boos_number, :shop_detail)';
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':shop', $shop, PDO::PARAM_STR);
+    $stmt->bindParam(':boos_number', $boos_number, PDO::PARAM_INT);
+    $stmt->bindParam(':shop_detail', $shop_detail, PDO::PARAM_STR);
+    $stmt->execute();
+
+    header('Location: shop.php');
+    exit;
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    exit('システムエラーが発生しました');
 }

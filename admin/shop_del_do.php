@@ -13,7 +13,11 @@ if (!empty($_POST)) {
     // POST送信されたとき
     if (!empty($_POST['id'])) {
         // TODO: idのチェック（空の場合）
-        $id = $_POST['id'];
+        $id = (int)($_POST['id'] ?? 0);
+
+        if ($id <= 0) {
+            exit('IDが不正です');
+        }
         // DBに接続
         try {
             $db = db_connect();
@@ -24,12 +28,17 @@ if (!empty($_POST)) {
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
+            if ($stmt->rowCount() === 0) {
+                exit('削除できませんでした');
+            }
+
             $_SESSION["del_msg"] = "削除完了しました";
             // トップページへ画面遷移
             header('location:shop.php');
             exit();
         } catch (PDOException $e) {
-            exit('エラー: ' . $e->getMessage());
+            error_log($e->getMessage());
+            exit('システムエラーが発生しました');
         }
     }
 }

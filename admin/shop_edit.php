@@ -11,15 +11,20 @@ if ($id === 0) {
 // DB接続
 try {
     $db = db_connect();
-    $sql = 'SELECT * FROM shops WHERE id=:id';
+    $sql = 'SELECT id, shop, boos_number, shop_detail FROM shops WHERE id=:id';
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
     // 結果セットを連想配列の形で取得
     $shop = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$shop) {
+        exit('データが存在しません');
+    }
 } catch (PDOException $e) {
-    exit('エラー: ' . $e->getMessage());
+    error_log($e->getMessage());
+    exit('システムエラーが発生しました');
 }
 ?>
 

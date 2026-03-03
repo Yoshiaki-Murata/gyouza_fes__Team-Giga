@@ -6,7 +6,7 @@ try {
   $db = db_connect();
 
   // プリペアードステートメントの作成
-  $sql = 'SELECT id,subject,date FROM news ORDER BY date DESC ';
+  $sql = 'SELECT id,subject,date FROM news ORDER BY date DESC LIMIT 4 ';
   $stmt = $db->prepare($sql);
   $stmt->execute();
   $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -16,7 +16,8 @@ try {
   $stmt_2->execute();
   $menu = $stmt_2->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-  exit("Error:" . $e->getMessage());
+  error_log($e->getMessage());
+  exit('システムエラーが発生しました');
 }
 
 ?>
@@ -102,12 +103,12 @@ try {
                 <div class="c-topnews-list">
                   <dt class="c-news-date">
                     <time datetime="<?php echo $article['date']; ?>">
-                      <?php echo format_jp_date($article['date']); ?>
+                      <?php echo h(format_jp_date($article['date'])); ?>
                     </time>
                   </dt>
                   <dd class="c-news-detail">
-                    <a href="news_detail.php?id=<?php echo $article['id'] ?>">
-                      <?php echo $article['subject']; ?>
+                    <a href="news_detail.php?id=<?php echo h($article['id']); ?>">
+                      <?php echo h($article['subject']); ?>
                     </a>
                   </dd>
                 </div>
@@ -174,9 +175,9 @@ try {
 
             <?php foreach ($menu as $menuIcon): ?>
               <li class="c-topmenu__card">
-                <img src="./img/<?php echo $menuIcon['image']; ?>" alt="<?php echo $menuIcon['alt']; ?>">
+                <img src="./img/<?php echo h($menuIcon['image']); ?>" alt="<?php echo h($menuIcon['alt']); ?>">
                 <div class="c-topmenu__name-price">
-                  <p class="c-topmenu__name"><?php echo $menuIcon['product']; ?></p>
+                  <p class="c-topmenu__name"><?php echo h($menuIcon['product']); ?></p>
                   <p class="c-topmenu__price">
                     <?php echo $menuIcon['pieces']; ?>個入り<?php echo $menuIcon['price']; ?>円(税込)</p>
                 </div>

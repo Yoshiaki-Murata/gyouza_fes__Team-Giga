@@ -2,7 +2,11 @@
 require_once __DIR__ . '/../inc/function.php';
 
 // TODO: ID取得とバリデーション
-$id = (int)$_GET['id'];
+$id = (int)($_GET['id'] ?? 0);
+
+if ($id <= 0) {
+    exit('IDが不正です');
+}
 
 // DB接続
 try {
@@ -14,8 +18,12 @@ try {
 
     // 結果セットを連想配列の形で取得
     $target = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$target) {
+        exit('記事が存在しません');
+    }
 } catch (PDOException $e) {
-    exit('エラー: ' . $e->getMessage());
+    error_log($e->getMessage());
+    exit('システムエラーが発生しました');
 }
 ?>
 
@@ -61,7 +69,7 @@ try {
                         </time>
                     </p>
                 </div>
-                <p><?php echo h(nl2br($target['text'])); ?></p>
+                <p><?php echo nl2br(h($target['text'])); ?></p>
             </article>
             <p class="c-news-return__link">
                 <a href="./news.php">お知らせ一覧へ戻る</a>

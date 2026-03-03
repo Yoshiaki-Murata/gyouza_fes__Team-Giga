@@ -1,3 +1,11 @@
+<?php
+require_once __DIR__ . '/../inc/function.php';
+
+$shop = $_POST['shop'] ?? '';
+$boos_number = $_POST['boos_number'] ?? '';
+$shop_detail = $_POST['shop_detail'] ?? '';
+?>
+
 <!doctype html>
 <html lang="ja">
 
@@ -26,15 +34,20 @@
 
                 <div class="form-group">
                     <label>店舗名</label>
-                    <input type="text" name="shop" class="form-control" placeholder="店舗名" required>
+                    <input type="text" name="shop"
+                        value="<?php echo h($shop); ?>"
+                        class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>ブース番号</label>
-                    <input type="text" name="boos_number" class="form-control" placeholder="ブース番号" required>
+                    <input type="text" name="boos_number"
+                        value="<?php echo h($boos_number); ?>"
+                        class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>店舗詳細</label>
-                    <textarea name="shop_detail" class="form-control" rows="5" placeholder="店舗詳細" required></textarea>
+                    <textarea name="shop_detail"
+                        class="form-control" rows="5" required><?php echo h($shop_detail); ?></textarea>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="追加する">

@@ -13,10 +13,25 @@ if (!empty($_POST)) {
     // POST送信されたとき
     if (!empty($_POST['id'])) {
         // TODO: idのチェック（空の場合）
-        $id = $_POST['id'];
+        $id = (int)($_POST['id'] ?? 0);
+
+        if ($id === 0) {
+            exit('IDが不正です');
+        }
         // DBに接続
         try {
             $db = db_connect();
+
+            // 存在確認
+            $sql = 'SELECT id FROM news WHERE id=:id';
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            if (!$stmt->fetch()) {
+                exit('対象データが存在しません');
+            }
+
             // infoテーブルから1行削除するSQL
             $sql = 'DELETE FROM news WHERE id=:id';
             $stmt = $db->prepare($sql);
@@ -29,7 +44,8 @@ if (!empty($_POST)) {
             header('location:news.php');
             exit();
         } catch (PDOException $e) {
-            exit('エラー: ' . $e->getMessage());
+            error_log($e->getMessage());
+            exit('システムエラーが発生しました');
         }
     }
 }
