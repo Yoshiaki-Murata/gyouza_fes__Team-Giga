@@ -8,7 +8,7 @@ $target = []; // 初期化
 if (!empty($_POST["id"])) {
     $id = (int)$_POST["id"];
     try {
-        $db = db_connect();
+        $db = db_connect();    
         $sql = "SELECT * FROM contact WHERE id=:id ";
         $stmt = $db->prepare($sql);
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -20,6 +20,7 @@ if (!empty($_POST["id"])) {
 }
 
 try {
+    $db = db_connect();
     $sql2 = "SELECT * FROM status";
     $stmt2 = $db->prepare($sql2);
     $stmt2->execute();
@@ -67,7 +68,7 @@ try {
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="phonenumber" class="form-label">電話番号</label>
-                    <input type="tel" name="phonenumber" id="phonenumber" class="form-control" value="<?php echo htmlspecialchars($target["phonenumber"] ?? ''); ?>">
+                    <input type="text" name="phonenumber" id="phonenumber" class="form-control" value="<?php echo htmlspecialchars($target["phonenumber"] ?? ''); ?>">
                 </div>
             </div>
 
@@ -102,6 +103,12 @@ try {
                 <input type="submit" value="編集" class="btn btn-primary">
             </div>
         </form>
+        <?php if (!empty($_SESSION["contact_edit_err"])): ?>
+            <p class="text-center bs-danger-text-emphasis"><?php echo htmlspecialchars($_SESSION["contact_edit_err"], ENT_QUOTES, "UTF-8");
+                                                            unset($_SESSION["contact_edit_err"]);
+                                                            ?>
+            </p>
+        <?php endif ?>
     </main>
 </body>
 
