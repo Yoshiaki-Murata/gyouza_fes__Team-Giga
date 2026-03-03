@@ -12,26 +12,7 @@ $shop = trim($_POST['shop'] ?? '');
 $boos_number = trim($_POST['boos_number'] ?? '');
 $shop_detail = trim($_POST['shop_detail'] ?? '');
 
-$errors = [];
 
-if ($shop === '') {
-    $errors[] = '店舗名を入力してください';
-}
-
-if ($boos_number === '' || !ctype_digit($boos_number)) {
-    $errors[] = 'ブース番号は数字で入力してください';
-}
-
-if ($shop_detail === '') {
-    $errors[] = '店舗詳細を入力してください';
-}
-
-if (!empty($errors)) {
-    $_SESSION['errors'] = $errors;
-    $_SESSION['old'] = compact('shop', 'boos_number', 'shop_detail');
-    header("Location: shop_edit.php?id={$id}");
-    exit;
-}
 
 try {
     $db = db_connect();
