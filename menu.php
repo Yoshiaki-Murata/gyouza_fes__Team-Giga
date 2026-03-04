@@ -50,7 +50,7 @@ try {
         <h1 class="c-title__main" data-sub-title="メニュー">Menu</h1>
       </div>
       <ul class="l-menu-list ">
-        <?php foreach ($result as $row): ?>
+        <?php foreach ($result as  $key => $row): ?>
           <li id="b-01" class="c-menu-card">
             <div class="c-menu-card-top">
               <p class="c-menu-card-top__number c-menu-card-top__number--padding"><?php echo h($row["boos_number"]); ?></p>
@@ -59,7 +59,7 @@ try {
                 <p class="c-menu-card-top-text__price"><?php echo h($row["pieces"]); ?>個入り <?php echo h($row["price"]); ?>円（税込）</p>
               </div>
             </div>
-            <div class="c-menu-card-bottom <?php echo h($row["menu_id"]) % 2 === 0 ? "c-menu-card-bottom--reverse" : ""; ?>">
+            <div class="c-menu-card-bottom <?php echo h($key+1) % 2 === 0 ? "c-menu-card-bottom--reverse" : ""; ?>">
               <div class="c-menu-card-bottom-container">
                 <img class="c-menu-card-bottom-container__img" src="./img/<?php echo h($row["image"]); ?>" alt="<?php echo h($row["alt"]); ?>">
               </div>
