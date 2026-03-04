@@ -31,7 +31,7 @@ try {
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./../css/style.css">
     <title>ユーザー新規登録</title>
 </head>
 
@@ -65,6 +65,20 @@ try {
                     </select>
                 </div>
             </div>
+            <?php if (!empty($_SESSION["user_add_pass_err"])): ?>
+                <p class="text-center bs-danger-text-emphasis">
+                    <?php echo h($_SESSION["user_add_pass_err"]);
+                    unset($_SESSION["user_add_pass_err"]);
+                    ?>
+                </p>
+            <?php endif ?>
+            <?php if (!empty($_SESSION["user_add_name_err"])): ?>
+                <p class="text-center bs-primary-text-emphasis">
+                    <?php echo h($_SESSION["user_add_name_err"]);
+                    unset($_SESSION["user_add_name_err"]);
+                    ?>
+                </p>
+            <?php endif ?>
 
             <div class="mb-5 text-center">
                 <input type="submit" value="登録" class="btn btn-primary">

@@ -3,10 +3,10 @@ session_start();
 require_once __DIR__ . '/../inc/function.php';
 
 if (!empty($_POST)) {
-    if (!empty($_POST['question']) && !empty($_POST['answer'])) {
+    if (!empty($_POST['question']) && !empty($_POST['answer'])&& !empty($_POST['category_id'])) {
         // データのうけとり
         $question = trim($_POST['question'] ?? '');
-        $question = trim($_POST['question'] ?? '');
+        $answer = trim($_POST['answer'] ?? '');
         $category_id = (int)($_POST['category_id'] ?? 0);
 
         if ($category_id === 0) {

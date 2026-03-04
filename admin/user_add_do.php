@@ -12,11 +12,13 @@ if (!empty($_POST)) {
 
         // ユーザー名が半角英数８文字以上か確認
         if (!preg_match("/^[a-zA-Z0-9_-]{8,}$/", $username)) {
+            $_SESSION["user_add_name_err"]="ユーザー名に使用できない文字が含まれている、又は文字数が規定数に達していません。";
             header("location:user_add.php");
             exit();
         }
         // パスワードが半角英数８文字以上か確認
         if (!preg_match("/^[a-zA-Z0-9_-]{8,}$/", $password)) {
+            $_SESSION["user_add_pass_err"]="パスワードに使用できない文字が含まれている、又は文字数が規定数に達していません。";
             header("location:user_add.php");
             exit();
         }
@@ -31,6 +33,7 @@ if (!empty($_POST)) {
             $result = $stmt->fetch(PDO::FETCH_NUM);
             // 同じ名前があったらuser_add.phpに返す。
             if ($result[0] !== 0) {
+                $_SESSION["user_add_name_err"]="登録済のユーザー名です。";
                 header("location:user_add.php");
                 exit();
             }
@@ -46,6 +49,7 @@ if (!empty($_POST)) {
             $stmt2->bindParam(":role_id", $role_id, PDO::PARAM_INT);
             $stmt2->execute();
 
+            $_SESSION["user_add_success_msg"]="登録が完了しました。";
             header("location:user.php");
             exit();
         } catch (PDOException $e) {

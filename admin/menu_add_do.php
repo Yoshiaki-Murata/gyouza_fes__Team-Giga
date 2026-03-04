@@ -12,7 +12,7 @@ if (!empty($_FILES)) {
         // 元のファイルから拡張子を取得する
         $extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
         // ファイル名を生成する。
-        $new_name = "menu00" . $_POST["shop_id"] . "." . $extension;
+        $new_name = "menu0" . $_POST["shop_id"] . "_".uniqid()."." . $extension;
         // 保存場所を生成
         $save_path = "../img/" . $new_name;
         if (move_uploaded_file($file_from, $save_path)) {
@@ -27,7 +27,7 @@ if (!empty($_FILES)) {
 
 
 if (!empty($_POST)) {
-    if (!empty($_POST["product"]) && !empty($_POST["pieces"]) && !empty($_POST["price"]) && !empty($_POST["product_details"]) && !empty($_POST["alt"]) && !empty($_POST["shop_id"])) {
+    if (!empty($_POST["product"]) && !empty($_POST["pieces"]) && !empty($_POST["price"]) && !empty($_POST["product_details"]) && !empty($_POST["alt"]) && !empty($_POST["shop_id"])&&!empty($image_for_db)) {
         $product = $_POST["product"];
         $pieces = (int)$_POST["pieces"];
         $price = (int)$_POST["price"];
@@ -35,7 +35,7 @@ if (!empty($_POST)) {
         $alt = $_POST["alt"];
         $shop_id = (int)$_POST["shop_id"];
         // DB登録用の画像ファイル名を受け取る
-        $image = $image_for_db;
+        $image = $image_for_db??"";
 
 
 
