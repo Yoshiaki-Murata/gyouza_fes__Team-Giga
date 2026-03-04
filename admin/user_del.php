@@ -4,7 +4,7 @@ require_once '../inc/function.php';
 
 // 役割がマスター出ない人は削除できないように
 if (!isset($_SESSION["role_id"]) || (int)$_SESSION["role_id"] !== 1) {
-    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    err_msg("削除権限がありません。役割がマスターの人に削除依頼をしてください");
     header("location:user.php");
     exit();
 }
@@ -21,12 +21,14 @@ if (!empty($_POST)) {
             $target = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$target) {
-                $_SESSION["del_err"] = "指定されたユーザーが見つかりません";
+                err_msg("指定されたユーザーが見つかりません");
                 header("location:user.php");
                 exit();
             }
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            db_err_msg() . $e->getMessage();
+            header("location:user.php");
+            exit();
         }
     }
 }
@@ -84,6 +86,20 @@ if (!empty($_POST)) {
                 <input type="submit" value="削除" class="btn btn-danger" onclick="return confirm('本当に削除しますか？');">
             </div>
         </form>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
     </main>
 
 </body>

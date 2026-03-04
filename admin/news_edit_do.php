@@ -18,6 +18,8 @@ $errors = [];
 // IDチェック
 if ($id <= 0) {
     err_msg('IDが不正です');
+    header('Location: news_edit.php?id=' . $id);
+    exit();
 }
 
 // 必須チェック

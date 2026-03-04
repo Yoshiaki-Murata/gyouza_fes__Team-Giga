@@ -60,11 +60,11 @@ try {
                         <td><?php echo h($row["username"]); ?></td>
                         <td><?php echo h($row["role"]); ?></td>
                         <td class="row">
-                            <form action="user_edit.php" method="post" class="col">
+                            <form action="user_edit.php" method="get" class="col">
                                 <input type="hidden" name="id" value="<?php echo h($row["user_id"]); ?>">
                                 <input type="submit" value="編集" class="btn  btn-primary">
                             </form>
-                            <form action="user_del.php" method="post" class="col">
+                            <form action="user_del.php" method="get" class="col">
                                 <input type="hidden" name="id" value="<?php echo h($row["user_id"]); ?>">
                                 <input type="submit" value="削除" class="btn  btn-danger">
                             </form>
@@ -74,17 +74,17 @@ try {
             </tbody>
         </table>
 
-        <?php if (!empty($_SESSION["del_err"])): ?>
+        <?php if (!empty($_SESSION["msg"])): ?>
             <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["del_err"]);
-                unset($_SESSION["del_err"]);
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
                 ?>
             </p>
         <?php endif ?>
-        <?php if (!empty($_SESSION["del_msg"])): ?>
-            <p class="text-center bs-primary-text-emphasis">
-                <?php echo h($_SESSION["del_msg"]);
-                unset($_SESSION["del_msg"]);
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
                 ?>
             </p>
         <?php endif ?>

@@ -51,6 +51,20 @@ if (isset($_SESSION["id"])) {
             <div class="mb-3 text-center">
                 <input type="submit" value="ログイン" class="btn btn-primary">
             </div>
+            <?php if (!empty($_SESSION["msg"])): ?>
+                <p class="text-center bs-danger-text-emphasis">
+                    <?php echo h($_SESSION["msg"]);
+                    unset($_SESSION["msg"]);
+                    ?>
+                </p>
+            <?php endif ?>
+            <?php if (!empty($_SESSION["err"])): ?>
+                <p class="text-center bs-danger-text-emphasis">
+                    <?php echo h($_SESSION["err"]);
+                    unset($_SESSION["err"]);
+                    ?>
+                </p>
+            <?php endif ?>
     </main>
 </body>
 </body>

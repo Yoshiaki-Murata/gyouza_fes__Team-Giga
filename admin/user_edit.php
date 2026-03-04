@@ -14,13 +14,15 @@ try {
     $stmt2->execute();
     $result = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    exit("エラー" . $e->getMessage());
+    db_err_msg();
+    header("location:user.php");
+    exit();
 }
 
 // POST送信方受け取ったIDとおなじユーザー情報を取得
-if (!empty($_POST)) {
-    if (!empty($_POST["id"])) {
-        $userid = (int)$_POST["id"];
+if (!empty($_GET)) {
+    if (!empty($_GET["id"])) {
+        $userid = (int)$_GET["id"];
         try {
             $db = db_connect();
             $sql = "SELECT * FROM users WHERE id = :userid";
@@ -30,7 +32,9 @@ if (!empty($_POST)) {
             // $target = "";
             $target = $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            db_err_msg(). $e->getMessage();
+            header("location:user.php");
+            exit();
         }
     }
 }
@@ -104,6 +108,20 @@ if (!empty($_POST)) {
                 <input type="submit" value="登録" class="btn btn-primary">
             </div>
         </form>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
     </main>
 </body>
 

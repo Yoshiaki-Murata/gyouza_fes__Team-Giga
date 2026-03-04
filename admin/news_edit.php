@@ -7,6 +7,8 @@ $id = (int)($_GET['id'] ?? 0);
 
 if ($id === 0) {
     err_msg('IDが不正です');
+    header('location:news.php');
+    exit();
 }
 
 // DB接続
@@ -21,6 +23,8 @@ try {
     $news = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$news) {
         err_msg('データが存在しません');
+        header('location:news.php');
+        exit();
     }
 } catch (PDOException $e) {
     db_err_msg() . $e->getMessage();
@@ -84,8 +88,8 @@ try {
                     ?>
                 </p>
             <?php endif ?>
-    <!-- 本文ここまで -->
-    </div>
+            <!-- 本文ここまで -->
+        </div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>

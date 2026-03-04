@@ -1,6 +1,6 @@
 <?php
 // 丸裸phpファイルには↓↓
-session_start();
+// session_start();
 require_once __DIR__ . '/db_info.php';
 
 

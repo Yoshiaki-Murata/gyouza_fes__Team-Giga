@@ -6,7 +6,9 @@ check_array($_POST);
 
 // CSRF対策
 if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-    exit("不正なリクエストです。");
+    err_msg("不正なリクエストです。");
+    header("location:user_edit.php?id=" . $id);
+    exit();
 }
 // 使用したトークンを削除
 unset($_SESSION['csrf_token']);
@@ -43,6 +45,7 @@ if (!empty($_POST)) {
             $result = $stmt->fetch(PDO::FETCH_NUM);
             // 同じ名前があったらuser_add.phpに返す。
             if ($result[0] !== 0) {
+                err_msg("登録済のユーザー名です。");
                 header("location:user_edit.php?id=" . $id);
                 exit();
             }
@@ -68,10 +71,13 @@ if (!empty($_POST)) {
             $stmt2->bindParam(":role_id", $role_id, PDO::PARAM_INT);
             $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt2->execute();
+            edit_msg();
             header("location:user.php");
             exit();
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            db_err_msg() . $e->getMessage();
+            header("location:user_edit.php?id=" . $id);
+            exit();
         }
     }
 }
