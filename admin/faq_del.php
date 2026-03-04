@@ -4,7 +4,7 @@ require_once '../inc/function.php';
 
 // 役割がマスター出ない人は削除できないように
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
-    $_SESSION["faq_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    $_SESSION["err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
     header("location:faq.php");
     exit();
 }
@@ -12,7 +12,7 @@ if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
 $id = (int)($_GET['id'] ?? 0);
 
 if ($id === 0) {
-    $_SESSION["faq_err"] = 'IDが不正です';
+    $_SESSION["err"] = 'IDが不正です';
     header('location:faq.php');
     exit();
 }
@@ -27,7 +27,7 @@ try {
     $question = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$question) {
-        $_SESSION["faq_err"] = 'データが存在しません';
+        $_SESSION["err"] = 'データが存在しません';
         header('location:faq.php');
         exit();
     }
@@ -44,7 +44,7 @@ try {
     }
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION["faq_err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+    $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
     header('location:faq.php');
     exit();
 }
@@ -90,17 +90,17 @@ try {
 
             <!-- 本文ここまで -->
         </div>
-        <?php if (!empty($_SESSION["faq_msg"])): ?>
+        <?php if (!empty($_SESSION["msg"])): ?>
             <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["faq_msg"]);
-                unset($_SESSION["faq_msg"]);
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
                 ?>
             </p>
         <?php endif ?>
-        <?php if (!empty($_SESSION["faq_err"])): ?>
+        <?php if (!empty($_SESSION["err"])): ?>
             <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["faq_err"]);
-                unset($_SESSION["faq_err"]);
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
                 ?>
             </p>
         <?php endif ?>

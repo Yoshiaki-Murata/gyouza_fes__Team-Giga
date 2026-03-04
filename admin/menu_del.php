@@ -5,14 +5,14 @@ require_once '../inc/function.php';
 // マスター以外は削除出来ない仕様
 
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
-    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    $_SESSION["err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
     header("location:menu.php");
     exit();
 }
 
-if (!empty($_POST)) {
-    if (!empty($_POST["id"])) {
-        $menuid = (int)$_POST["id"];
+if (!empty($_GET)) {
+    if (!empty($_GET["id"])) {
+        $menuid = (int)$_GET["id"];
 
         try {
             $db = db_connect();
@@ -30,12 +30,14 @@ if (!empty($_POST)) {
             $target = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$target) {
-                $_SESSION["del_err"] = "指定されたメニューが見つかりません";
+                $_SESSION["err"] = "指定されたメニューが見つかりません";
                 header("location:menu.php");
                 exit();
             }
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+            header('location:menu.php');
+            exit();
         }
     }
 }
@@ -94,6 +96,20 @@ if (!empty($_POST)) {
                 <a href="menu.php" class="btn btn-secondary">戻る</a>
             </div>
         </form>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
     </main>
 </body>
 

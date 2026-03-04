@@ -19,7 +19,7 @@ try {
   $category = $stmt_2->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
   error_log($e->getMessage());
-  $_SESSION["faq_err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+  $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
   header('location:index.php');
   exit();
 }
@@ -88,17 +88,17 @@ try {
         </section>
       <?php endforeach; ?>
       
-      <?php if (!empty($_SESSION["faq_msg"])): ?>
+      <?php if (!empty($_SESSION["msg"])): ?>
         <p class="text-center bs-danger-text-emphasis">
-          <?php echo h($_SESSION["faq_msg"]);
-          unset($_SESSION["faq_msg"]);
+          <?php echo h($_SESSION["msg"]);
+          unset($_SESSION["msg"]);
           ?>
         </p>
       <?php endif ?>
-      <?php if (!empty($_SESSION["faq_err"])): ?>
+      <?php if (!empty($_SESSION["err"])): ?>
         <p class="text-center bs-danger-text-emphasis">
-          <?php echo h($_SESSION["faq_err"]);
-          unset($_SESSION["faq_err"]);
+          <?php echo h($_SESSION["err"]);
+          unset($_SESSION["err"]);
           ?>
         </p>
       <?php endif ?>

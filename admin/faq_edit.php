@@ -5,7 +5,9 @@ $id = (int)($_GET['id'] ?? 0);
 $categories = [];
 
 if ($id === 0) {
-    $_SESSION["faq_err"]=('IDが不正です。');
+    $_SESSION["err"] = 'IDが不正です。';
+    header('location:faq.php');
+    exit();
 }
 
 try {
@@ -19,7 +21,7 @@ try {
     $question = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$question) {
-        $_SESSION["faq_err"]=('質問が存在しません。');
+        $_SESSION["err"] = '質問が存在しません。';
     }
 
     // カテゴリーを取得
@@ -34,7 +36,7 @@ try {
     }
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION["faq_err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+    $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
     header('location:faq.php');
     exit();
 }
@@ -92,10 +94,10 @@ try {
                 </div>
                 <input type="submit" class="btn btn-primary" value="更新する">
             </form>
-             <?php if (!empty($_SESSION["faq_err"])): ?>
+            <?php if (!empty($_SESSION["err"])): ?>
                 <p class="text-center bs-danger-text-emphasis">
-                    <?php echo h($_SESSION["faq_err"]);
-                    unset($_SESSION["faq_err"]);
+                    <?php echo h($_SESSION["err"]);
+                    unset($_SESSION["err"]);
                     ?>
                 </p>
             <?php endif ?>

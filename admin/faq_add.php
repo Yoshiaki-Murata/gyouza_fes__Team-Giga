@@ -15,7 +15,7 @@ try {
     }
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION["faq_err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+    $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
     header('location:faq.php');
     exit();
 }
@@ -80,17 +80,17 @@ try {
                 </div>
                 <input type="submit" class="btn btn-primary" value="投稿する">
             </form>
-            <?php if (!empty($_SESSION["faq_msg"])): ?>
+            <?php if (!empty($_SESSION["msg"])): ?>
                 <p class="text-center bs-danger-text-emphasis">
-                    <?php echo h($_SESSION["faq_msg"]);
-                    unset($_SESSION["faq_msg"]);
+                    <?php echo h($_SESSION["msg"]);
+                    unset($_SESSION["msg"]);
                     ?>
                 </p>
             <?php endif ?>
-            <?php if (!empty($_SESSION["faq_err"])): ?>
+            <?php if (!empty($_SESSION["err"])): ?>
                 <p class="text-center bs-danger-text-emphasis">
-                    <?php echo h($_SESSION["faq_err"]);
-                    unset($_SESSION["faq_err"]);
+                    <?php echo h($_SESSION["err"]);
+                    unset($_SESSION["err"]);
                     ?>
                 </p>
             <?php endif ?>

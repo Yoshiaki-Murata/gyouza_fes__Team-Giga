@@ -10,7 +10,7 @@ if (!empty($_POST)) {
         $product_detail = $_POST["product_detail"];
         $alt = $_POST["alt"];
         $shop_id = (int)$_POST["shop_id"];
-        $id=(int)$_POST["id"];
+        $id = (int)$_POST["id"];
 
         try {
             $db = db_connect();
@@ -24,12 +24,14 @@ if (!empty($_POST)) {
             $stmt->bindParam(":alt", $alt, PDO::PARAM_STR);
             $stmt->bindParam(":shop_id", $shop_id, PDO::PARAM_INT);
             $stmt->execute();
-            $_SESSION["menu_edit_success"] = "商品情報の編集が完了しました‼";
+            $_SESSION["msg"] = "商品情報の編集が完了しました‼";
 
             header("location:menu.php");
             exit();
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+            header('location:menu_edit.php?='.$id);
+            exit();
         }
     }
 }

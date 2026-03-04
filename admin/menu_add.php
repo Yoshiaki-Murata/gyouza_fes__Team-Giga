@@ -9,7 +9,9 @@ try {
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    exit("エラー" . $e->getMessage());
+    $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+    header('location:menu.php');
+    exit();
 }
 
 
@@ -95,6 +97,20 @@ try {
                 <input type="submit" value="登録" class="btn btn-primary">
             </div>
         </form>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
     </main>
 
 </body>

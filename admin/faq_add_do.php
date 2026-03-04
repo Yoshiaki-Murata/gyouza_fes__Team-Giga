@@ -10,7 +10,7 @@ if (!empty($_POST)) {
         $category_id = (int)($_POST['category_id'] ?? 0);
 
         if ($category_id === 0) {
-            $_SESSION["faq_err"] = 'カテゴリーが不正です';
+            $_SESSION["err"] = 'カテゴリーが不正です';
             header('location:faq_add.php');
             exit();
         }
@@ -30,7 +30,7 @@ if (!empty($_POST)) {
             header('location:faq.php');
             exit();
         } catch (PDOException $e) {
-            $_SESSION["faq_err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+            $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
             header('location:faq_add.php');
             exit();
         }

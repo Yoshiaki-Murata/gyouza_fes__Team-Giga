@@ -5,7 +5,7 @@ if (!empty($_POST)) {
 
     $id = (int)($_POST['id'] ?? 0);
     if ($id === 0) {
-        $_SESSION["faq_err"] = 'IDが不正です';
+        $_SESSION["err"] = 'IDが不正です';
         header('location:faq_edit.php');
         exit();
     }
@@ -15,8 +15,8 @@ if (!empty($_POST)) {
     $category_id = (int)($_POST['category_id'] ?? 0);
 
     if ($question === '' || $answer === '' || $category_id === 0) {
-        $_SESSION["faq_err"] = '必要項目が未入力、またはカテゴリーが不正です';
-        header('location:faq_edit.php');
+        $_SESSION["err"] = '必要項目が未入力、またはカテゴリーが不正です';
+        header('location:contact_edit.php');
         exit();
     }
 
@@ -34,16 +34,16 @@ if (!empty($_POST)) {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         if ($stmt->rowCount() === 0) {
-            $_SESSION["faq_err"] = ('更新できませんでした');
+            $_SESSION["err"] = ('更新できませんでした');
             header('location:faq_edit.php');
             exit();
         }
 
-        $_SESSION["faq_msg"] = "編集が完了しました";
+        $_SESSION["msg"] = "編集が完了しました";
         header('Location: faq.php');
         exit();
     } catch (PDOException $e) {
-        $_SESSION["faq_err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+        $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
         header('location:faq_edit.php');
         exit();
     }

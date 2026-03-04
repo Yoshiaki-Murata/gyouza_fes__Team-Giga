@@ -4,7 +4,7 @@ require_once __DIR__ . '/../inc/function.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: news.php');
-    exit;
+    exit();
 }
 
 // データ取得 + trim
@@ -17,35 +17,31 @@ $errors = [];
 
 // IDチェック
 if ($id <= 0) {
-    $errors[] = 'IDが不正です';
+    err_msg('IDが不正です');
 }
 
 // 必須チェック
 if ($subject === '') {
-    $errors[] = 'タイトルを入力してください';
+    err_msg('タイトルを入力してください');
+    header('Location: news_edit.php?id=' . $id);
+    exit();
 }
 if ($titletag === '') {
-    $errors[] = 'ページタイトルを入力してください';
+    err_msg('ページタイトルを入力してください');
+    header('Location: news_edit.php?id=' . $id);
+    exit();
 }
 if ($text === '') {
-    $errors[] = '本文を入力してください';
+    err_msg('本文を入力してください');
+    header('Location: news_edit.php?id=' . $id);
+    exit();
 }
 
 // 文字数例
 if (mb_strlen($subject) > 100) {
-    $errors[] = 'タイトルは100文字以内にしてください';
-}
-
-if (!empty($errors)) {
-    $_SESSION['errors'] = $errors;
-    $_SESSION['old'] = [
-        'id' => $id,
-        'subject' => $subject,
-        'titletag' => $titletag,
-        'text' => $text
-    ];
+    err_msg('タイトルは100文字以内にしてください');
     header('Location: news_edit.php?id=' . $id);
-    exit;
+    exit();
 }
 
 $date = date("Y-m-d");
@@ -72,12 +68,15 @@ try {
 
     // 更新件数チェック
     if ($stmt->rowCount() === 0) {
-        exit('更新対象が存在しません');
+        err_msg('更新対象が存在しません');
+        header('Location: news_edit.php?id=' . $id);
+        exit();
     }
-
+    edit_msg();
     header('Location: news.php');
     exit;
 } catch (PDOException $e) {
-    error_log($e->getMessage());
-    exit('システムエラーが発生しました');
+    db_err_msg(). $e->getMessage();
+    header('Location: news_edit.php?id=' . $id);
+    exit();
 }
