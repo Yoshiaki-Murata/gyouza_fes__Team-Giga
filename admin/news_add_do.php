@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../inc/function.php';
 
 if (!empty($_POST)) {
@@ -8,32 +9,27 @@ if (!empty($_POST)) {
         $titletag = trim($_POST['titletag'] ?? '');
         $text     = trim($_POST['text'] ?? '');
 
-        $errors = [];
-
         // 必須チェック
         if ($subject === '') {
-            $errors[] = 'タイトルを入力してください';
+            err_msg('タイトルを入力してください');
+            header('Location: news.php');
+            exit;
         }
         if ($titletag === '') {
-            $errors[] = 'ページタイトルを入力してください';
+            err_msg('ページタイトルを入力してください');
+            header('Location: news.php');
+            exit;
         }
         if ($text === '') {
-            $errors[] = '本文を入力してください';
+            err_msg('本文を入力してください');
+            header('Location: news.php');
+            exit;
         }
 
         // 文字数制限（例）
         if (mb_strlen($subject) > 250) {
-            $errors[] = 'タイトルは100文字以内にしてください';
-        }
-
-        if (!empty($errors)) {
-            $_SESSION['errors'] = $errors;
-            $_SESSION['old'] = [
-                'subject' => $subject,
-                'titletag' => $titletag,
-                'text' => $text
-            ];
-            header('Location: news_add.php');
+            err_msg('タイトルは100文字以内にしてください');
+            header('Location: news.php');
             exit;
         }
 
@@ -52,13 +48,13 @@ if (!empty($_POST)) {
 
             $stmt->execute();
 
-
+            del_msg();
             header('location:news.php');
             exit();
         } catch (PDOException $e) {
-            // 本番ではログに書く
-            error_log($e->getMessage());
-            exit('システムエラーが発生しました');
+            db_err_msg() . $e->getMessage();
+            header('location:news.php');
+            exit();
         }
     }
 }

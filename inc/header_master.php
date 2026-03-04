@@ -38,7 +38,7 @@
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="./../admin/user.php" class="text-reset">
+                     <a href="user.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">USER</p>
                          <p class="c-menu-hamburger-text-list__sub">ユーザー情報</p>
                      </a>
@@ -56,9 +56,15 @@
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="./../admin/shop.php" class="text-reset">
+                     <a href="shop.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">SHOP</p>
                          <p class="c-menu-hamburger-text-list__sub">店舗一覧</p>
+                     </a>
+                 </li>
+                 <li class="c-menu-hamburger-text-list">
+                     <a href="faq.php" class="text-reset">
+                         <p class="c-menu-hamburger-text-list__main">FAQ</p>
+                         <p class="c-menu-hamburger-text-list__sub">よくある質問</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">

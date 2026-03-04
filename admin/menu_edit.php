@@ -5,8 +5,8 @@ require_once '../inc/function.php';
 $target = []; // 初期化
 
 
-if (!empty($_POST["id"])) {
-    $id = (int)$_POST["id"];
+if (!empty($_GET["id"])) {
+    $id = (int)$_GET["id"];
     try {
         $db = db_connect();
         $sql = "SELECT * FROM menus WHERE id=:id ";
@@ -15,7 +15,9 @@ if (!empty($_POST["id"])) {
         $stmt->execute();
         $target = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        exit("エラー" . $e->getMessage());
+        $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+        header('location:menu.php');
+        exit();
     }
 }
 
@@ -34,12 +36,15 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="../css/style.css">
     <title>商品編集・登録</title>
 </head>
@@ -103,6 +108,20 @@ try {
                 <input type="submit" value="編集" class="btn btn-primary">
             </div>
         </form>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
     </main>
 </body>
 

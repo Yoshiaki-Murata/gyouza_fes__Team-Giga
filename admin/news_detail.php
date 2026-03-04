@@ -1,11 +1,14 @@
 <?php
+session_start();
 require_once __DIR__ . '/../inc/function.php';
 
 // TODO: ID取得とバリデーション
 $id = (int)($_GET['id'] ?? 0);
 
 if ($id <= 0) {
-    exit('IDが不正です');
+    err_msg('IDが不正です');
+    header('location:news.php');
+    exit();
 }
 
 // DB接続
@@ -19,11 +22,14 @@ try {
     // 結果セットを連想配列の形で取得
     $target = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$target) {
-        exit('記事が存在しません');
+        err_msg('記事が存在しません');
+        header('location:news.php');
+        exit();
     }
 } catch (PDOException $e) {
-    error_log($e->getMessage());
-    exit('システムエラーが発生しました');
+    db_err_msg() . $e->getMessage();
+    header('location:news.php');
+    exit();
 }
 ?>
 
@@ -75,6 +81,20 @@ try {
                 <a href="./news.php">お知らせ一覧へ戻る</a>
             </p>
         </section>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
     </main>
 
     <!-- footer -->

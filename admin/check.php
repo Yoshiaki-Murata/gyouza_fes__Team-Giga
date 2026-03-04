@@ -6,8 +6,6 @@ if (!empty($_POST)) { //ポスト送信ができたら
     if (!empty($_POST["username"]) && !empty($_POST["password"])) {
         $username = $_POST["username"];
         $password = $_POST["password"];
-        check_array($_POST);
-
         try {
             // DB接続
             $db = db_connect();

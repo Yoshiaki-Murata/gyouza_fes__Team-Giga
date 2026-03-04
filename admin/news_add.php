@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once __DIR__ . '/../inc/function.php';
+
+?>
+
+
 <!doctype html>
 <html lang="ja">
 
@@ -39,6 +46,20 @@
 
                 <input type="submit" class="btn btn-primary" value="投稿する">
             </form>
+            <?php if (!empty($_SESSION["msg"])): ?>
+                <p class="text-center bs-danger-text-emphasis">
+                    <?php echo h($_SESSION["msg"]);
+                    unset($_SESSION["msg"]);
+                    ?>
+                </p>
+            <?php endif ?>
+            <?php if (!empty($_SESSION["err"])): ?>
+                <p class="text-center bs-danger-text-emphasis">
+                    <?php echo h($_SESSION["err"]);
+                    unset($_SESSION["err"]);
+                    ?>
+                </p>
+            <?php endif ?>
 
 
 

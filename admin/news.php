@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once __DIR__ . '/../inc/function.php';
 
 try {
@@ -16,8 +16,9 @@ try {
     // 取得したレコードを連想配列で1レコードずつ受け取る
     $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    error_log($e->getMessage());
-    exit('システムエラーが発生しました');
+    db_err_msg(). $e->getMessage();
+    header('location:index.php');
+    exit();
 }
 
 ?>
@@ -59,7 +60,7 @@ try {
                     <?php foreach ($news as $article): ?>
 
                         <div class="c-news__detail">
-                            
+
                             <div class="mr-2">
                                 <a href="./news_edit.php?id=<?php echo h($article['id']); ?>" class="btn btn-primary btn-sm mr-3">編集</a>
                                 <a href="./news_del.php?id=<?php echo h($article['id']); ?>" class="btn btn-danger btn-sm mr-3">削除</a>
@@ -85,6 +86,21 @@ try {
                 <p>お知らせはありません</p>
             <?php endif; ?>
         </section>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
     </main>
 </body>
+
 </html>

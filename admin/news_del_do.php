@@ -4,8 +4,8 @@ require_once '../inc/function.php';
 
 // 役割がマスター出ない人は削除できないように
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
-    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
-    header("location:user.php");
+    err_msg("削除権限がありません。役割がマスターの人に削除依頼をしてください");
+    header("location:news.php");
     exit();
 }
 // TODO: データ受け取り
@@ -16,7 +16,9 @@ if (!empty($_POST)) {
         $id = (int)($_POST['id'] ?? 0);
 
         if ($id === 0) {
-            exit('IDが不正です');
+            err_msg('IDが不正です');
+            header("location:news_del.php?=".$id);
+            exit();
         }
         // DBに接続
         try {
@@ -29,7 +31,9 @@ if (!empty($_POST)) {
             $stmt->execute();
 
             if (!$stmt->fetch()) {
-                exit('対象データが存在しません');
+                err_msg("対象データが存在しません");
+                header("location:news_del.php?=".$id);
+                exit();
             }
 
             // infoテーブルから1行削除するSQL
@@ -39,13 +43,14 @@ if (!empty($_POST)) {
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
-            $_SESSION["del_msg"] = "削除完了しました";
+            del_msg();
             // トップページへ画面遷移
             header('location:news.php');
             exit();
         } catch (PDOException $e) {
-            error_log($e->getMessage());
-            exit('システムエラーが発生しました');
+            db_err_msg(). $e->getMessage();
+            header('location:news_del.php');
+            exit();
         }
     }
 }

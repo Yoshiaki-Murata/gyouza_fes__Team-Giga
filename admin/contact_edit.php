@@ -5,8 +5,8 @@ require_once '../inc/function.php';
 $target = []; // 初期化
 
 
-if (!empty($_POST["id"])) {
-    $id = (int)$_POST["id"];
+if (!empty($_GET["id"])) {
+    $id = (int)$_GET["id"];
     try {
         $db = db_connect();
         $sql = "SELECT * FROM contact WHERE id=:id ";
@@ -15,7 +15,10 @@ if (!empty($_POST["id"])) {
         $stmt->execute();
         $target = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        exit("エラー" . $e->getMessage());
+        error_log($e->getMessage());
+        $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+        header('location:contact_list.php');
+        exit();
     }
 }
 
@@ -26,7 +29,9 @@ try {
     $stmt2->execute();
     $result = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    exit("エラー" . $e->getMessage());
+    $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+    header('location:contact_list.php');
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -103,12 +108,20 @@ try {
                 <input type="submit" value="編集" class="btn btn-primary">
             </div>
         </form>
-        <?php if (!empty($_SESSION["contact_edit_err"])): ?>
-            <p class="text-center bs-danger-text-emphasis"><?php echo h($_SESSION["contact_edit_err"], ENT_QUOTES, "UTF-8");
-                                                            unset($_SESSION["contact_edit_err"]);
-                                                            ?>
-            </p>
-        <?php endif ?>
+       <?php if (!empty($_SESSION["msg"])): ?>
+                <p class="text-center bs-danger-text-emphasis">
+                    <?php echo h($_SESSION["msg"]);
+                    unset($_SESSION["msg"]);
+                    ?>
+                </p>
+            <?php endif ?>
+            <?php if (!empty($_SESSION["err"])): ?>
+                <p class="text-center bs-danger-text-emphasis">
+                    <?php echo h($_SESSION["err"]);
+                    unset($_SESSION["err"]);
+                    ?>
+                </p>
+            <?php endif ?>
     </main>
 </body>
 
