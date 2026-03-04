@@ -83,7 +83,10 @@ try {
                 <p>質問：<?php echo h($question['question']); ?></p>
                 <p>回答：<?php echo nl2br(h($question['answer'])); ?></p>
                 <p>カテゴリー：<?php echo h($categories[$question['category_id']] ?? ''); ?></p>
-                <input type="submit" class="btn btn-danger" value="削除する" onclick="return confirm('本当に削除しますか？');">
+
+                <div class="text-center">
+                    <input type="submit" class="btn btn-danger mt-5" value="削除" onclick="return confirm('本当に削除しますか？');">
+                </div>
             </form>
 
 

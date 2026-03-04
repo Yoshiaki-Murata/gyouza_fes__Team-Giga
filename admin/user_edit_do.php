@@ -4,6 +4,13 @@ require_once '../inc/function.php';
 
 check_array($_POST);
 
+// CSRF対策
+if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    exit("不正なリクエストです。");
+}
+// 使用したトークンを削除
+unset($_SESSION['csrf_token']);
+
 if (!empty($_POST)) {
     if (!empty($_POST["username"]) && !empty($_POST["role_id"]) && !empty($_POST["id"])) {
         $username = $_POST["username"];
@@ -31,9 +38,9 @@ if (!empty($_POST)) {
             $sql = "SELECT COUNT(username) FROM users WHERE username = :username AND id != :id";
             $stmt = $db->prepare($sql);
             $stmt->bindParam(":username", $username, PDO::PARAM_STR);
-            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_NUM); 
+            $result = $stmt->fetch(PDO::FETCH_NUM);
             // 同じ名前があったらuser_add.phpに返す。
             if ($result[0] !== 0) {
                 header("location:user_add.php");
@@ -59,7 +66,7 @@ if (!empty($_POST)) {
                 $stmt2->bindParam(":password", $password_hash, PDO::PARAM_STR);
             }
             $stmt2->bindParam(":role_id", $role_id, PDO::PARAM_INT);
-            $stmt2->bindParam(":id",$id,PDO::PARAM_INT);
+            $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt2->execute();
             header("location:user.php");
             exit();
