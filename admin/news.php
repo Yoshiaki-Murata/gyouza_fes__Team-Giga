@@ -80,13 +80,8 @@ try {
 
             <?php else: ?>
                 <p>お知らせはありません</p>
-
             <?php endif; ?>
         </section>
     </main>
-    <!-- footer -->
-
-    <a href="#top" class="c-btn__top text-reset"><img src="../img/back-top.png" alt="topへ戻る"></a>
 </body>
-
 </html>
