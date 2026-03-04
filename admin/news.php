@@ -57,16 +57,19 @@ try {
 
                 <dl class="l-news__list">
                     <?php foreach ($news as $article): ?>
+
                         <div class="c-news__detail">
+                            
                             <div class="mr-2">
-                                <a href="./news_edit.php?id=<?php echo h($article['id']); ?>" class="btn btn-primary btn-sm">修正</a>
-                                <a href="./news_del.php?id=<?php echo h($article['id']); ?>" class="btn btn-danger btn-sm">削除</a>
+                                <a href="./news_edit.php?id=<?php echo h($article['id']); ?>" class="btn btn-primary btn-sm mr-3">編集</a>
+                                <a href="./news_del.php?id=<?php echo h($article['id']); ?>" class="btn btn-danger btn-sm mr-3">削除</a>
                             </div>
                             <dt>
                                 <time datetime="<?php echo h($article['date']); ?>">
                                     <?php echo h(format_jp_date($article['date'])); ?>
                                 </time>
                             </dt>
+
                             <dd>
                                 <a href="./news_detail.php?id=<?php echo h($article['id']) ?>" class="text-reset">
                                     <?php echo h($article['subject']); ?>

@@ -33,7 +33,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo h($news['titletag']); ?>修正｜ふくおか餃子FES</title>
+    <title><?php echo h($news['titletag']); ?>編集｜ふくおか餃子FES</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -50,7 +50,7 @@ try {
         <div>
             <!-- ここから「本文」-->
 
-            <h1 class="c-title__main">お知らせ修正</h1>
+            <h1 class="c-title__main">お知らせ編集</h1>
             <form action="./news_edit_do.php" method="post">
                 <input type="hidden" name="id" value="<?php echo h($news['id']); ?>">
                 <div class="form-group">
@@ -66,7 +66,7 @@ try {
                     <textarea name="text" class="form-control" rows="5" required><?= h($news['text']); ?></textarea>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="編集する">
+                <input type="submit" class="btn btn-primary" value="更新する">
             </form>
 
 

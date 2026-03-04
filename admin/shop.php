@@ -48,7 +48,7 @@ try {
 
   <main role="main" class="container l-header-margin">
     <section class="l-wrapper-second">
-      <h1 class="c-title__main" data-sub-title="店舗一覧">SHOPS</h1>
+      <h1 class="c-title__main">SHOPS</h1>
 
       <div class="d-grid mx-auto">
         <a href="./shop_add.php" class="btn btn-primary">新規店舗追加</a>
@@ -72,7 +72,7 @@ try {
                 </th>
                 <td class="col">
                   <div class="mr-2">
-                    <a href="./shop_edit.php?id=<?php echo h($shop['id']); ?>" class="btn btn-primary btn-sm">修正</a>
+                    <a href="./shop_edit.php?id=<?php echo h($shop['id']); ?>" class="btn btn-primary btn-sm mb-3">編集</a>
                     <a href="./shop_del.php?id=<?php echo h($shop['id']); ?>" class="btn btn-danger btn-sm">削除</a>
                   </div>
                 </td>
