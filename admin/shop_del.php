@@ -3,11 +3,11 @@ session_start();
 require_once '../inc/function.php';
 
 // 役割がマスター出ない人は削除できないように
-if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
-    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
-    header("location:user.php");
-    exit();
-}
+// if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
+//     $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+//     header("location:user.php");
+//     exit();
+// }
 
 $id = (int)($_GET['id'] ?? 0);
 
@@ -83,7 +83,9 @@ try {
                     </div>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="削除する" onclick="return confirm('本当に削除しますか？');">
+                <div class="text-center">
+                    <input type="submit" class="btn btn-danger mt-5" value="削除" onclick="return confirm('本当に削除しますか？');">
+                </div>
             </form>
 
 
