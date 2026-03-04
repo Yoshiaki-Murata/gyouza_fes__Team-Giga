@@ -2,6 +2,10 @@
 session_start();
 require_once '../inc/function.php';
 
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 try {
     $db = db_connect();
     $sql = "SELECT * FROM shops";
@@ -47,31 +51,31 @@ try {
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
                     <label for="product" class="form-label">商品名</label>
-                    <input type="text" name="product" id="product" class="form-control">
+                    <input type="text" name="product" id="product" class="form-control" required>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="pieces" class="form-label">個数</label>
-                    <input type="number" name="pieces" id="pieces" class="form-control" min="1" max="100" placeholder="数値のみを入力">
+                    <input type="number" name="pieces" id="pieces" class="form-control"  min="1" max="100" placeholder="数値のみを入力" required>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="price" class="form-label">値段</label>
-                    <input type="number" name="price" id="price" class="form-control" placeholder="数値のみを入力">
+                    <input type="number" name="price" id="price" class="form-control" placeholder="数値のみを入力" required>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="product_details" class="form-label">商品詳細</label>
-                    <textarea name="product_details" id="product_details" class="form-control"></textarea>
+                    <textarea name="product_details" id="product_details" class="form-control" required></textarea>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="image" class="form-label">商品画像</label>
-                    <input type="file" name="image" id="image" class="form-control">
+                    <input type="file" name="image" id="image" class="form-control" required>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -83,9 +87,10 @@ try {
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="shop_id" class="form-label">店舗名</label>
-                    <select name="shop_id" id="shop_id" class="form-control form-control-sm mb-5" aria-label="Small select example">
+                    <select name="shop_id" id="shop_id" class="form-control form-control-sm mb-5" aria-label="Small select example" required>
+                        <option value="">店舗名を選択してください</option>
                         <?php foreach ($result as  $row): ?>
-                            <option value="<?php echo $row["id"]; ?>">
+                            <option value="<?php echo h($row["id"]); ?>">
                                 <?php echo h($row["shop"]); ?>
                             </option>
                         <?php endforeach; ?>
@@ -94,6 +99,8 @@ try {
             </div>
 
             <div class="mb-5 text-center">
+                <!-- CSRFトークン -->
+                <input type="hidden" name="csrf_token" value="<?php echo h($_SESSION['csrf_token']); ?>">
                 <input type="submit" value="登録" class="btn btn-primary">
             </div>
         </form>

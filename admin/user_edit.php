@@ -2,6 +2,11 @@
 session_start();
 require_once '../inc/function.php';
 
+if (!isset($_SESSION['csrf_token'])) {
+    // 安全なランダム文字列を生成してセッションに保存
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 try {
     $db = db_connect();
     $sql2 = "SELECT * FROM roles";
@@ -31,7 +36,7 @@ if (!empty($_POST)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -54,6 +59,18 @@ if (!empty($_POST)) {
 
     <main role="main" class="container" style="padding:60px 15px 0">
         <h1 class="my-5 c-title__main">ユーザー編集</h1>
+
+        <?php if (!empty($_SESSION["edit_err"])): ?>
+            <div class="row justify-content-center">
+                <div class="col-6 alert alert-danger text-center">
+                    <?php
+                    echo h($_SESSION["edit_err"]);
+                    unset($_SESSION["edit_err"]); // 一度表示したら消す
+                    ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
         <form action="./user_edit_do.php" method="post">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
