@@ -4,11 +4,11 @@ require_once '../inc/function.php';
 
 // マスター以外は削除出来ない仕様
 
-// if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
-//     $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
-//     header("location:menu.php");
-//     exit();
-// }
+if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
+    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    header("location:menu.php");
+    exit();
+}
 
 if (!empty($_POST)) {
     if (!empty($_POST["id"])) {
@@ -86,12 +86,11 @@ if (!empty($_POST)) {
         </div>
 
         <form action="./menu_del_do.php" method="post">
-            <div class="mb-5 text-center">
+            <div class="mb-3 text-center">
 
                 <input type="hidden" name="id" value="<?php echo h($target["menu_id"]); ?>">
 
-                <input type="submit" value="削除する
-                " class="btn btn-danger me-5" onclick="return confirm('本当に削除しますか？');">
+                <input type="submit" value="削除" class="btn btn-danger m-3" onclick="return confirm('本当に削除しますか？');">
                 <a href="menu.php" class="btn btn-secondary">戻る</a>
             </div>
         </form>

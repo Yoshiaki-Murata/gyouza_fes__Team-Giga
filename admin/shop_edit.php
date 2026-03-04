@@ -67,7 +67,7 @@ try {
                     <textarea name="shop_detail" class="form-control" rows="5" required><?php echo h($shop['shop_detail']); ?></textarea>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="編集する">
+                <input type="submit" class="btn btn-primary" value="更新する">
             </form>
 
 

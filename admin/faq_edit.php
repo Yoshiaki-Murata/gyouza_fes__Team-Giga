@@ -65,7 +65,7 @@ try {
         <div>
             <!-- ここから「本文」-->
 
-            <h1 class="c-title__main">FAQ修正</h1>
+            <h1 class="c-title__main">FAQ編集</h1>
             <form action="./faq_edit_do.php" method="post">
                 <input type="hidden" name="id" value="<?php echo (int)$question['id']; ?>">
                 <div class="form-group">
@@ -91,7 +91,7 @@ try {
 
 
 
-                <input type="submit" class="btn btn-primary" value="修正する">
+                <input type="submit" class="btn btn-primary" value="更新する">
             </form>
 
 
