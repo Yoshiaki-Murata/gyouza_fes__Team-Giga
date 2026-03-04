@@ -4,15 +4,17 @@ require_once '../inc/function.php';
 
 // 役割がマスター出ない人は削除できないように
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
-    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
-    header("location:user.php");
+    err_msg("削除権限がありません。役割がマスターの人に削除依頼をしてください");
+    header("location:news.php");
     exit();
 }
 
 $id = (int)($_GET['id'] ?? 0);
 
 if ($id === 0) {
-    exit('IDが不正です');
+    err_msg('IDが不正です');
+    header("location:news.php");
+    exit();
 }
 
 // DB接続
@@ -28,11 +30,14 @@ try {
 
     // 存在しないIDをはじく
     if (!$news) {
-        exit('データが存在しません');
+        err_msg('データが存在しません');
+        header("location:news.php");
+        exit();
     }
 } catch (PDOException $e) {
-    error_log($e->getMessage());
-    exit('システムエラーが発生しました');
+    db_err_msg() . $e->getMessage();
+    header('location:news.php');
+    exit();
 }
 
 ?>
@@ -83,6 +88,21 @@ try {
                 </div>
                 <input type="submit" class="btn btn-danger" value="削除する" onclick="return confirm('本当に削除しますか？');">
             </form>
+            <?php if (!empty($_SESSION["msg"])): ?>
+                <p class="text-center bs-danger-text-emphasis">
+                    <?php echo h($_SESSION["msg"]);
+                    unset($_SESSION["msg"]);
+                    ?>
+                </p>
+            <?php endif ?>
+            <?php if (!empty($_SESSION["err"])): ?>
+                <p class="text-center bs-danger-text-emphasis">
+                    <?php echo h($_SESSION["err"]);
+                    unset($_SESSION["err"]);
+                    ?>
+                </p>
+            <?php endif ?>
+
             <!-- 本文ここまで -->
         </div>
     </main>

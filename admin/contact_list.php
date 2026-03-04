@@ -8,7 +8,9 @@ try {
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    exit('データベースに接続できませんでした。' . $e->getMessage());
+    $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+    header('location:index.php');
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -82,7 +84,7 @@ try {
                                     </span>
                                 </td>
                                 <td class="text-center">
-                                    <form action="contact_edit.php" method="post" class="m-0">
+                                    <form action="contact_edit.php" method="get" class="m-0">
                                         <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                                         <button type="submit" class="btn btn-sm btn-outline-primary text-nowrap">編集</button>
                                     </form>
@@ -93,6 +95,20 @@ try {
                 </table>
             </div>
         </section>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
     <script>

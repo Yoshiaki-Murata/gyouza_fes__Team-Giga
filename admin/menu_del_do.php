@@ -3,8 +3,8 @@ session_start();
 require_once '../inc/function.php';
 
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
-    $_SESSION["menu_del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
-    header("location:menu.php");
+    $_SESSION["err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    header('location:menu_del.php?='.$_POST["id"]);
     exit();
 }
 
@@ -18,11 +18,13 @@ if (!empty($_POST)) {
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
 
-            $_SESSION["menu_del_msg"] = "メニューを削除しました";
+            $_SESSION["msg"] = "メニューを削除しました";
             header("location:menu.php");
             exit();
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+             $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+            header('location:menu_del.php?='.$id);
+            exit();
         }
        
     }

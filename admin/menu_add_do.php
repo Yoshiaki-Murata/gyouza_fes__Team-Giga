@@ -16,11 +16,13 @@ if (!empty($_FILES)) {
         // 保存場所を生成
         $save_path = "../img/" . $new_name;
         if (move_uploaded_file($file_from, $save_path)) {
-            $_SESSION["menu_add_image_success"] = "画像の保存に成功しました";
+            $_SESSION["msg"] = "画像の保存に成功しました";
             // DB登録時に使用するファイル名を定義
             $image_for_db = $new_name;
         } else {
-            echo "画像の保存に失敗しました";
+            $_SESSION["err"] = "画像の保存に失敗しました";
+            header('location:menu_add.php');
+            exit();
         }
     }
 }
@@ -53,13 +55,15 @@ if (!empty($_POST)) {
             $stmt->bindParam(":shop_id", $shop_id, PDO::PARAM_INT);
             $stmt->execute();
 
-            $_SESSION["menu_add_success"] = "商品の新規追加が完了しました‼";
+            $_SESSION["msg"] = "商品の新規追加が完了しました‼";
             // メニューにもどる
 
             header('location:menu.php');
             exit();
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+            header('location:menu_add.php');
+            exit();
         }
     }
 }
