@@ -82,6 +82,8 @@ if (!empty($_POST)) {
 
             <div class="mb-5 text-center">
                 <input type="hidden" name="id" value="<?php echo h($target["id"]); ?>">
+                <!-- CSRF対策 -->
+                <input type="hidden" name="csrf_token" value="<?php echo h($_SESSION['csrf_token']); ?>">
                 <input type="submit" value="登録" class="btn btn-primary">
             </div>
         </form>

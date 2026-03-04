@@ -84,9 +84,9 @@ try {
             </tbody>
         </table>
 
-        <?php if (!empty($_SESSION["del_err"])): ?>
+        <?php if (!empty($_SESSION["menu_del_err"])): ?>
             <p class="text-center bs-danger-text-emphasis"><?php echo htmlspecialchars($_SESSION["menu_del_err"], ENT_QUOTES, "UTF-8");
-             unset($_SESSION["menu_del_err"]);
+                                                            unset($_SESSION["menu_del_err"]);
                                                             ?>
             </p>
         <?php endif ?>
