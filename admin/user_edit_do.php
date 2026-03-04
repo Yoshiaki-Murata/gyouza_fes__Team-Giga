@@ -20,13 +20,13 @@ if (!empty($_POST)) {
 
         // ユーザー名が半角英数８文字以上か確認
         if (!preg_match("/^[a-zA-Z0-9_-]{8,}$/", $username)) {
-            header("location:user_add.php");
+            header("location:user_edit.php?id=" . $id);
             exit();
         }
         // パスワードの変更があるときは半角英数８文字以上か確認
         if (!empty($password)) {
             if (!preg_match("/^[a-zA-Z0-9_-]{8,}$/", $password)) {
-                header("location:user_add.php");
+                header("location:user_edit.php?id=" . $id);
                 exit();
             }
         }
@@ -43,7 +43,7 @@ if (!empty($_POST)) {
             $result = $stmt->fetch(PDO::FETCH_NUM);
             // 同じ名前があったらuser_add.phpに返す。
             if ($result[0] !== 0) {
-                header("location:user_add.php");
+                header("location:user_edit.php?id=" . $id);
                 exit();
             }
 

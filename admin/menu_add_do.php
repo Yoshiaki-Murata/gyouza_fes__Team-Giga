@@ -2,17 +2,30 @@
 session_start();
 require_once '../inc/function.php';
 
-
+// CSRF対策
+if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    exit("不正なリクエストです。");
+}
+// 初期化
+$image_for_db = "";
 
 // アップロードした画像をimageファイルに登録する。
 if (!empty($_FILES)) {
     if (!empty($_FILES["image"]) && is_uploaded_file($_FILES["image"]["tmp_name"])) {
         $file_from = $_FILES["image"]["tmp_name"];
 
+        // 許可する拡張子を定義する
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
         // 元のファイルから拡張子を取得する
-        $extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
-        // ファイル名を生成する。
-        $new_name = "menu00" . $_POST["shop_id"] . "." . $extension;
+        $extension = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
+        if (!in_array($extension, $allowed_extensions)) {
+            exit("許可されていないファイル形式です。");
+        }
+
+        // $extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+
+        // ファイル名を生成する
+        $new_name = "menu_" . (int)$_POST["shop_id"] . "_" . bin2hex(random_bytes(8)) . "." . $extension;
         // 保存場所を生成
         $save_path = "../img/" . $new_name;
         if (move_uploaded_file($file_from, $save_path)) {
