@@ -4,15 +4,17 @@ require_once '../inc/function.php';
 
 // 役割がマスター出ない人は削除できないように
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
-    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
-    header("location:user.php");
+    $_SESSION["faq_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    header("location:faq.php");
     exit();
 }
 
 $id = (int)($_GET['id'] ?? 0);
 
 if ($id === 0) {
-    exit('IDが不正です');
+    $_SESSION["faq_err"] = 'IDが不正です';
+    header('location:faq.php');
+    exit();
 }
 
 try {
@@ -25,7 +27,9 @@ try {
     $question = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$question) {
-        exit('データが存在しません');
+        $_SESSION["faq_err"] = 'データが存在しません';
+        header('location:faq.php');
+        exit();
     }
 
     // カテゴリーを取得
@@ -40,7 +44,9 @@ try {
     }
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    exit('システムエラーが発生しました');
+    $_SESSION["faq_err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+    header('location:faq.php');
+    exit();
 }
 
 ?>
@@ -84,6 +90,20 @@ try {
 
             <!-- 本文ここまで -->
         </div>
+        <?php if (!empty($_SESSION["faq_msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["faq_msg"]);
+                unset($_SESSION["faq_msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["faq_err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["faq_err"]);
+                unset($_SESSION["faq_err"]);
+                ?>
+            </p>
+        <?php endif ?>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
