@@ -11,7 +11,7 @@
                  <li><a href="menu.php" class="text-reset">MENU</a></li>
                  <li><a href="shop.php" class="text-reset">SHOP</a></li>
                  <li><a href="faq.php" class="text-reset">FAQ</a></li>
-                 <li><a href="contact.php" class="text-reset">CONTACT</a></li>
+                 <li><a href="contact_list.php" class="text-reset">CONTACT</a></li>
                  <li><a href="logout.php" class="text-reset">LOGOUT</a></li>
              </ul>
          </nav>
@@ -62,15 +62,15 @@
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
-                     <a href="faq.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">FAQ</p>
-                         <p class="c-menu-hamburger-text-list__sub">よくある質問</p>
+                     <a href="contact_list.php" class="text-reset">
+                         <p class="c-menu-hamburger-text-list__main">CONTACT</p>
+                         <p class="c-menu-hamburger-text-list__sub">お問い合わせ</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="./../admin/logout.php" class="text-reset">
                          <p class="c-menu-hamburger-text-list__main">LOGOUT</p>
-                         <p class="c-menu-hamburger-text-list__sub">アクセス</p>
+                         <p class="c-menu-hamburger-text-list__sub">ログアウト</p>
                      </a>
                  </li>
              </ul>
