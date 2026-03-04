@@ -21,8 +21,9 @@ if (!empty($_POST)) {
             menus.pieces,
             menus.price,
             menus.product_detail,
-            CAST(shop_id AS CHAR) AS shop_id_str
-             FROM menus WHERE menus.id = :menuid";
+            
+            shops.shop AS shop_name
+             FROM menus INNER JOIN shops ON menus.shop_id=shops.id WHERE menus.id=:menuid";
 
             $stmt = $db->prepare($sql);
             $stmt->bindParam(":menuid", $menuid, PDO::PARAM_INT);
@@ -77,7 +78,7 @@ if (!empty($_POST)) {
                     <td><?php echo h($target["pieces"]); ?>個入り</td>
                     <td><?php echo h($target["price"]); ?>円</td>
                     <td><?php echo h($target["product_detail"]); ?></td>
-                    <td><?php echo h($target["shop_id_str"]); ?></td>
+                    <td><?php echo h($target["shop_name"]); ?></td>
                 </tr>
             </tbody>
         </table>
