@@ -83,7 +83,9 @@ try {
                     </div>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="削除する" onclick="return confirm('本当に削除しますか？');">
+                <div class="text-center">
+                    <input type="submit" class="btn btn-danger mt-5" value="削除" onclick="return confirm('本当に削除しますか？');">
+                </div>
             </form>
 
 

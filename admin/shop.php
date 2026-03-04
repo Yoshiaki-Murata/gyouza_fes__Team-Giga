@@ -58,31 +58,29 @@ try {
           <thead>
             <tr class="row">
               <th class="col">店舗名</th>
-              <th class="col">操作</th>
               <th class="col">ブース番号</th>
               <th class="col-6">店舗詳細</th>
+              <th class="col">操作</th>
             </tr>
           </thead>
           <tbody>
-
             <?php foreach ($shops as $shop): ?>
               <tr class="row">
                 <th class="col">
                   <?php echo h($shop['shop']); ?>
                 </th>
                 <td class="col">
-                  <div class="mr-2">
-                    <a href="./shop_edit.php?id=<?php echo h($shop['id']); ?>" class="btn btn-primary btn-sm mb-3">編集</a>
-                    <a href="./shop_del.php?id=<?php echo h($shop['id']); ?>" class="btn btn-danger btn-sm">削除</a>
-                  </div>
-                </td>
-                <td class="col">
                   <?php echo h($shop['boos_number']); ?>
                 </td>
                 <td class="col-6">
                   <?php echo nl2br(h($shop['shop_detail'])); ?>
                 </td>
-
+                <td class="col">
+                  <div class="mr-2">
+                    <a href="./shop_edit.php?id=<?php echo h($shop['id']); ?>" class="btn btn-primary btn-sm m-2">編集</a>
+                    <a href="./shop_del.php?id=<?php echo h($shop['id']); ?>" class="btn btn-danger btn-sm m-2">削除</a>
+                  </div>
+                </td>
               </tr>
             <?php endforeach; ?>
 
