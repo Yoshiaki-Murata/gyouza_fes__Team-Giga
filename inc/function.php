@@ -3,8 +3,6 @@
 // session_start();
 require_once __DIR__ . '/db_info.php';
 
-
-
 // DB接続
 function db_connect()
 {
@@ -55,3 +53,11 @@ function db_err_msg(){
 function err_msg($a){
     return $_SESSION["err"]=$a;
 }
+
+// function login_session(){
+//     if(empty($_SESSION["id"])){
+//         err_msg("正しい手順でログインしましょう（#^ω^）");
+//         header("location:login.php");
+//         exit();
+//     }
+// }
