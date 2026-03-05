@@ -45,7 +45,7 @@ try {
     <?php include('../inc/header_master.php');  ?>
 
     <main role="main" class="container" style="padding:60px 15px 0">
-        <h1 class="my-5 text-center">商品登録・編集</h1>
+        <h1 class="my-5 c-title__main">商品登録・編集</h1>
         <form action="./menu_edit_do.php" method="post" enctype="multipart/form-data">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
@@ -114,6 +114,8 @@ try {
                 ?>
             </p>
         <?php endif ?>
+
+        <p><a href="menu.php" class="mb-5 text-reset">一覧へ戻る</a></p>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

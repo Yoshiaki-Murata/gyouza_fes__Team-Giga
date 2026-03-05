@@ -47,6 +47,7 @@ if (!empty($_GET)) {
 
 <!DOCTYPE html>
 <html lang="ja">
+<?php include('../inc/header_master.php'); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -105,6 +106,8 @@ if (!empty($_GET)) {
                 ?>
             </p>
         <?php endif ?>
+
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
