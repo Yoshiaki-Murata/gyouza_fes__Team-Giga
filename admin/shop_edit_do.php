@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../inc/function.php';
 session_start();
+require_once __DIR__ . '/../inc/function.php';
 
 $id = (int)($_POST['id'] ?? 0);
 
