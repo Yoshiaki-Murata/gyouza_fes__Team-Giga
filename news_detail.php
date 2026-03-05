@@ -49,7 +49,7 @@ try {
                         </time>
                     </p>
                 </div>
-                <p><?php echo h($target['text']); ?></p>
+                <p><?php echo nl2br(h($target['text'])); ?></p>
             </article>
             <p class="c-news-return__link">
                 <a href="./news.php">お知らせ一覧へ戻る</a>

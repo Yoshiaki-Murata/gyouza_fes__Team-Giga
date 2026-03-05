@@ -54,7 +54,7 @@ try {
     <main class="l-wrapper container" style="padding:60px 15px 0">
 
         <p class="c-title__main" data-sub-title="お知らせ">News</p>
-        <section>
+        <section class="mb-5">
             <article class="l-article">
                 <div class="c-article__title-area">
                     <h1><?php echo h($target['subject']); ?></h1>
