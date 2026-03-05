@@ -12,8 +12,8 @@ if (!empty($_POST)) {
         if (!empty($_POST["phonenumber"])) {
             $phonenumber = $_POST['phonenumber'];
             if (!preg_match("/^[0-9]{10,11}$/", $phonenumber)) {
-                $_SESSION["contact_err"] = "電話番号が不正です。数字のみ入力可能です";
-                header("location:confirm.php");
+                header("location:contact.php");
+                $_SESSION["err"] = "電話番号が不正です。数字のみ入力可能です";
                 exit();
             }
         }
@@ -40,8 +40,8 @@ if (!empty($_POST)) {
             exit("エラー" . $e->getMessage());
         }
     } else {
-        header("location:confirm.php");
-        $_SESSION["contact_err"] = "必須項目が入力されていません。入力してください";
+        $_SESSION["err"] = "必須項目が入力されていません。入力してください";
+        header("location:contact.php");
         exit();
     }
 }

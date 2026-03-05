@@ -15,7 +15,9 @@ try {
     // 結果セットを連想配列の形で取得
     $target = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    exit('エラー: ' . $e->getMessage());
+    $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+    header('location:news.php');
+    exit();
 }
 ?>
 
@@ -43,7 +45,7 @@ try {
                 <div class="c-article__title-area">
                     <h1><?php echo h($target['subject']); ?></h1>
                     <p><time datetime="<?php echo h($target['date']); ?>">
-                            <?php echo h(format_jp_date($target['date'])); ?>
+                            <?php echo h(format_jp_date(n($target['date']))); ?>
                         </time>
                     </p>
                 </div>
