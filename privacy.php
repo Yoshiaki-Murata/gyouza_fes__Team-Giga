@@ -10,13 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ふくおか餃子フェスの個人情報保護方針(プライバシーポリシー)を掲載。">
     <title>プライバシーポリシー ｜ふくおか餃子FES</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <?php include('inc/link.php');  ?>
 </head>
 
 <body id="top">
