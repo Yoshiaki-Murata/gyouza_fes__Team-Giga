@@ -16,7 +16,7 @@ try {
     // 取得したレコードを連想配列で1レコードずつ受け取る
     $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    db_err_msg(). $e->getMessage();
+    db_err_msg() . $e->getMessage();
     header('location:index.php');
     exit();
 }
@@ -63,7 +63,11 @@ try {
 
                             <div class="mr-2">
                                 <a href="./news_edit.php?id=<?php echo h($article['id']); ?>" class="btn btn-primary btn-sm mr-3">編集</a>
-                                <a href="./news_del.php?id=<?php echo h($article['id']); ?>" class="btn btn-danger btn-sm mr-3">削除</a>
+
+                                <form action="news_del.php?id=<?php echo $article['id']; ?>" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="<?php echo $article['id']; ?>">
+                                    <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                                </form>
                             </div>
                             <dt>
                                 <time datetime="<?php echo h($article['date']); ?>">

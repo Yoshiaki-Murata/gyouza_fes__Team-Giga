@@ -9,7 +9,7 @@ if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
     exit();
 }
 
-$id = (int)($_GET['id'] ?? 0);
+$id = (int)($_POST['id'] ?? 0);
 
 if ($id <= 0) {
     exit('IDが不正です');

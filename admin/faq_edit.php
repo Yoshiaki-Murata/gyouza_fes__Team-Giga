@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../inc/function.php';
 
-$id = (int)($_GET['id'] ?? 0);
+$id = (int)($_POST['id']);
 $categories = [];
 
 if ($id === 0) {
