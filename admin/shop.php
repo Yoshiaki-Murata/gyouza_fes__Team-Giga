@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../inc/function.php';
 
 try {
@@ -21,8 +22,7 @@ try {
 }
 ?>
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -34,6 +34,7 @@ try {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
     rel="stylesheet">
@@ -41,7 +42,6 @@ try {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="../css/style.css">
-
 <body>
 
   <?php include('../inc/header_master.php');  ?>
@@ -50,6 +50,25 @@ try {
     <section class="l-wrapper-second">
       <h1 class="c-title__main">SHOPS</h1>
 
+      <!-- 削除エラーを表示 -->
+      <?php if (isset($_SESSION["msg"])): ?>
+        <div class="alert alert-success text-center" role="alert">
+          <?php echo h($_SESSION["msg"]); ?>
+        </div>
+        <?php unset($_SESSION["msg"]); ?>
+      <?php endif; ?>
+      <?php if (isset($_SESSION["err"])): ?>
+        <div class="alert alert-danger text-center" role="alert">
+          <?php echo h($_SESSION["err"]); ?>
+        </div>
+        <?php unset($_SESSION["err"]); ?>
+      <?php endif; 
+
+      // テスト ↓
+      // $_SESSION["msg"] = "テスト表示です";
+      ?>
+
+      <!-- 新規店舗追加 -->
       <div class="d-grid mx-auto">
         <a href="./shop_add.php" class="btn btn-primary">新規店舗追加</a>
       </div>
@@ -64,6 +83,7 @@ try {
             </tr>
           </thead>
           <tbody>
+
             <?php foreach ($shops as $shop): ?>
               <tr class="row">
                 <th class="col">
