@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../inc/function.php';
+login_session();
 
 if (!empty($_POST)) {
     // status_id は 0 を考慮して !== "" でチェック

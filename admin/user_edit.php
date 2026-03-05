@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../inc/function.php';
+login_session();
 
 if (!isset($_SESSION['csrf_token'])) {
     // 安全なランダム文字列を生成してセッションに保存

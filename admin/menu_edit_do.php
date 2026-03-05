@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../inc/function.php';
+login_session();
 
 $id = (int)($_POST["id"] ?? 0); // idが存在しない場合
 

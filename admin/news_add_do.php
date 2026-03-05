@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../inc/function.php';
+login_session();
 
 if (!empty($_POST)) {
     if (!empty($_POST['subject']) && !empty($_POST['titletag']) && !empty($_POST['text'])) {

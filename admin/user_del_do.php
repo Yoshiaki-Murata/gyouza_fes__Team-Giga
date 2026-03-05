@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../inc/function.php';
+login_session();
 
 check_array($_POST);
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {

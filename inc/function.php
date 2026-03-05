@@ -1,6 +1,5 @@
 <?php
 // 丸裸phpファイルには↓↓
-// session_start();
 require_once __DIR__ . '/db_info.php';
 
 
@@ -59,4 +58,13 @@ function db_err_msg()
 function err_msg($a)
 {
     return $_SESSION["err"] = $a;
+}
+
+function login_session(){
+    if(empty($_SESSION["id"])){
+        err_msg("あなたはハッカーですか？もはやバッカーですねw
+        正規の方法でおいでやす💛");
+        header("location:login.php");
+        exit();
+    }
 }
