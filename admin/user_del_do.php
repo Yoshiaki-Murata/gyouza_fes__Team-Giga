@@ -9,24 +9,26 @@ if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
     exit();
 }
 
-if(!empty($_POST)){
-    if(!empty($_POST["id"])){
-        $id=(int)$_POST["id"];
-        try{
-            $db=db_connect();
-            $sql="DELETE FROM users WHERE id=:id";
-            $stmt=$db->prepare("$sql");
-            $stmt->bindParam(":id",$id,PDO::PARAM_INT);
+if (!empty($_POST)) {
+    if (!empty($_POST["id"])) {
+        $id = (int)$_POST["id"];
+        try {
+            $db = db_connect();
+            $sql = "DELETE FROM users WHERE id=:id";
+            $stmt = $db->prepare("$sql");
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
-            
-            $_SESSION["msg"]="削除完了しました";
+
+            $_SESSION["msg"] = "削除完了しました";
             header("location:user.php");
             exit();
-        }catch(PDOException $e){
-            db_err_msg(). $e->getMessage();
+        } catch (PDOException $e) {
+            db_err_msg() . $e->getMessage();
             header('location:user.php');
             exit();
         }
     }
 }
-?>
+err_msg("削除できませんでした。");
+header('location:user.php');
+exit();

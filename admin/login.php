@@ -3,6 +3,7 @@ session_start();
 require_once '../inc/function.php';
 
 if (isset($_SESSION["id"])) {
+    err_msg("ログインできませんでした。ユーザー名またはパスワードが一致していません。");
     header("location:index.php");
     exit();
 }
