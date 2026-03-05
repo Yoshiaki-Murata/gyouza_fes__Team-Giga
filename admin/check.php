@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once '../inc/function.php';
-login_session();
 
 if (!empty($_POST)) { //ポスト送信ができたら
     if (!empty($_POST["username"]) && !empty($_POST["password"])) {
@@ -21,14 +20,15 @@ if (!empty($_POST)) { //ポスト送信ができたら
                 $_SESSION["id"] = session_id();
                 $_SESSION["username"] = $result["username"];
                 $_SESSION["role_id"] = $result["role_id"];
-                header("location:index.php");
-                exit();
+                // header("location:index.php");
+                // exit();
             }
         } catch (PDOException $e) {
             $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
-            header('location:login.php');
-            exit();
+            // header('location:login.php');
+            // exit();
         }
     }
 }
+login_session();
 header("location:login.php");
