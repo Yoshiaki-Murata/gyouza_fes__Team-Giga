@@ -31,7 +31,7 @@ try {
     <main role="main" class="container" style="padding:60px 15px 0">
 
         <h1 class="my-5 c-title__main">商品管理画面</h1>
-        
+
         <!--アラート -->
         <?php if (!empty($_SESSION["msg"])): ?>
             <p class="alert alert-success text-center mx-auto col-6" role="alert">
@@ -63,7 +63,6 @@ try {
         <table class="table">
             <thead>
                 <tr>
-                    <th>id</th>
                     <th>商品名</th>
                     <th>個数</th>
                     <th>値段</th>
@@ -74,7 +73,6 @@ try {
             <tbody>
                 <?php foreach ($result as $row): ?>
                     <tr>
-                        <td><?php echo h($row["menu_id"]); ?></td>
                         <td><?php echo h($row["product"]); ?></td>
                         <td><?php echo $row["pieces"] . "個"; ?></td>
                         <td><?php echo $row["price"] . "円（税込み）"; ?></td>
