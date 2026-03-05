@@ -94,7 +94,22 @@ try {
                     <textarea name="product_detail" id="product_detail" class="form-control"><?php echo h($target["product_detail"] ?? ''); ?></textarea>
                 </div>
             </div>
+            <div class="row justify-content-center">
+                <div class="mb-5 col-6">
+                    <label for="image" class="form-label">商品画像</label>
 
+                    <?php if (!empty($target['image'])): ?>
+                        <div class="mb-2">
+                            <p>現在の画像：</p>
+                            <img src="../img/<?php echo h($target['image']); ?>" alt="" style="width: 200px; height: auto;">
+                            <input type="hidden" name="old_image" value="<?php echo h($target['image']); ?>">
+                        </div>
+                    <?php endif; ?>
+
+                    <input type="file" name="image" id="image" class="form-control">
+                    <small class="text-muted">※変更しない場合は選択しないでください。</small>
+                </div>
+            </div>
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="alt" class="form-label">画像説明</label>
@@ -135,8 +150,6 @@ try {
                 ?>
             </p>
         <?php endif ?>
-
-        <p><a href="menu.php" class="mb-5 text-reset">一覧へ戻る</a></p>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

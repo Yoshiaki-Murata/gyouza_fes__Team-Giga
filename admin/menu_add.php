@@ -33,7 +33,6 @@ try {
 
 <body>
     <?php include('../inc/header_master.php');  ?>
-
     <main role="main" class="container" style="padding:60px 15px 0">
         <!-- <?php check_array($result); ?> -->
 

@@ -26,7 +26,7 @@ if (!empty($_POST)) {
             $stmt->bindParam(':category_id', $category_id, PDO::PARAM_INT);
             $stmt->execute();
 
-            $_SESSION["faq_success_msg"] = "新規追加が完了しました";
+            $_SESSION["msg"] = "新規追加が完了しました";
             header('location:faq.php');
             exit();
         } catch (PDOException $e) {

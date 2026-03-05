@@ -46,6 +46,22 @@ try {
 
     <div class="l-wrapper-child">
       <h1 class="c-title__main my-5">FAQ</h1>
+
+      <?php if (!empty($_SESSION["msg"])): ?>
+        <p class="alert alert-success text-center" role="alert">
+          <?php echo h($_SESSION["msg"]);
+          unset($_SESSION["msg"]);
+          ?>
+        </p>
+      <?php endif ?>
+      <?php if (!empty($_SESSION["err"])): ?>
+        <p class="alert alert-danger text-center" role="alert">
+          <?php echo h($_SESSION["err"]);
+          unset($_SESSION["err"]);
+          ?>
+        </p>
+      <?php endif ?>
+
     </div>
 
     <div class="l-container-second l-wrapper-child">
@@ -78,24 +94,8 @@ try {
           <?php endif;
           endforeach;
           ?>
-
         </section>
       <?php endforeach; ?>
-
-      <?php if (!empty($_SESSION["msg"])): ?>
-        <p class="text-center bs-danger-text-emphasis">
-          <?php echo h($_SESSION["msg"]);
-          unset($_SESSION["msg"]);
-          ?>
-        </p>
-      <?php endif ?>
-      <?php if (!empty($_SESSION["err"])): ?>
-        <p class="text-center bs-danger-text-emphasis">
-          <?php echo h($_SESSION["err"]);
-          unset($_SESSION["err"]);
-          ?>
-        </p>
-      <?php endif ?>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
