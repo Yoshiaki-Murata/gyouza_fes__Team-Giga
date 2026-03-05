@@ -76,7 +76,7 @@ try {
                     <tr class="align-middle">
                         <td><?php echo h($row["product"]); ?></td>
                         <td><?php echo $row["pieces"] . "個"; ?></td>
-                        <td><?php echo $row["price"] . "円"; ?></td>
+                        <td><?php echo number_format($row["price"]) . "円"; ?></td>
                         <td><?php echo h($row["shop"]); ?></td>
 
                         <td style="white-space: nowrap;">
