@@ -12,8 +12,8 @@ if (!empty($_POST)) {
         if (!empty($_POST["phonenumber"])) {
             $phonenumber = $_POST['phonenumber'];
             if (!preg_match("/^[0-9]{10,11}$/", $phonenumber)) {
-                header("location:confirm.php");
                 $_SESSION["contact_err"] = "電話番号が不正です。数字のみ入力可能です";
+                header("location:confirm.php");
                 exit();
             }
         }
