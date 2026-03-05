@@ -49,6 +49,23 @@ try {
 
     <main role="main" class="container" style="padding:60px 15px 0">
         <h1 class="my-5 text-center c-title__main">お問い合わせ内容・編集</h1>
+
+        <!-- アラート -->
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center alert alert-success" role="alert">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center alert alert-danger" role="alert">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
+
         <form action="./contact_edit_do.php" method="post" enctype="multipart/form-data">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
@@ -102,20 +119,7 @@ try {
                 <input type="submit" value="編集" class="btn btn-primary">
             </div>
         </form>
-        <?php if (!empty($_SESSION["msg"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["msg"]);
-                unset($_SESSION["msg"]);
-                ?>
-            </p>
-        <?php endif ?>
-        <?php if (!empty($_SESSION["err"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["err"]);
-                unset($_SESSION["err"]);
-                ?>
-            </p>
-        <?php endif ?>
+
         <p><a href="contact_list.php" class="mb-5 text-reset">一覧へ戻る</a></p>
 
     </main>

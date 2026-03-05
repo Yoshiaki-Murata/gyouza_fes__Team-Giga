@@ -43,7 +43,7 @@ if (!empty($_POST)) {
             if ($phonenumber) {
                 $stmt->bindParam(":phonenumber", $phonenumber, PDO::PARAM_STR);
             }
-
+            $_SESSION["msg"] = 'お問い合わせ内容を更新しました。';
             $stmt->execute();
             header("location:contact_list.php");
             exit();
