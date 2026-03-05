@@ -74,17 +74,17 @@ try {
             </tbody>
         </table>
 
-        <?php if (!empty($_SESSION["del_err"])): ?>
+        <?php if (!empty($_SESSION["err"])): ?>
             <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["del_err"]);
-                unset($_SESSION["del_err"]);
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
                 ?>
             </p>
         <?php endif ?>
-        <?php if (!empty($_SESSION["del_msg"])): ?>
+        <?php if (!empty($_SESSION["msg"])): ?>
             <p class="text-center bs-primary-text-emphasis">
-                <?php echo h($_SESSION["del_msg"]);
-                unset($_SESSION["del_msg"]);
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
                 ?>
             </p>
         <?php endif ?>

@@ -27,7 +27,7 @@ if (!empty($_POST)) {
             $stmt = $db->prepare($sql);
             $stmt->bindParam(":userid", $userid, PDO::PARAM_INT);
             $stmt->execute();
-            // $target = "";
+            $target = "";
             $target = $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             exit("エラー" . $e->getMessage());
