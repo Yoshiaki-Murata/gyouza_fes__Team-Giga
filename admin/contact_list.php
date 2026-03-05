@@ -39,6 +39,22 @@ try {
                 <small class="text-muted h6">お問い合わせ一覧</small>
             </h1>
 
+            <!-- アラート -->
+            <?php if (!empty($_SESSION["msg"])): ?>
+                <p class="alert alert-success text-center" role="alert">
+                    <?php echo h($_SESSION["msg"]);
+                    unset($_SESSION["msg"]);
+                    ?>
+                </p>
+            <?php endif ?>
+            <?php if (!empty($_SESSION["err"])): ?>
+                <p class="alert alert-danger text-center" role="alert">
+                    <?php echo h($_SESSION["err"]);
+                    unset($_SESSION["err"]);
+                    ?>
+                </p>
+            <?php endif ?>
+
             <div class="table-responsive shadow-sm bg-white rounded">
                 <table class="table table-bordered table-hover align-middle mb-0">
                     <thead class="table-light text-center text-nowrap">
@@ -80,22 +96,6 @@ try {
                 </table>
             </div>
         </section>
-        <?php if (!empty($_SESSION["msg"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["msg"]);
-                unset($_SESSION["msg"]);
-                ?>
-            </p>
-        <?php endif ?>
-        <?php if (!empty($_SESSION["err"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["err"]);
-                unset($_SESSION["err"]);
-                ?>
-            </p>
-        <?php endif ?>
-
-
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
