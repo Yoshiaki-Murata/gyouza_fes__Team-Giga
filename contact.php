@@ -15,6 +15,23 @@ require_once './inc/function.php';
     <title>お問い合わせ｜ふくおか餃子FES</title>
     <?php include('inc/link.php');  ?>
 </head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const agree = document.getElementById('agree');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // 初期状態は無効
+        submitBtn.disabled = true;
+
+        agree.addEventListener('change', function() {
+            if (agree.checked) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        });
+    });
+</script>
 
 <body id="top">
     <?php include('inc/header.php');  ?>
@@ -54,7 +71,7 @@ require_once './inc/function.php';
                     </label>
                 </p>
                 <p class="c-btn--yellow">
-                    <input type="submit" value="入力内容を確認" id="submitBtn">
+                    <input type="submit" value="入力内容を確認" id="submitBtn" disabled>
                 </p>
                 <?php if (!empty($_SESSION["contact_err"])): ?>
                     <p class="bs-danger-text-emphasis">
