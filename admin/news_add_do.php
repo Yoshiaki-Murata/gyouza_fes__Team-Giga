@@ -48,7 +48,7 @@ if (!empty($_POST)) {
 
             $stmt->execute();
 
-            del_msg();
+            $_SESSION["msg"] = "新規のお知らせを投稿しました";
             header('location:news.php');
             exit();
         } catch (PDOException $e) {

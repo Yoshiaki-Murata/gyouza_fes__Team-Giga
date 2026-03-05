@@ -32,6 +32,23 @@ try {
     <main role="main" class="container" style="padding:60px 15px 0">
 
         <h1 class="my-5 text-center c-title__main">ユーザー新規登録</h1>
+
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="alert alert-success text-center" role="alert">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="alert alert-danger text-center" role="alert">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
+
+
         <form action="./user_add_do.php" method="post">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
@@ -58,23 +75,11 @@ try {
                 </div>
             </div>
             <div class="mb-5 text-center">
-                <input type="submit" value="登録" class="btn btn-primary">
+                <input type="submit" value="登録する" class="btn btn-primary me-3">
+                <a href="user.php" class="btn btn-secondary">一覧へ戻る</a>
             </div>
         </form>
-        <?php if (!empty($_SESSION["msg"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["msg"]);
-                unset($_SESSION["msg"]);
-                ?>
-            </p>
-        <?php endif ?>
-        <?php if (!empty($_SESSION["err"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["err"]);
-                unset($_SESSION["err"]);
-                ?>
-            </p>
-        <?php endif ?>
+
     </main>
 
     </main>

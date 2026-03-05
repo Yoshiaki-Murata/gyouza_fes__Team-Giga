@@ -42,6 +42,22 @@ try {
         <section class="l-wrapper-second">
             <h1 class="c-title__main my-5">News</h1>
 
+            <?php if (!empty($_SESSION["msg"])): ?>
+                <p class="alert alert-success text-center" role="alert">
+                    <?php echo h($_SESSION["msg"]);
+                    unset($_SESSION["msg"]);
+                    ?>
+                </p>
+            <?php endif ?>
+            <?php if (!empty($_SESSION["err"])): ?>
+                <p class="alert alert-danger text-center" role="alert">
+                    <?php echo h($_SESSION["err"]);
+                    unset($_SESSION["err"]);
+                    ?>
+                </p>
+            <?php endif ?>
+
+
             <div class="d-grid mx-auto">
                 <a href="./news_add.php" class="btn btn-primary" type="button">新規お知らせ投稿</a>
             </div>
@@ -82,20 +98,7 @@ try {
                 <p>お知らせはありません</p>
             <?php endif; ?>
         </section>
-        <?php if (!empty($_SESSION["msg"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["msg"]);
-                unset($_SESSION["msg"]);
-                ?>
-            </p>
-        <?php endif ?>
-        <?php if (!empty($_SESSION["err"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["err"]);
-                unset($_SESSION["err"]);
-                ?>
-            </p>
-        <?php endif ?>
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
