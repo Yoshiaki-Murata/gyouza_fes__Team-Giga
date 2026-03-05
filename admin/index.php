@@ -20,10 +20,10 @@
   <?php include('../inc/header_master.php');  ?>
 
   <main class="l-header-margin">
-    <h1 class="c-title__main">管理画面</h1>
+    <h1 class="c-title__main mb-5">管理画面</h1>
 
-    <section class="l-wrapper-second">
-      <ul class="list-group w-100">
+    <section class="l-wrapper-second ">
+      <ul class="list-group w-100 mb-5">
         <li class="list-group-item">
           <a href="index.php" class="text-reset">TOP</a>
         </li>

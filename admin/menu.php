@@ -28,10 +28,10 @@ try {
 <body>
     <?php include('../inc/header_master.php');  ?>
 
-    <main role="main" class="container" style="padding:60px 15px 0">
+    <main role="main" class="container mb-5" style="padding:60px 15px 0">
 
         <h1 class="my-5 c-title__main">商品管理画面</h1>
-        
+
         <!--アラート -->
         <?php if (!empty($_SESSION["msg"])): ?>
             <p class="alert alert-success text-center mx-auto col-6" role="alert">

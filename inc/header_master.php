@@ -35,50 +35,61 @@
              <ul class="c-menu-hamburger-text">
                  <li class="c-menu-hamburger-text-list">
                      <a href="index.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">TOP</p>
-                         <!-- <p class="c-menu-hamburger-text-list__sub">トップ</p> -->
+                         <p class="c-menu-hamburger-text-list__main">
+                             TOP
+                             <span class="c-menu-hamburger-text-list__sub">トップ</span>
+                         </p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="user.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">USER</p>
-                         <!-- <p class="c-menu-hamburger-text-list__sub">ユーザー情報</p> -->
+                         <p class="c-menu-hamburger-text-list__main">
+                             USER
+                             <span class="c-menu-hamburger-text-list__sub">ユーザー情報</span>
+                         </p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="news.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">NEWS</p>
-                         <!-- <p class="c-menu-hamburger-text-list__sub">お知らせ</p> -->
+                         <p class="c-menu-hamburger-text-list__main">
+                             NEWS
+                             <span class="c-menu-hamburger-text-list__sub">お知らせ</span>
+                         </p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="menu.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">MENU</p>
-                         <!-- <p class="c-menu-hamburger-text-list__sub">メニュー</p> -->
+                         <p class="c-menu-hamburger-text-list__main">MENU
+                             <span class="c-menu-hamburger-text-list__sub">メニュー</span>
+                         </p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="shop.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">SHOP</p>
-                         <!-- <p class="c-menu-hamburger-text-list__sub">店舗一覧</p> -->
+                         <p class="c-menu-hamburger-text-list__main">SHOP
+                             <span class="c-menu-hamburger-text-list__sub">店舗一覧</span>
+                         </p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="faq.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">FAQ</p>
-                         <!-- <p class="c-menu-hamburger-text-list__sub">よくある質問</p> -->
+                         <p class="c-menu-hamburger-text-list__main">FAQ
+                             <span class="c-menu-hamburger-text-list__sub">よくある質問</span>
+                         </p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="contact_list.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">CONTACT</p>
-                         <!-- <p class="c-menu-hamburger-text-list__sub">お問い合わせ</p> -->
+                         <p class="c-menu-hamburger-text-list__main">CONTACT
+                             <span class="c-menu-hamburger-text-list__sub">お問い合わせ</span>
+                         </p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
                      <a href="./../admin/logout.php" class="text-reset">
-                         <p class="c-menu-hamburger-text-list__main">LOGOUT</p>
-                         <!-- <p class="c-menu-hamburger-text-list__sub">ログアウト</p> -->
+                         <p class="c-menu-hamburger-text-list__main">LOGOUT
+                             <span class="c-menu-hamburger-text-list__sub">ログアウト</span>
+                         </p>
                      </a>
                  </li>
              </ul>

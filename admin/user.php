@@ -2,7 +2,7 @@
 session_start();
 require_once '../inc/function.php';
 
-// check_array($_SESSION);
+
 
 try {
     $db = db_connect();
@@ -36,7 +36,7 @@ try {
         <a href="user_add.php" class="mb-5">新規登録はこちらより</a>
 
         <h2 class="mt-5">ユーザー一覧</h2>
-        <table class="table">
+        <table class="table mb-5">
             <thead>
                 <tr>
                     <th>id</th>
