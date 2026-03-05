@@ -42,7 +42,7 @@ if (!empty($_FILES)) {
 
 
 if (!empty($_POST)) {
-    if (!empty($_POST["product"]) && !empty($_POST["pieces"]) && !empty($_POST["price"]) && !empty($_POST["product_details"]) && !empty($_POST["alt"]) && !empty($_POST["shop_id"])&&!empty($image_for_db)) {
+    if (!empty($_POST["product"]) && !empty($_POST["pieces"]) && !empty($_POST["price"]) && !empty($_POST["product_details"]) && !empty($_POST["alt"]) && !empty($_POST["shop_id"]) && !empty($image_for_db)) {
         $product = $_POST["product"];
         $pieces = (int)$_POST["pieces"];
         $price = (int)$_POST["price"];
@@ -50,7 +50,7 @@ if (!empty($_POST)) {
         $alt = $_POST["alt"];
         $shop_id = (int)$_POST["shop_id"];
         // DB登録用の画像ファイル名を受け取る
-        $image = $image_for_db??"";
+        $image = $image_for_db ?? "";
 
 
 
@@ -78,5 +78,9 @@ if (!empty($_POST)) {
             header('location:menu_add.php');
             exit();
         }
+    } else {
+        err_msg("入力項目が不正です");
+        header('location:menu_add.php');
+        exit();
     }
 }

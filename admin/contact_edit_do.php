@@ -15,7 +15,7 @@ if (!empty($_POST)) {
             $phonenumber = $_POST['phonenumber'];
             if (!preg_match("/^[0-9]{10,11}$/", $phonenumber)) {
                 $_SESSION["err"] = "電話番号が不正です。数字のみ入力可能です";
-                header("location:contact_edit.php?id=".$_POST["id"]);
+                header("location:contact_edit.php?id=" . $_POST["id"]);
                 exit();
             }
         }
@@ -41,11 +41,13 @@ if (!empty($_POST)) {
 
             header("location:contact_list.php");
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            error_log($e->getMessage());
+            $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+            header('location:contact_edit.php?id=' . $_POST["id"]);
+            exit();
         }
     } else {
-        error_log($e->getMessage());
-        $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+        err_msg("入力項目が不正です");
         header('location:contact_edit.php?id=' . $_POST["id"]);
         exit();
     }
