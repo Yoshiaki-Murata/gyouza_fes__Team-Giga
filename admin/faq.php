@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once __DIR__ . '/../inc/function.php';
 
 
@@ -87,7 +87,7 @@ try {
 
         </section>
       <?php endforeach; ?>
-      
+
       <?php if (!empty($_SESSION["msg"])): ?>
         <p class="text-center bs-danger-text-emphasis">
           <?php echo h($_SESSION["msg"]);
