@@ -68,3 +68,7 @@ function login_session(){
         exit();
     }
 }
+
+function n($a){
+    return nl2br("$a");
+}

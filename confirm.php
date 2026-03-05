@@ -27,6 +27,22 @@ if (empty($_POST['agree'])) {
 
 <body id="top">
     <?php include('inc/header.php'); ?>
+    <!-- アラート -->
+    <?php if (!empty($_SESSION["msg"])): ?>
+        <p class="alert alert-success text-center" role="alert">
+            <?php echo h($_SESSION["msg"]);
+            unset($_SESSION["msg"]);
+            ?>
+        </p>
+    <?php endif ?>
+    <?php if (!empty($_SESSION["err"])): ?>
+        <p class="alert alert-danger text-center" role="alert">
+            <?php echo h($_SESSION["err"]);
+            unset($_SESSION["err"]);
+            ?>
+        </p>
+    <?php endif ?>
+
     <main class="l-header-margin">
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="お問い合わせ内容確認">Confirm</h1>
