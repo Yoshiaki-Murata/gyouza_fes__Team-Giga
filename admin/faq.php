@@ -77,7 +77,10 @@ try {
                 </p>
                 <div class="mr-2">
                   <a href="faq_edit.php?id=<?php echo $qa['id']; ?>" class="btn btn-primary btn-sm">編集</a>
-                  <a href="faq_del.php?id=<?= $qa['id']; ?>" class="btn btn-danger btn-sm">削除</a>
+                  <form action="faq_del.php?id=<?php echo $qa['id']; ?>" method="post" style="display:inline;">
+                    <input type="hidden" name="id" value="<?php echo $qa['id']; ?>">
+                    <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                  </form>
                 </div>
 
               </div>

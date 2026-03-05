@@ -50,10 +50,6 @@ try {
                 <small class="text-muted h6">お問い合わせ一覧</small>
             </h1>
 
-            <div class="d-grid gap-2 col-md-4 mx-auto mb-5">
-                <a href="./contact.php" class="btn btn-primary" type="button">お問い合わせ情報追加</a>
-            </div>
-
             <div class="table-responsive shadow-sm bg-white rounded">
                 <table class="table table-bordered table-hover align-middle mb-0">
                     <thead class="table-light text-center text-nowrap">
