@@ -63,7 +63,7 @@ try {
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="price" class="form-label">値段</label>
-                    <input type="number" name="price" id="price" class="form-control" placeholder="数値のみを入力" required>
+                    <input type="number" name="price" id="price" class="form-control" placeholder="数値のみを入力" min="1" required>
                 </div>
             </div>
             <div class="row justify-content-center">
