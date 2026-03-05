@@ -61,7 +61,7 @@ if (!empty($_POST)) {
 <body id="top">
     <?php include('inc/header.php'); ?>
 
-    <main>
+    <main class="l-header-margin">
         <section class="l-wrapper">
             <h1 class="c-title__main" data-sub-title="送信完了">Thank you</h1>
 
