@@ -72,20 +72,23 @@ try {
             </thead>
             <tbody>
                 <?php foreach ($result as $row): ?>
-                    <tr>
+                    <tr class="align-middle">
                         <td><?php echo h($row["product"]); ?></td>
                         <td><?php echo $row["pieces"] . "個"; ?></td>
-                        <td><?php echo $row["price"] . "円（税込み）"; ?></td>
+                        <td><?php echo $row["price"] . "円"; ?></td>
                         <td><?php echo h($row["shop"]); ?></td>
-                        <td class="row">
-                            <form action="menu_edit.php" method="get" class="col">
-                                <input type="hidden" name="id" value="<?php echo $row["menu_id"] ?>">
-                                <input type="submit" value="編集" class="btn  btn-primary">
-                            </form>
-                            <form action="menu_del.php" method="get" class="col">
-                                <input type="hidden" name="id" value="<?php echo $row["menu_id"] ?>">
-                                <input type="submit" value="削除" class="btn  btn-danger">
-                            </form>
+
+                        <td style="white-space: nowrap;">
+                            <div class="d-flex justify-content-start">
+                                <form action="menu_edit.php" method="get" class="mb-0 me-1">
+                                    <input type="hidden" name="id" value="<?php echo $row["menu_id"] ?>">
+                                    <input type="submit" value="編集" class="btn btn-primary btn-sm">
+                                </form>
+                                <form action="menu_del.php" method="get" class="mb-0">
+                                    <input type="hidden" name="id" value="<?php echo $row["menu_id"] ?>">
+                                    <input type="submit" value="削除" class="btn btn-danger btn-sm">
+                                </form>                                
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>
