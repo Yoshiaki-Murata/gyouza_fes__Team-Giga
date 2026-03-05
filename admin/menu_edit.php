@@ -46,6 +46,26 @@ try {
 
     <main role="main" class="container" style="padding:60px 15px 0">
         <h1 class="my-5 text-center">商品登録・編集</h1>
+
+        <!-- メッセージ表示 -->
+        <?php if (!empty($_SESSION["err"])): ?>
+            <div class="alert alert-danger text-center mx-auto col-6" role="alert">
+                <?php
+                echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <div class="alert alert-success text-center mx-auto col-6" role="alert">
+                <?php
+                echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </div>
+        <?php endif; ?>
+
         <form action="./menu_edit_do.php" method="post" enctype="multipart/form-data">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">

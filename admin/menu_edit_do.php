@@ -2,6 +2,8 @@
 session_start();
 require_once '../inc/function.php';
 
+$id = (int)($_POST["id"] ?? 0); // idが存在しない場合
+
 if (!empty($_POST)) {
     if (!empty($_POST["id"]) && !empty($_POST["product"]) && !empty($_POST["pieces"]) && !empty($_POST["price"]) && !empty($_POST["product_detail"]) && !empty($_POST["alt"]) && !empty($_POST["shop_id"])) {
         $product = $_POST["product"];
@@ -24,14 +26,20 @@ if (!empty($_POST)) {
             $stmt->bindParam(":alt", $alt, PDO::PARAM_STR);
             $stmt->bindParam(":shop_id", $shop_id, PDO::PARAM_INT);
             $stmt->execute();
-            $_SESSION["msg"] = "商品情報の編集が完了しました‼";
 
+            $_SESSION["msg"] = "商品情報の編集が完了しました‼";
             header("location:menu.php");
             exit();
         } catch (PDOException $e) {
             $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
-            header('location:menu_edit.php?='.$id);
+            header('location:menu_edit.php?id=' . $id);
             exit();
         }
+    } else {
+        $_SESSION["err"] = "全ての項目を入力してください。";
+        header('location:menu_edit.php?id=' . $id);
+        exit();
     }
 }
+header('location:menu.php');
+exit();
