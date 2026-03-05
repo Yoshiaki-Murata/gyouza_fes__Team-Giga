@@ -2,6 +2,7 @@
 session_start();
 require_once '../inc/function.php';
 
+// マスター以外は削除出来ない仕様
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
     $_SESSION["err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
     header('location:menu_del.php?='.$_POST["id"]);

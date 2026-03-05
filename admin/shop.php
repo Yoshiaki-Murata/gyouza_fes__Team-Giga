@@ -91,7 +91,7 @@ try {
 
                     <form action="shop_del.php?id=<?php echo $shop['id']; ?>" method="post" style="display:inline;">
                       <input type="hidden" name="id" value="<?php echo $shop['id']; ?>">
-                      <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                      <button type="submit" class="btn btn-danger btn-sm m-2">削除</button>
                     </form>
                   </div>
                 </td>
