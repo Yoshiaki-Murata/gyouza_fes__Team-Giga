@@ -54,10 +54,10 @@ img {
 
 /* hover設定 */
 
-.c-btn--yellow:hover {
+/* .c-btn--yellow:hover {
     transition-duration: .4s;
     transform: scale(1.1);
-}
+} */
 
 
 .c-btn__top:hover {
@@ -114,6 +114,10 @@ img {
     text-transform: uppercase;
 }
 
+#submitBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
 
 
 /* 赤文字タイトル共通設定 */
@@ -298,7 +302,7 @@ img {
 }
 
 /* 768px以上の大きさの場合 */
-@media screen and (min-width:768px) {
+@media screen and (min-width:769px) {
 
     /* ハンバガーメニュー を消す */
     .c-menu-wrapper {

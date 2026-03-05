@@ -6,6 +6,12 @@ $name = isset($_POST['name']) ? $_POST['name'] : '';
 $mailaddress = isset($_POST['mailaddress']) ? $_POST['mailaddress'] : '';
 $phonenumber = isset($_POST['phonenumber']) ? $_POST['phonenumber'] : '';
 $text = isset($_POST['text']) ? $_POST['text'] : '';
+
+if (empty($_POST['agree'])) {
+    $_SESSION["contact_err"] = "個人情報保護方針に同意してください。";
+    header("location:contact.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

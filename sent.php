@@ -75,7 +75,7 @@ if (!empty($_POST)) {
                 <?php endif; ?>
 
                 <p class="c-btn--yellow" style="margin-top: 40px;">
-                    <a href="index.php" style="display: block; text-align: center; line-height: 60px; color: #fff; text-decoration: none;">トップページへ戻る</a>
+                    <a href="index.php" style="display: block; text-align: center; line-height: 60px; color:#131A12; text-decoration: none;">トップページへ戻る</a>
                 </p>
             </div>
         </section>

@@ -29,21 +29,9 @@
          <nav class="c-menu-hamburger">
              <ul class="c-menu-hamburger-text">
                  <li class="c-menu-hamburger-text-list">
-                     <a href="news.php">
-                         <p class="c-menu-hamburger-text-list__main">NEWS</p>
-                         <p class="c-menu-hamburger-text-list__sub">お知らせ</p>
-                     </a>
-                 </li>
-                 <li class="c-menu-hamburger-text-list">
                      <a href="index.php#information">
                          <p class="c-menu-hamburger-text-list__main">INFO</p>
                          <p class="c-menu-hamburger-text-list__sub">開催概要</p>
-                     </a>
-                 </li>
-                 <li class="c-menu-hamburger-text-list">
-                     <a href="menu.php">
-                         <p class="c-menu-hamburger-text-list__main">MENU</p>
-                         <p class="c-menu-hamburger-text-list__sub">メニュー</p>
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
@@ -53,9 +41,27 @@
                      </a>
                  </li>
                  <li class="c-menu-hamburger-text-list">
+                     <a href="news.php">
+                         <p class="c-menu-hamburger-text-list__main">NEWS</p>
+                         <p class="c-menu-hamburger-text-list__sub">お知らせ</p>
+                     </a>
+                 </li>
+                 <li class="c-menu-hamburger-text-list">
+                     <a href="menu.php">
+                         <p class="c-menu-hamburger-text-list__main">MENU</p>
+                         <p class="c-menu-hamburger-text-list__sub">メニュー</p>
+                     </a>
+                 </li>
+                 <li class="c-menu-hamburger-text-list">
                      <a href="faq.php">
                          <p class="c-menu-hamburger-text-list__main">FAQ</p>
                          <p class="c-menu-hamburger-text-list__sub">よくある質問</p>
+                     </a>
+                 </li>
+                 <li class="c-menu-hamburger-text-list">
+                     <a href="faq.php">
+                         <p class="c-menu-hamburger-text-list__main">CONTACT</p>
+                         <p class="c-menu-hamburger-text-list__sub">お問い合わせ</p>
                      </a>
                  </li>
              </ul>
