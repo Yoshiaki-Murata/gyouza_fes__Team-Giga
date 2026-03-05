@@ -1,6 +1,6 @@
 <?php
 // 丸裸phpファイルには↓↓
-session_start();
+// session_start();
 require_once __DIR__ . '/db_info.php';
 
 
@@ -38,20 +38,25 @@ function format_jp_date($datetime)
     return $date->format('n月j日') . "($weekday)";
 }
 
-function del_msg(){
+function del_msg()
+{
     return $_SESSION["msg"] = "削除完了しました";
 }
-function add_msg(){
+function add_msg()
+{
     return $_SESSION["msg"] = "新規追加が完了しました";
 }
-function edit_msg(){
+function edit_msg()
+{
     return $_SESSION["msg"] = "編集が完了しました";
 }
 
-function db_err_msg(){
+function db_err_msg()
+{
     return  $_SESSION["err"] = "DBへの接続・送信が失敗しました。";
 }
 
-function err_msg($a){
-    return $_SESSION["err"]=$a;
+function err_msg($a)
+{
+    return $_SESSION["err"] = $a;
 }

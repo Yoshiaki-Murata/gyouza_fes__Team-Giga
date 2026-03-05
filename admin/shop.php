@@ -42,6 +42,7 @@ try {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="../css/style.css">
+
 <body>
 
   <?php include('../inc/header_master.php');  ?>
@@ -62,7 +63,7 @@ try {
           <?php echo h($_SESSION["err"]); ?>
         </div>
         <?php unset($_SESSION["err"]); ?>
-      <?php endif; 
+      <?php endif;
 
       // テスト ↓
       // $_SESSION["msg"] = "テスト表示です";
@@ -98,7 +99,11 @@ try {
                 <td class="col">
                   <div class="mr-2">
                     <a href="./shop_edit.php?id=<?php echo h($shop['id']); ?>" class="btn btn-primary btn-sm m-2">編集</a>
-                    <a href="./shop_del.php?id=<?php echo h($shop['id']); ?>" class="btn btn-danger btn-sm m-2">削除</a>
+
+                    <form action="shop_del.php?id=<?php echo $shop['id']; ?>" method="post" style="display:inline;">
+                      <input type="hidden" name="id" value="<?php echo $shop['id']; ?>">
+                      <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                    </form>
                   </div>
                 </td>
               </tr>
