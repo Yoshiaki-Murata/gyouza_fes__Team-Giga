@@ -27,17 +27,8 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="../css/style.css">
     <title>商品新規登録</title>
+    <?php include('../inc/link_master.php');  ?>
 </head>
 
 <body>
@@ -57,7 +48,7 @@ try {
             <div class="row justify-content-center">
                 <div class="mb-5 col-6">
                     <label for="pieces" class="form-label">個数</label>
-                    <input type="number" name="pieces" id="pieces" class="form-control"  min="1" max="100" placeholder="数値のみを入力" required>
+                    <input type="number" name="pieces" id="pieces" class="form-control" min="1" max="100" placeholder="数値のみを入力" required>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -119,7 +110,7 @@ try {
             </p>
         <?php endif ?>
     </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
