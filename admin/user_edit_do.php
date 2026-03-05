@@ -20,13 +20,15 @@ if (!empty($_POST)) {
 
         // ユーザー名が半角英数８文字以上か確認
         if (!preg_match("/^[a-zA-Z0-9_-]{8,}$/", $username)) {
-            header("location:user_edit.php?id=" . $id);
+            err_msg("ユーザー名が不正です。半角英数8文字以上で入力してください。");
+            header("location:user.php");
             exit();
         }
         // パスワードの変更があるときは半角英数８文字以上か確認
         if (!empty($password)) {
             if (!preg_match("/^[a-zA-Z0-9_-]{8,}$/", $password)) {
-                header("location:user_edit.php?id=" . $id);
+                err_msg("パスワードが不正です。半角英数8文字以上で入力してください。");
+                header("location:user.php");
                 exit();
             }
         }
@@ -43,7 +45,8 @@ if (!empty($_POST)) {
             $result = $stmt->fetch(PDO::FETCH_NUM);
             // 同じ名前があったらuser_add.phpに返す。
             if ($result[0] !== 0) {
-                header("location:user_edit.php?id=" . $id);
+                err_msg("登録されたユーザーです。");
+                header("location:user.php");
                 exit();
             }
 
@@ -68,6 +71,7 @@ if (!empty($_POST)) {
             $stmt2->bindParam(":role_id", $role_id, PDO::PARAM_INT);
             $stmt2->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt2->execute();
+            edit_msg();
             header("location:user.php");
             exit();
         } catch (PDOException $e) {
