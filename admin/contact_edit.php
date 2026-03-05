@@ -116,6 +116,8 @@ try {
                 ?>
             </p>
         <?php endif ?>
+        <p><a href="contact_list.php" class="mb-5 text-reset">一覧へ戻る</a></p>
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

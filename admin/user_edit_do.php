@@ -75,7 +75,9 @@ if (!empty($_POST)) {
             header("location:user.php");
             exit();
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            db_err_msg(). $e->getMessage();
+            header('location:user.php');
+            exit();
         }
     }
 }

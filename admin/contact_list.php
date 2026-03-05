@@ -34,7 +34,7 @@ try {
 
     <main role="main" class="container-fluid px-md-5">
         <section class="py-5">
-            <h1 class="text-center mb-4">
+            <h1 class="c-title__main my-5">
                 <span class="text-danger d-block mb-0 c-title__main">CONTACT LIST</span>
                 <small class="text-muted h6">お問い合わせ一覧</small>
             </h1>
@@ -94,6 +94,8 @@ try {
                 ?>
             </p>
         <?php endif ?>
+
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
