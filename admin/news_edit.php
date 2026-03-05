@@ -31,6 +31,7 @@ try {
 
 <!doctype html>
 <html lang="ja">
+<?php include('../inc/header_master.php'); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -46,7 +47,7 @@ try {
         <div>
             <!-- ここから「本文」-->
 
-            <h1 class="c-title__main">お知らせ編集</h1>
+            <h1 class="c-title__main my-5">お知らせ編集</h1>
             <form action="./news_edit_do.php" method="post">
                 <input type="hidden" name="id" value="<?php echo h($news['id']); ?>">
                 <div class="form-group">
@@ -80,6 +81,9 @@ try {
             <?php endif ?>
             <!-- 本文ここまで -->
         </div>
+
+        <p><a href="news.php" class="mb-5 text-reset">一覧へ戻る</a></p>
+
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
