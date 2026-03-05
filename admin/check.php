@@ -16,15 +16,17 @@ if (!empty($_POST)) { //ポスト送信ができたら
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if (password_verify($password,$result["password"])) {
+            if (password_verify($password, $result["password"])) {
                 $_SESSION["id"] = session_id();
                 $_SESSION["username"] = $result["username"];
-                $_SESSION["role_id"]= $result["role_id"];
+                $_SESSION["role_id"] = $result["role_id"];
                 header("location:index.php");
                 exit();
             }
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+            header('location:login.php');
+            exit();
         }
     }
 }
