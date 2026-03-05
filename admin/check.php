@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../inc/function.php';
+login_session();
 
 if (!empty($_POST)) { //ポスト送信ができたら
     if (!empty($_POST["username"]) && !empty($_POST["password"])) {
