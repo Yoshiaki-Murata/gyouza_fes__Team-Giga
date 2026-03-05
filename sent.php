@@ -55,7 +55,7 @@ if (!empty($_POST)) {
 <head>
     <meta charset="UTF-8">
     <title>送信完了｜ふくおか餃子FES</title>
-    <link rel="stylesheet" href="css/style.css">
+    <?php include('inc/link.php');  ?>
 </head>
 
 <body id="top">

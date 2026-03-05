@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once __DIR__ . '/../inc/function.php';
 
 
@@ -34,16 +34,7 @@ try {
   <meta name="description" content="ふくおか餃子フェスに関するよくある質問を掲載">
 
   <title>よくある質問｜ふくおか餃子FES</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
-    rel="stylesheet">
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="../css/style.css">
+  <?php include('../inc/link_master.php');  ?>
 </head>
 
 <body id="top">
@@ -51,10 +42,10 @@ try {
   <!-- header -->
   <?php include('../inc/header_master.php');  ?>
 
-  <main class="l-faq l-faq-wrapper l-wrapper-second l-header-margin">
+  <main class="container" style="padding:60px 15px 0">
 
     <div class="l-wrapper-child">
-      <h1 class="c-title__main">FAQ</h1>
+      <h1 class="c-title__main my-5">FAQ</h1>
     </div>
 
     <div class="l-container-second l-wrapper-child">
@@ -107,7 +98,7 @@ try {
       <?php endif ?>
   </main>
 
-  <a href="#top" class="c-btn__top"><img src="../img/back-top.png" alt="topへ戻る"></a>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

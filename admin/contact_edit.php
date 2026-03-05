@@ -40,21 +40,15 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
     <title>商品編集・登録</title>
+    <?php include('../inc/link_master.php');  ?>
 </head>
 
 <body>
     <?php include('../inc/header_master.php');  ?>
 
     <main role="main" class="container" style="padding:60px 15px 0">
-        <h1 class="my-5 text-center">お問い合わせ内容・編集</h1>
+        <h1 class="my-5 text-center c-title__main">お問い合わせ内容・編集</h1>
         <form action="./contact_edit_do.php" method="post" enctype="multipart/form-data">
             <div class="row justify-content-center">
                 <div class="mb-3 col-6">
@@ -108,21 +102,24 @@ try {
                 <input type="submit" value="編集" class="btn btn-primary">
             </div>
         </form>
-       <?php if (!empty($_SESSION["msg"])): ?>
-                <p class="text-center bs-danger-text-emphasis">
-                    <?php echo h($_SESSION["msg"]);
-                    unset($_SESSION["msg"]);
-                    ?>
-                </p>
-            <?php endif ?>
-            <?php if (!empty($_SESSION["err"])): ?>
-                <p class="text-center bs-danger-text-emphasis">
-                    <?php echo h($_SESSION["err"]);
-                    unset($_SESSION["err"]);
-                    ?>
-                </p>
-            <?php endif ?>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="text-center bs-danger-text-emphasis">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <p><a href="contact_list.php" class="mb-5 text-reset">一覧へ戻る</a></p>
+
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

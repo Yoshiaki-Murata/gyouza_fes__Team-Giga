@@ -39,6 +39,7 @@ try {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
+    $_SESSION["msg"] = "編集が完了しました";
     header('Location: shop.php');
     exit;
 } catch (PDOException $e) {

@@ -24,29 +24,17 @@ try {
     <meta name="description" content="ふくおか餃子フェスに関する管理者用のお問い合わせページ。">
     <title>お問い合わせ｜ふくおか餃子FES</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
-        rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="../css/style.css">
+    <?php include('../inc/link_master.php');  ?>
 </head>
 
 <body id="top">
 
     <?php include('../inc/header_master.php');  ?>
 
-    <main role="main" class="container-fluid px-md-5 l-header-margin">
+    <main role="main" class="container-fluid px-md-5">
         <section class="py-5">
-            <h1 class="text-center mb-4">
-                <span class="text-danger d-block h3 mb-0">CONTACT LIST</span>
+            <h1 class="c-title__main my-5">
+                <span class="text-danger d-block mb-0 c-title__main">CONTACT LIST</span>
                 <small class="text-muted h6">お問い合わせ一覧</small>
             </h1>
 
@@ -105,11 +93,10 @@ try {
                 ?>
             </p>
         <?php endif ?>
-    </main>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-    <script>
-        window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery-slim.min.js"><\/script>')
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+</html>

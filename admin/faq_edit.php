@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once __DIR__ . '/../inc/function.php';
 
-$id = (int)($_POST['id']);
+$id = (int)($_GET['id']);
 $categories = [];
 
 if ($id === 0) {
@@ -50,16 +51,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ修正｜ふくおか餃子FES</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="../css/style.css">
+    <?php include('../inc/link_master.php');  ?>
 </head>
 
 <body>
@@ -104,14 +96,11 @@ try {
 
 
             <!-- 本文ここまで -->
+            <p><a href="faq.php" class="mb-5 text-reset">一覧へ戻る</a></p>
+
         </div>
     </main>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-    <script>
-        window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery-slim.min.js"><\/script>')
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

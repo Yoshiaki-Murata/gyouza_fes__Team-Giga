@@ -31,24 +31,16 @@ try {
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="ふくおか餃子フェスに関するお知らせの一覧を掲載">
     <title>お知らせ一覧｜ふくおか餃子FES</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="../css/style.css">
+    <?php include('../inc/link_master.php');  ?>
 </head>
 
 <body id="top">
     <!-- header -->
     <?php include('../inc/header_master.php');  ?>
 
-    <main class="l-header-margin">
+    <main class="container">
         <section class="l-wrapper-second">
-            <h1 class="c-title__main">News</h1>
+            <h1 class="c-title__main my-5">News</h1>
 
             <div class="d-grid mx-auto">
                 <a href="./news_add.php" class="btn btn-primary" type="button">新規お知らせ投稿</a>
@@ -105,6 +97,7 @@ try {
             </p>
         <?php endif ?>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

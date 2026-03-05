@@ -24,13 +24,7 @@ try {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ふくおか餃子フェスに出店されるメニューや店舗の紹介ページ。出店情報・メニュー一覧・ブース番号を掲載。アクセスしやすい導線で当日の回遊をサポート。">
   <title>出店メニュー・店舗｜ふくおか餃子FES</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <?php include('inc/link.php');  ?>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -59,7 +53,7 @@ try {
                 <p class="c-menu-card-top-text__price"><?php echo h($row["pieces"]); ?>個入り <?php echo h($row["price"]); ?>円（税込）</p>
               </div>
             </div>
-            <div class="c-menu-card-bottom <?php echo h($key+1) % 2 === 0 ? "c-menu-card-bottom--reverse" : ""; ?>">
+            <div class="c-menu-card-bottom <?php echo h($key + 1) % 2 === 0 ? "c-menu-card-bottom--reverse" : ""; ?>">
               <div class="c-menu-card-bottom-container">
                 <img class="c-menu-card-bottom-container__img" src="./img/<?php echo h($row["image"]); ?>" alt="<?php echo h($row["alt"]); ?>">
               </div>

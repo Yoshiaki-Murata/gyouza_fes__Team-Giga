@@ -31,18 +31,13 @@ try {
 
 <!doctype html>
 <html lang="ja">
+<?php include('../inc/header_master.php'); ?>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo h($news['titletag']); ?>編集｜ふくおか餃子FES</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <?php include('../inc/link_master.php');  ?>
 </head>
 
 <body>
@@ -52,7 +47,7 @@ try {
         <div>
             <!-- ここから「本文」-->
 
-            <h1 class="c-title__main">お知らせ編集</h1>
+            <h1 class="c-title__main my-5">お知らせ編集</h1>
             <form action="./news_edit_do.php" method="post">
                 <input type="hidden" name="id" value="<?php echo h($news['id']); ?>">
                 <div class="form-group">
@@ -84,15 +79,14 @@ try {
                     ?>
                 </p>
             <?php endif ?>
-    <!-- 本文ここまで -->
-    </div>
+            <!-- 本文ここまで -->
+        </div>
+
+        <p><a href="news.php" class="mb-5 text-reset">一覧へ戻る</a></p>
+
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-    <script>
-        window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery-slim.min.js"><\/script>')
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
