@@ -57,7 +57,7 @@ try {
 <body>
 
     <?php include('../inc/header_master.php');  ?>
-    <main role="main" class="container" style="padding:60px 15px 0">
+    <main role="main" class="container mb-3" style="padding:60px 15px 0">
         <div>
             <!-- ここから「本文」-->
 
@@ -65,18 +65,18 @@ try {
             <form action="./faq_edit_do.php" method="post">
                 <input type="hidden" name="id" value="<?php echo (int)$question['id']; ?>">
                 <div class="form-group">
-                    <label>質問</label>
-                    <input type="text" name="question" class="form-control" value="<?php echo h($question['question']); ?>" required>
+                    <label class="mb-2">質問</label>
+                    <input type="text" name="question" class="form-control mb-3" value="<?php echo h($question['question']); ?>" required>
                 </div>
 
                 <div class="form-group">
-                    <label>回答</label>
-                    <textarea name="answer" class="form-control" rows="5" required><?php echo h($question['answer']); ?></textarea>
+                    <label class="mb-2">回答</label>
+                    <textarea name="answer" class="form-control mb-3" rows="5" required><?php echo h($question['answer']); ?></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label>カテゴリー</label>
-                    <select name="category_id" class="form-control" required>
+                    <label class="mb-2">カテゴリー</label>
+                    <select name="category_id" class="form-control mb-3" required>
                         <?php foreach ($categories as $key => $faqCategory): ?>
                             <option value="<?php echo (int)$key; ?>" <?php if ((int)$question['category_id'] === (int)$key) echo 'selected'; ?>>
                                 <?php echo h($faqCategory); ?>
@@ -84,7 +84,7 @@ try {
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <input type="submit" class="btn btn-primary" value="更新する">
+                <input type="submit" class="btn btn-primary mb-3" value="更新する">
             </form>
             <?php if (!empty($_SESSION["err"])): ?>
                 <p class="text-center bs-danger-text-emphasis">

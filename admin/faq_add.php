@@ -57,27 +57,27 @@ try {
                 </p>
             <?php endif ?>
 
-            <form action="./faq_add_do.php" method="post">
+            <form action="./faq_add_do.php" method="post" class="mb-5">
 
                 <div class="form-group">
-                    <label>質問</label>
+                    <label class="mb-2">質問</label>
                     <input type="text"
-                        name="question" class="form-control"
+                        name="question" class="mb-3 form-control"
                         placeholder="質問"
                         required>
                 </div>
 
                 <div class="form-group">
-                    <label>回答</label>
+                    <label class="mb-2">回答</label>
                     <textarea name="answer"
-                        class="form-control"
+                        class="form-control mb-3"
                         rows="5"
                         placeholder="回答"
                         required></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label>カテゴリー</label>
+                    <label class="mb-2">カテゴリー</label>
                     <select name="category_id" class="form-control" required>
                         <?php foreach ($categories as $key => $faqCategory): ?>
                             <option value="<?php echo (int)$key; ?>">
