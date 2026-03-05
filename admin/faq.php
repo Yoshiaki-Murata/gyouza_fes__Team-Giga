@@ -42,7 +42,7 @@ try {
   <!-- header -->
   <?php include('../inc/header_master.php');  ?>
 
-  <main class="container" style="padding:60px 15px 0">
+  <main class="container mb-5" style="padding:60px 15px 0">
 
     <div class="l-wrapper-child">
       <h1 class="c-title__main my-5">FAQ</h1>

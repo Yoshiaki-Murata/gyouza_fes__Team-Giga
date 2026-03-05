@@ -11,7 +11,7 @@
 <body>
     <?php include('../inc/header_master.php'); ?>
 
-    <main role="main" class="container" style="padding:60px 15px 0">
+    <main role="main" class="container mb-5" style="padding:60px 15px 0">
         <div>
             <!-- ここから「本文」-->
 
@@ -19,22 +19,22 @@
             <form action="./shop_add_do.php" method="post">
 
                 <div class="form-group">
-                    <label>店舗名</label>
+                    <label class="mb-2">店舗名</label>
                     <input type="text" name="shop"
-                        class="form-control" required>
+                        class="form-control mb-3" required>
                 </div>
                 <div class="form-group">
-                    <label>ブース番号</label>
+                    <label class="mb-2">ブース番号</label>
                     <input type="text" name="boos_number"
-                        class="form-control" required>
+                        class="form-control mb-3" required>
                 </div>
                 <div class="form-group">
-                    <label>店舗詳細</label>
+                    <label class="mb-2">店舗詳細</label>
                     <textarea name="shop_detail"
-                        class="form-control" rows="5" required></textarea>
+                        class="form-control mb-3" rows="5" required></textarea>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="追加する">
+                <input type="submit" class="btn btn-primary mb-3" value="追加する">
             </form>
 
             <p><a href="shop.php" class="mb-5 text-reset">一覧へ戻る</a></p>
