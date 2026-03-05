@@ -97,7 +97,8 @@ try {
 
             <div class="mb-5 text-center">
                 <input type="hidden" name="id" value="<?php echo h($target["id"] ?? ''); ?>">
-                <input type="submit" value="編集" class="btn btn-primary">
+                <input type="submit" value="編集" class="btn btn-primary me-5">
+                <a href="menu.php" class="btn btn-secondary">戻る</a>
             </div>
         </form>
         <?php if (!empty($_SESSION["msg"])): ?>
