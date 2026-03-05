@@ -289,11 +289,15 @@ img {
     color: var(--gyoza-red);
 }
 
+.c-header__title {
+    width: 100px;
+}
+
 /* ハンバーガー ここまで ↑------------------ */
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 804px) {
 
     .c-nav,
     .c-nav-master {
@@ -302,7 +306,7 @@ img {
 }
 
 /* 768px以上の大きさの場合 */
-@media screen and (min-width:769px) {
+@media screen and (min-width:804px) {
 
     /* ハンバガーメニュー を消す */
     .c-menu-wrapper {

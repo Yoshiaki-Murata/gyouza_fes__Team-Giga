@@ -1,8 +1,10 @@
  <header class="l-header ">
      <div class="l-header-inner">
-         <p>
-             管理者ページ
-         </p>
+         <div class="c-header__title">
+             <p>
+                 管理者ページ
+             </p>
+         </div>
          <nav class="c-nav-master">
              <ul>
                  <li><a href="index.php" class="text-reset">TOP</a></li>
