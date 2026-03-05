@@ -51,19 +51,19 @@ try {
             <form action="./news_edit_do.php" method="post">
                 <input type="hidden" name="id" value="<?php echo h($news['id']); ?>">
                 <div class="form-group">
-                    <label>記事タイトル</label>
-                    <input type="text" name="subject" class="form-control" value="<?php echo h($news['subject']); ?>" required>
+                    <label class="mb-2">記事タイトル</label>
+                    <input type="text" name="subject" class="form-control mb-3" value="<?php echo h($news['subject']); ?>" required>
                 </div>
                 <div class="form-group">
-                    <label>ページタイトル</label>
-                    <input type="text" name="titletag" class="form-control" value="<?php echo h($news['titletag']); ?>" required>
+                    <label class="mb-2">ページタイトル</label>
+                    <input type="text" name="titletag" class="form-control mb-3" value="<?php echo h($news['titletag']); ?>" required>
                 </div>
                 <div class="form-group">
-                    <label>本文</label>
-                    <textarea name="text" class="form-control" rows="5" required><?= h($news['text']); ?></textarea>
+                    <label class="mb-2">本文</label>
+                    <textarea name="text" class="form-control mb-3" rows="5" required><?= h($news['text']); ?></textarea>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="更新する">
+                <input type="submit" class="btn btn-primary mb-3" value="更新する">
             </form>
             <?php if (!empty($_SESSION["msg"])): ?>
                 <p class="text-center bs-danger-text-emphasis">

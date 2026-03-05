@@ -39,7 +39,7 @@ try {
     <?php include('../inc/header_master.php');  ?>
 
     <main class="container">
-        <section class="l-wrapper-second">
+        <section class="l-wrapper-second mb-5">
             <h1 class="c-title__main my-5">News</h1>
 
             <?php if (!empty($_SESSION["msg"])): ?>
@@ -69,7 +69,7 @@ try {
 
                         <div class="c-news__detail">
 
-                            <div class="mr-2">
+                            <div class="me-2">
                                 <a href="./news_edit.php?id=<?php echo h($article['id']); ?>" class="btn btn-primary btn-sm mr-3">編集</a>
 
                                 <form action="news_del.php?id=<?php echo $article['id']; ?>" method="post" style="display:inline;">

@@ -27,7 +27,7 @@ if (!empty($_POST)) {
                 exit();
             }
         } catch (PDOException $e) {
-            db_err_msg(). $e->getMessage();
+            db_err_msg() . $e->getMessage();
             header('location:user.php');
             exit();
         }
@@ -56,14 +56,12 @@ if (!empty($_POST)) {
         <table class="table">
             <thead>
                 <tr>
-                    <th>id</th>
                     <th>ユーザー名</th>
                     <th>役割</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><?php echo h($target["user_id"]); ?></td>
                     <td><?php echo h($target["username"]); ?></td>
                     <td><?php echo h($target["role"]); ?></td>
                 </tr>
