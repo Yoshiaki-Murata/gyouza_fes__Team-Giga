@@ -42,6 +42,7 @@ try {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="../css/style.css">
+
 <body>
 
   <?php include('../inc/header_master.php');  ?>
@@ -50,22 +51,21 @@ try {
     <section class="l-wrapper-second">
       <h1 class="c-title__main">SHOPS</h1>
 
-      <!-- 削除エラーを表示 -->
+      <!-- 処理結果を表示 （成功）-->
       <?php if (isset($_SESSION["msg"])): ?>
         <div class="alert alert-success text-center" role="alert">
           <?php echo h($_SESSION["msg"]); ?>
         </div>
         <?php unset($_SESSION["msg"]); ?>
       <?php endif; ?>
+
+      <!-- 処理結果を表示 （エラー）-->
       <?php if (isset($_SESSION["err"])): ?>
         <div class="alert alert-danger text-center" role="alert">
           <?php echo h($_SESSION["err"]); ?>
         </div>
         <?php unset($_SESSION["err"]); ?>
-      <?php endif; 
-
-      // テスト ↓
-      // $_SESSION["msg"] = "テスト表示です";
+      <?php endif;
       ?>
 
       <!-- 新規店舗追加 -->
