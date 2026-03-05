@@ -4,7 +4,7 @@ require_once '../inc/function.php';
 
 check_array($_POST);
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 0) {
-    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    $_SESSION["err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
     header("location:user.php");
     exit();
 }
@@ -19,7 +19,7 @@ if(!empty($_POST)){
             $stmt->bindParam(":id",$id,PDO::PARAM_INT);
             $stmt->execute();
             
-            $_SESSION["del_msg"]="削除完了しました";
+            $_SESSION["msg"]="削除完了しました";
             header("location:user.php");
             exit();
         }catch(PDOException $e){
