@@ -56,33 +56,39 @@ try {
             <!-- ここから「本文」-->
 
             <h1 class="c-title__main my-5">店舗 - 削除確認</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="w-25">店舗名</th>
+                        <th class="w-25">ブース番号</th>
+                        <th class="w-50">店舗詳細</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <?php echo h($shop['shop']); ?>
+                        </td>
+                        <td>
+                            <?php echo h($shop['boos_number']); ?>
+                        </td>
+                        <td>
+                            <?php echo h($shop['shop_detail']); ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-5 mb-5">
+                <p class="text-center">この店舗を削除しますか？</p>
+            </div>
             <form action="./shop_del_do.php" method="post">
-                <input type="hidden" name="id" value="<?= h($shop['id']); ?>">
-                <div class="form-group">
-                    <label>店舗名</label>
-                    <div class="form-control-plaintext">
-                        <?php echo h($shop['shop']); ?>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>ブース番号</label>
-                    <div class="form-control-plaintext">
-                        <?php echo h($shop['boos_number']); ?>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>店舗詳細</label>
-                    <div class="form-control-plaintext">
-                        <?php echo h($shop['shop_detail']); ?>
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <input type="submit" class="btn btn-danger mt-5" value="削除" onclick="return confirm('本当に削除しますか？');">
+                <div class="text-center mb-3">
+                    <input type="hidden" name="id" value="<?php echo h($shop["id"]); ?>">
+                    <input type="submit" value="削除" class="btn btn-danger m-3" onclick="return confirm('本当に削除しますか？');">
+                    <a href="shop.php" class="btn btn-secondary">戻る</a>
                 </div>
             </form>
 
-            <p><a href="shop.php" class="mb-5 text-reset">一覧へ戻る</a></p>
 
 
             <!-- 本文ここまで -->
