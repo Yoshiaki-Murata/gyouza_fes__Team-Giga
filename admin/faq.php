@@ -42,10 +42,10 @@ try {
   <!-- header -->
   <?php include('../inc/header_master.php');  ?>
 
-  <main class="l-faq l-faq-wrapper l-wrapper-second l-header-margin">
+  <main class="container" style="padding:60px 15px 0">
 
     <div class="l-wrapper-child">
-      <h1 class="c-title__main">FAQ</h1>
+      <h1 class="c-title__main my-5">FAQ</h1>
     </div>
 
     <div class="l-container-second l-wrapper-child">

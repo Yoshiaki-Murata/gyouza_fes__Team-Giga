@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../inc/function.php';
 
-$id = (int)($_POST['id']);
+$id = (int)($_GET['id']);
 $categories = [];
 
 if ($id === 0) {
@@ -96,6 +96,8 @@ try {
 
 
             <!-- 本文ここまで -->
+            <p><a href="faq.php" class="mb-5 text-reset">一覧へ戻る</a></p>
+
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

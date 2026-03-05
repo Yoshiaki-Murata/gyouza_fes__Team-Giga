@@ -48,6 +48,7 @@ if (!empty($_POST)) {
 
 <body>
     <?php include('../inc/header_master.php');  ?>
+    <?php check_array($_SESSION); ?>
 
     <main role="main" class="container" style="padding:60px 15px 0">
         <h1 class="my-5 c-title__main">ユーザー削除 -確認-</h1>

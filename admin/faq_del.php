@@ -69,18 +69,38 @@ try {
             <!-- ここから「本文」-->
 
             <h1 class="c-title__main">FAQ削除</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="w-25">カテゴリー</th>
+                        <th class="w-25">質問</th>
+                        <th class="w-50">回答</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <?php echo h($categories[$question['category_id']] ?? ''); ?>
+                        </td>
+                        <td>
+                            <?php echo h($question['question']); ?>
+                        </td>
+                        <td>
+                            <?php echo h($question['answer']); ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-5 mb-5">
+                <p class="text-center">このFAQを削除しますか？</p>
+            </div>
             <form action="./faq_del_do.php" method="post">
-                <input type="hidden" name="id" value="<?php echo (int)$question['id']; ?>">
-                <p>質問：<?php echo h($question['question']); ?></p>
-                <p>回答：<?php echo nl2br(h($question['answer'])); ?></p>
-                <p>カテゴリー：<?php echo h($categories[$question['category_id']] ?? ''); ?></p>
-
-                <div class="text-center">
-                    <input type="submit" class="btn btn-danger mt-5" value="削除" onclick="return confirm('本当に削除しますか？');">
+                <div class="text-center mb-3">
+                    <input type="hidden" name="id" value="<?php echo h($question["id"]); ?>">
+                    <input type="submit" value="削除" class="btn btn-danger m-3" onclick="return confirm('本当に削除しますか？');">
+                    <a href="faq.php" class="btn btn-secondary">戻る</a>
                 </div>
             </form>
-
-
 
             <!-- 本文ここまで -->
         </div>

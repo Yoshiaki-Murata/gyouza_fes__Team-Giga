@@ -44,6 +44,7 @@ try {
 
 <!doctype html>
 <html lang="ja">
+<?php include('../inc/header_master.php'); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -59,29 +60,40 @@ try {
         <div>
             <!-- ここから「本文」-->
 
-            <h1 class="c-title__main">お知らせ - 削除確認</h1>
+            <h1 class="c-title__main my-5">お知らせ - 削除確認</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="w-25">記事タイトル</th>
+                        <th class="w-25">ページタイトル</th>
+                        <th class="w-50">本文</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <?php echo h($news['subject']); ?>
+                        </td>
+                        <td>
+                            <?php echo h($news['titletag']); ?>
+                        </td>
+                        <td>
+                            <?php echo h($news['text']); ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-5 mb-5">
+                <p class="text-center">このお知らせを削除しますか？</p>
+            </div>
             <form action="./news_del_do.php" method="post">
-                <input type="hidden" name="id" value="<?php echo h($news['id']); ?>">
-                <div class="form-group mt-4">
-                    <label class="font-weight-bold">記事タイトル</label>
-                    <div class="form-control-plaintext">
-                        <?= h($news['subject']); ?>
-                    </div>
+                <div class="text-center mb-3">
+                    <input type="hidden" name="id" value="<?php echo h($news["id"]); ?>">
+                    <input type="submit" value="削除" class="btn btn-danger m-3" onclick="return confirm('本当に削除しますか？');">
+                    <a href="news.php" class="btn btn-secondary">戻る</a>
                 </div>
-                <div class="form-group">
-                    <label class="font-weight-bold">ページタイトル</label>
-                    <div class="form-control-plaintext">
-                        <?= h($news['titletag']); ?>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="font-weight-bold">本文</label>
-                    <div class="form-control-plaintext">
-                        <?= nl2br(h($news['text'])); ?>
-                    </div>
-                </div>
-                <input type="submit" class="btn btn-danger" value="削除する" onclick="return confirm('本当に削除しますか？');">
             </form>
+
             <?php if (!empty($_SESSION["msg"])): ?>
                 <p class="text-center bs-danger-text-emphasis">
                     <?php echo h($_SESSION["msg"]);
@@ -99,6 +111,7 @@ try {
 
             <!-- 本文ここまで -->
         </div>
+
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -50,21 +50,24 @@ try {
     <!-- header -->
     <?php include('../inc/header_master.php');  ?>
 
-    <main class="l-wrapper l-header-margin">
+    <main class="l-wrapper container" style="padding:60px 15px 0">
 
         <p class="c-title__main" data-sub-title="お知らせ">News</p>
         <section>
             <article class="l-article">
                 <div class="c-article__title-area">
-                    <div class="d-grid gap-2 d-md-block mr-2">
-                        <a href="./news_edit.php?id=<?php echo h($target['id']); ?>" class="btn btn-primary btn-sm">修正</a>
-                        <a href="./news_del.php?id=<?php echo h($target['id']); ?>" class="btn btn-danger btn-sm">削除</a>
-                    </div>
                     <h1><?php echo h($target['subject']); ?></h1>
                     <p><time datetime="<?php echo h($target['date']); ?>">
                             <?php echo format_jp_date(h($target['date'])); ?>
                         </time>
                     </p>
+                    <div class="d-grid gap-2 d-md-block mr-2">
+                        <a href="./news_edit.php?id=<?php echo h($target['id']); ?>" class="btn btn-primary btn-sm">修正</a>
+                        <form action="news_del.php?id=<?php echo $target['id']; ?>" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $target['id']; ?>">
+                            <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                        </form>
+                    </div>
                 </div>
                 <p><?php echo nl2br(h($target['text'])); ?></p>
             </article>
