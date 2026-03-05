@@ -3,7 +3,7 @@ session_start();
 require_once '../inc/function.php';
 
 check_array($_POST);
-if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 0) {
+if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
     $_SESSION["err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
     header("location:user.php");
     exit();
@@ -23,7 +23,9 @@ if(!empty($_POST)){
             header("location:user.php");
             exit();
         }catch(PDOException $e){
-            exit("エラー".$e->getMessage());
+            db_err_msg(). $e->getMessage();
+            header('location:user.php');
+            exit();
         }
     }
 }

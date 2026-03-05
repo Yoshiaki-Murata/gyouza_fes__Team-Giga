@@ -12,13 +12,13 @@ if (!empty($_POST)) {
 
         // ユーザー名が半角英数８文字以上か確認
         if (!preg_match("/^[a-zA-Z0-9_-]{8,}$/", $username)) {
-            $_SESSION["user_add_name_err"]="ユーザー名に使用できない文字が含まれている、又は文字数が規定数に達していません。";
+            $_SESSION["err"] = "ユーザー名に使用できない文字が含まれている、又は文字数が規定数に達していません。";
             header("location:user_add.php");
             exit();
         }
         // パスワードが半角英数８文字以上か確認
         if (!preg_match("/^[a-zA-Z0-9_-]{8,}$/", $password)) {
-            $_SESSION["user_add_pass_err"]="パスワードに使用できない文字が含まれている、又は文字数が規定数に達していません。";
+            $_SESSION["err"] = "パスワードに使用できない文字が含まれている、又は文字数が規定数に達していません。";
             header("location:user_add.php");
             exit();
         }
@@ -28,17 +28,17 @@ if (!empty($_POST)) {
             $db = db_connect();
             $sql = "SELECT COUNT(username) FROM users WHERE username = :username";
             $stmt = $db->prepare($sql);
-            $stmt->bindParam(":username", $username,PDO::PARAM_STR);
+            $stmt->bindParam(":username", $username, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_NUM);
             // 同じ名前があったらuser_add.phpに返す。
             if ($result[0] !== 0) {
-                $_SESSION["user_add_name_err"]="登録済のユーザー名です。";
+                $_SESSION["err"] = "登録済のユーザー名です。";
                 header("location:user_add.php");
                 exit();
             }
             // パスワードハッシュ化
-            $password_hash=password_hash($password,PASSWORD_DEFAULT);
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 
             // 追加作業
@@ -49,11 +49,13 @@ if (!empty($_POST)) {
             $stmt2->bindParam(":role_id", $role_id, PDO::PARAM_INT);
             $stmt2->execute();
 
-            $_SESSION["user_add_success_msg"]="登録が完了しました。";
+            add_msg();
             header("location:user.php");
             exit();
         } catch (PDOException $e) {
-            exit("エラー" . $e->getMessage());
+            $_SESSION["err"] = 'DBへの接続・送信が失敗しました。' . $e->getMessage();
+            header('location:login.php');
+            exit();
         }
     }
 }
