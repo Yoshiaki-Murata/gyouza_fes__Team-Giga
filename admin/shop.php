@@ -17,8 +17,9 @@ try {
   // 取得したレコードを連想配列で1レコードずつ受け取る
   $shops = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-  error_log($e->getMessage());
-  exit('システムエラーが発生しました');
+  db_err_msg() . $e->getMessage();
+    header('location:index.php');
+    exit();
 }
 ?>
 

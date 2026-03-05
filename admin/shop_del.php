@@ -4,7 +4,7 @@ require_once '../inc/function.php';
 
 // 役割がマスター出ない人は削除できないように
 if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
-    $_SESSION["del_err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
+    $_SESSION["err"] = "削除権限がありません。役割がマスターの人に削除依頼をしてください";
     header("location:user.php");
     exit();
 }
@@ -12,7 +12,9 @@ if (!isset($_SESSION["role_id"]) || $_SESSION["role_id"] !== 1) {
 $id = (int)($_POST['id'] ?? 0);
 
 if ($id <= 0) {
-    exit('IDが不正です');
+    err_msg('IDが不正です');
+    header('location:shop.php');
+    exit();
 }
 
 try {
@@ -29,11 +31,14 @@ try {
     $shop = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$shop) {
-        exit('データが存在しません');
+        err_msg('データが存在しません');
+        header('location:shop.php');
+        exit();
     }
 } catch (PDOException $e) {
-    error_log($e->getMessage());
-    exit('システムエラーが発生しました');
+    db_err_msg() . $e->getMessage();
+    header('location:shop.php');
+    exit();
 }
 
 ?>
