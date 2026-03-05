@@ -32,6 +32,23 @@ try {
     <main role="main" class="container " style="padding:60px 15px 0">
 
         <h1 class="my-5 c-title__main">ユーザー管理画面</h1>
+
+        <!-- アラート -->
+        <?php if (!empty($_SESSION["err"])): ?>
+            <p class="alert alert-danger text-center" role="alert">
+                <?php echo h($_SESSION["err"]);
+                unset($_SESSION["err"]);
+                ?>
+            </p>
+        <?php endif ?>
+        <?php if (!empty($_SESSION["msg"])): ?>
+            <p class="alert alert-success text-center" role="alert">
+                <?php echo h($_SESSION["msg"]);
+                unset($_SESSION["msg"]);
+                ?>
+            </p>
+        <?php endif ?>
+
         <h2>ユーザー新規追加</h2>
         <a href="user_add.php" class="mb-5">新規登録はこちらより</a>
 
@@ -65,21 +82,6 @@ try {
                 <?php endforeach; ?>
             </tbody>
         </table>
-
-        <?php if (!empty($_SESSION["err"])): ?>
-            <p class="text-center bs-danger-text-emphasis">
-                <?php echo h($_SESSION["err"]);
-                unset($_SESSION["err"]);
-                ?>
-            </p>
-        <?php endif ?>
-        <?php if (!empty($_SESSION["msg"])): ?>
-            <p class="text-center bs-primary-text-emphasis">
-                <?php echo h($_SESSION["msg"]);
-                unset($_SESSION["msg"]);
-                ?>
-            </p>
-        <?php endif ?>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
