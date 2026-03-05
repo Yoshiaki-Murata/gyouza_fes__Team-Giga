@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../inc/function.php';
+login_session();
 
 $shop = trim($_POST['shop'] ?? '');
 $boos_number = trim($_POST['boos_number'] ?? '');

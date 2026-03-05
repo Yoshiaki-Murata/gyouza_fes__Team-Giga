@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../inc/function.php';
+login_session();
 
 if (!isset($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));

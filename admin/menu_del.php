@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../inc/function.php';
+login_session();
 
 // マスター以外は削除出来ない仕様
 

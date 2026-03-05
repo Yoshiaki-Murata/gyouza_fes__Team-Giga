@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../inc/function.php';
+login_session();
 
 // 役割がマスター出ない人は削除できないように
 

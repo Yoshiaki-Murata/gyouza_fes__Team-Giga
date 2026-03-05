@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../inc/function.php';
+login_session();
 
 // TODO: ID取得とバリデーション
 $id = (int)($_GET['id'] ?? 0);
